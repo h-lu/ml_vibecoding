@@ -2,6 +2,10 @@
 book/_output/
 book/_site/
 
+# 大文件和数据文件
+book/assets/ch*/glove.6B.50d.txt
+book/_output/assets/ch*/glove.6B.50d.txt
+
 # 代码目录 - 不同步
 book/code/
 
