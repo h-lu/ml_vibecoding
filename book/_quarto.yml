@@ -11,10 +11,6 @@ book:
   date: today
   language: zh-CN
   page-navigation: true
-  sidebar:
-    style: "docked"
-    search: true
-    collapse-level: 1
   chapters:
     - index.qmd
     - part: ch01/index.qmd
@@ -180,7 +176,6 @@ format:
     theme: 
       - cosmo
       - assets/chatgpt-style.scss
-    css: assets/sidebar-collapse.css
     toc: false
     number-sections: false
     fig-cap-location: bottom
@@ -197,7 +192,7 @@ format:
     code-copy: true
     # 响应式设计
     max-width: 1200px
-    # 包含自定义样式和脚本
+    # 包含自定义样式
     include-in-header:
       text: |
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -214,6 +209,3 @@ format:
           --chatgpt-accent: #10a37f;
         }
         </style>
-    include-after-body:
-      text: |
-        <script src="assets/sidebar-collapse.js"></script>

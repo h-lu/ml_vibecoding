@@ -1,168 +1,79 @@
-/* 侧边栏折叠样式 - 覆盖Quarto默认样式 */
-
-/* 隐藏Quarto默认的折叠行为 */
-.sidebar .sidebar-menu .sidebar-item[data-bs-toggle="collapse"],
-.sidebar .sidebar-menu .collapse {
-    display: block !important;
+/* 侧边栏折叠样式 */
+.sidebar-item[data-bs-level="1"] {
+  position: relative;
 }
 
-/* 移除Bootstrap的collapse类的默认行为 */
-.sidebar .collapse:not(.show) {
-    display: block !important;
-    height: auto !important;
+/* 为part级别的侧边栏项目添加折叠图标 */
+.sidebar-item[data-bs-level="1"] > .sidebar-link::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease;
+  font-size: 0.8em;
+  width: 1em;
 }
 
-/* 自定义手风琴样式 */
-.sidebar-section-header {
-    position: relative;
-    padding: 0.75rem 1rem !important;
-    background-color: var(--chatgpt-surface, #f7f7f8) !important;
-    border-bottom: 1px solid var(--chatgpt-border, #e5e5e5);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-weight: 600;
-    color: var(--chatgpt-primary, #000000);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* 展开状态的图标 */
+.sidebar-item[data-bs-level="1"].expanded > .sidebar-link::before {
+  content: "▼";
+  transform: rotate(0deg);
 }
 
-.sidebar-section-header:hover {
-    background-color: #eeeeee !important;
+/* 隐藏子章节的样式 */
+.sidebar-item[data-bs-level="2"] {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
-.sidebar-section-header .chevron {
-    font-size: 0.8rem;
-    color: var(--chatgpt-secondary, #6b7280);
-    transition: transform 0.2s ease;
-    margin-left: auto;
+/* 显示子章节的样式 */
+.sidebar-item[data-bs-level="1"].expanded ~ .sidebar-item[data-bs-level="2"],
+.sidebar-item[data-bs-level="1"].expanded + .sidebar-section .sidebar-item[data-bs-level="2"] {
+  max-height: 50px;
+  opacity: 1;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
-.sidebar-section-header.collapsed .chevron {
-    transform: rotate(-90deg);
+/* 为子章节添加缩进 */
+.sidebar-item[data-bs-level="2"] .sidebar-link {
+  padding-left: 2rem;
+  font-size: 0.9em;
+  color: #6c757d;
 }
 
-.sidebar-section-content {
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    background-color: var(--chatgpt-background, #ffffff);
+/* 鼠标悬停效果 */
+.sidebar-item[data-bs-level="1"] > .sidebar-link:hover::before {
+  color: #0d6efd;
 }
 
-.sidebar-section-content.collapsed {
-    max-height: 0 !important;
+/* 活跃状态样式 */
+.sidebar-item[data-bs-level="1"].active {
+  background-color: rgba(13, 110, 253, 0.1);
 }
 
-.sidebar-section-content.expanded {
-    max-height: 1000px !important;
+.sidebar-item[data-bs-level="1"].active > .sidebar-link {
+  font-weight: 600;
+  color: #0d6efd;
 }
 
-.sidebar-section-content .sidebar-item,
-.sidebar-subsection-item {
-    padding: 0.5rem 1.5rem !important;
-    border-left: 3px solid transparent;
-    transition: all 0.2s ease;
-    font-size: 0.875rem;
-    margin: 0 !important;
+/* 确保当前章节自动展开 */
+.sidebar-item[data-bs-level="1"].current-chapter {
+  background-color: rgba(13, 110, 253, 0.05);
 }
 
-.sidebar-section-content .sidebar-item:hover,
-.sidebar-subsection-item:hover {
-    background-color: var(--chatgpt-surface, #f7f7f8) !important;
-    border-left-color: var(--chatgpt-accent, #10a37f);
+/* 平滑过渡动画 */
+.sidebar-item {
+  transition: all 0.3s ease;
 }
 
-.sidebar-section-content .sidebar-item.active,
-.sidebar-subsection-item.active {
-    background-color: rgba(16, 163, 127, 0.1) !important;
-    border-left-color: var(--chatgpt-accent, #10a37f);
-    font-weight: 500;
-}
-
-.sidebar-section-content .sidebar-item a,
-.sidebar-subsection-item a {
-    color: var(--chatgpt-secondary, #6b7280);
-    text-decoration: none;
-    display: block;
-}
-
-.sidebar-section-content .sidebar-item a:hover,
-.sidebar-subsection-item a:hover {
-    color: var(--chatgpt-primary, #000000);
-}
-
-.sidebar-section-content .sidebar-item.active a,
-.sidebar-subsection-item.active a {
-    color: var(--chatgpt-primary, #000000);
-}
-
-/* 确保手风琴处理的项目样式正确 */
-.accordion-processed {
-    background-color: var(--chatgpt-surface, #f7f7f8) !important;
-    border-bottom: 1px solid var(--chatgpt-border, #e5e5e5);
-}
-
-/* 针对Quarto特定的结构调整 */
-.quarto-sidebar .sidebar-menu {
-    padding: 0;
-}
-
-.quarto-sidebar .sidebar-menu .sidebar-item {
-    border-radius: 0;
-    margin: 0;
-    border: none;
-}
-
-/* 搜索框样式保持在顶部 */
-.sidebar-search {
-    border-bottom: 1px solid var(--chatgpt-border, #e5e5e5);
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-}
-
-/* 修复可能的样式冲突 */
-.sidebar .sidebar-menu > .sidebar-item {
-    margin-bottom: 0;
-}
-
-/* 确保图标对齐 */
-.sidebar-section-header > * {
-    pointer-events: none;
-}
-
-.sidebar-section-header .chevron {
-    pointer-events: none;
-    flex-shrink: 0;
-}
-
-/* 动画优化 */
-@media (prefers-reduced-motion: reduce) {
-    .sidebar-section-header .chevron,
-    .sidebar-section-content {
-        transition: none;
-    }
-}
-
-/* 移动端优化 */
+/* 移动端适配 */
 @media (max-width: 768px) {
-    .sidebar-section-header {
-        padding: 0.5rem 0.75rem !important;
-        font-size: 0.9rem;
-    }
-    
-    .sidebar-section-content .sidebar-item,
-    .sidebar-subsection-item {
-        padding: 0.4rem 1rem !important;
-        font-size: 0.8rem;
-    }
-}
-
-/* 确保正确的层级 */
-.sidebar-section-header {
-    z-index: 1;
-    position: relative;
-}
-
-.sidebar-section-content {
-    z-index: 0;
-    position: relative;
+  .sidebar-item[data-bs-level="2"] .sidebar-link {
+    padding-left: 1.5rem;
+    font-size: 0.85em;
+  }
 }
