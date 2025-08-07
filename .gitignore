@@ -1,3 +1,7 @@
+# Quarto Book 输出文件
+book/_output/
+book/_site/
+
 # 代码目录 - 不同步
 book/code/
 
