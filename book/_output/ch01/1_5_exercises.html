@@ -1001,9 +1001,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>任务</strong>: 你的目标是让一个大型语言模型（如 DeepSeek, Claude, ChatGPT, Gemini）为你解释一个技术概念：“过拟合 (Overfitting)”。但你需要通过三种不同质量的提示来达成这个目标，并比较其结果。</p>
 <p><strong>提示版本</strong>:</p>
 <ol type="1">
-<li><p><strong>模糊提示 (Vague Prompt)</strong>: &gt; “解释一下过拟合”</p></li>
-<li><p><strong>标准提示 (Standard Prompt)</strong>: &gt; “请用简单的语言解释什么是机器学习中的过拟合，并给出一个例子。”</p></li>
-<li><p><strong>高级/情景化提示 (Advanced/Contextual Prompt)</strong>: &gt; “将我视为一名没有任何技术背景的商学院学生。请向我解释什么是‘过拟合’。请使用一个与‘预测商品销量’相关的商业案例作为比喻来解释。解释需要包含三部分：1) 过拟合的定义；2) 它为什么是一个问题（即商业危害）；3) 一个避免过拟合的简单方法。”</p></li>
+<li><p><strong>模糊提示 (Vague Prompt)</strong>:</p>
+<blockquote class="blockquote">
+<p>“解释一下过拟合”</p>
+</blockquote></li>
+<li><p><strong>标准提示 (Standard Prompt)</strong>:</p>
+<blockquote class="blockquote">
+<p>“请用简单的语言解释什么是机器学习中的过拟合，并给出一个例子。”</p>
+</blockquote></li>
+<li><p><strong>高级/情景化提示 (Advanced/Contextual Prompt)</strong>:</p>
+<blockquote class="blockquote">
+<p>“将我视为一名没有任何技术背景的商学院学生。请向我解释什么是‘过拟合’。请使用一个与‘预测商品销量’相关的商业案例作为比喻来解释。解释需要包含三部分：1) 过拟合的定义；2) 它为什么是一个问题（即商业危害）；3) 一个避免过拟合的简单方法。”</p>
+</blockquote></li>
 </ol>
 <p><strong>交付物</strong>:</p>
 <ul>
@@ -1521,50 +1530,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>**提示版本**:</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**模糊提示 (Vague Prompt)**:</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="at">    &gt; "解释一下过拟合"</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**标准提示 (Standard Prompt)**:</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="at">    &gt; "请用简单的语言解释什么是机器学习中的过拟合，并给出一个例子。"</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="at">    &gt; "解释一下过拟合"</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**标准提示 (Standard Prompt)**:</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**高级/情景化提示 (Advanced/Contextual Prompt)**:</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="at">    &gt; "将我视为一名没有任何技术背景的商学院学生。请向我解释什么是‘过拟合’。请使用一个与‘预测商品销量’相关的商业案例作为比喻来解释。解释需要包含三部分：1) 过拟合的定义；2) 它为什么是一个问题（即商业危害）；3) 一个避免过拟合的简单方法。"</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>**交付物**:</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>将三次提问的完整回答截图或复制粘贴。</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>撰写一个简短的总结（约 200 字），分析为什么“高级提示”能得到更高质量的回答。从“提供了角色”、“设定了情景”、“明确了输出结构”等角度进行分析，并总结出你认为的、构成一个有效提示的关键要素。</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="at">    &gt; "请用简单的语言解释什么是机器学习中的过拟合，并给出一个例子。"</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**高级/情景化提示 (Advanced/Contextual Prompt)**:</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">    &gt; "将我视为一名没有任何技术背景的商学院学生。请向我解释什么是‘过拟合’。请使用一个与‘预测商品销量’相关的商业案例作为比喻来解释。解释需要包含三部分：1) 过拟合的定义；2) 它为什么是一个问题（即商业危害）；3) 一个避免过拟合的简单方法。"</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>**交付物**:</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. 反思日志：发现 AI 的局限性</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>**任务**:</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>回顾你在 <span class="in">`1.4 首次 Vibe Coding 实践`</span> 中的经历，或者你可以用新的数据集（例如，在 Kaggle.com 上寻找一个分类任务的数据集）重新进行一次 Vibe Coding 实践。</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>将三次提问的完整回答截图或复制粘贴。</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>撰写一个简短的总结（约 200 字），分析为什么“高级提示”能得到更高质量的回答。从“提供了角色”、“设定了情景”、“明确了输出结构”等角度进行分析，并总结出你认为的、构成一个有效提示的关键要素。</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. 反思日志：发现 AI 的局限性</span></span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>**交付物**:</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>撰写一篇短文（约 300-400 字）的反思日志。内容应包括：</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>**任务**:</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>回顾你在 <span class="in">`1.4 首次 Vibe Coding 实践`</span> 中的经历，或者你可以用新的数据集（例如，在 Kaggle.com 上寻找一个分类任务的数据集）重新进行一次 Vibe Coding 实践。</span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**具体描述一个 AI 的“局限性”或“盲点”**。这可以是你发现的任何问题，例如：</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>AI 对数据做了不恰当的假设（如我们案例中的类别平衡）。</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>AI 提出了一个在技术上正确但商业上无用的解决方案。</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>AI 生成的代码虽然能运行，但风格混乱，难以维护。</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>AI 错过了一个重要的、可以提升模型性能的特征。</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**描述你是如何发现这个局限性的**。你的思考过程是什么？是哪个引导性问题或第一性原理的思考帮助了你？</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**阐述你作为人类设计师，是如何（或可以如何）弥补这个局限的**。你的干预带来了什么具体的价值提升？</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. 阅读与批判：AI 时代的现实检验</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>**任务**:</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>在网上搜索并阅读一篇近期的、关于“AI 自动化编程”或“AI 取代程序员”的新闻文章、技术博客或社交媒体讨论。</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>**交付物**:</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>撰写一篇短文（约 300-400 字）的反思日志。内容应包括：</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**具体描述一个 AI 的“局限性”或“盲点”**。这可以是你发现的任何问题，例如：</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>AI 对数据做了不恰当的假设（如我们案例中的类别平衡）。</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>AI 提出了一个在技术上正确但商业上无用的解决方案。</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>AI 生成的代码虽然能运行，但风格混乱，难以维护。</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>AI 错过了一个重要的、可以提升模型性能的特征。</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**描述你是如何发现这个局限性的**。你的思考过程是什么？是哪个引导性问题或第一性原理的思考帮助了你？</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**阐述你作为人类设计师，是如何（或可以如何）弥补这个局限的**。你的干预带来了什么具体的价值提升？</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. 阅读与批判：AI 时代的现实检验</span></span>
 <span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>**交付物**:</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>写一篇批判性评论（约 300 字）。你的评论需要结合本章学习的核心概念，至少回答以下问题中的两个：</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>**任务**:</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>在网上搜索并阅读一篇近期的、关于“AI 自动化编程”或“AI 取代程序员”的新闻文章、技术博客或社交媒体讨论。</span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>文章作者对 AI 能力的描述，是更偏向于“代码玩家”的视角还是“系统设计师”的视角？</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>文章是否提及或忽视了我们所讨论的“70%难题”？它是如何描述 AI 生成代码的质量和稳健性的？</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>根据你对 Vibe Coding 的理解，你认为文章的结论是过于乐观、过于悲观，还是基本准确？为什么？</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>如果让你采访文章的作者，你会向他提出哪个关键问题，以挑战或深化他的论点？</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>完成这些练习将帮助你将本章的抽象概念内化为你自己的实战技能。它们将训练你像一个真正的系统设计师一样去思考、提问和行动。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>**交付物**:</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>写一篇批判性评论（约 300 字）。你的评论需要结合本章学习的核心概念，至少回答以下问题中的两个：</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>文章作者对 AI 能力的描述，是更偏向于“代码玩家”的视角还是“系统设计师”的视角？</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>文章是否提及或忽视了我们所讨论的“70%难题”？它是如何描述 AI 生成代码的质量和稳健性的？</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>根据你对 Vibe Coding 的理解，你认为文章的结论是过于乐观、过于悲观，还是基本准确？为什么？</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>如果让你采访文章的作者，你会向他提出哪个关键问题，以挑战或深化他的论点？</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>完成这些练习将帮助你将本章的抽象概念内化为你自己的实战技能。它们将训练你像一个真正的系统设计师一样去思考、提问和行动。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
