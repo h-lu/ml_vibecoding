@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ch01/1_4_vibe_coding_practice.html"><span class="chapter-title">1.4 首次 Vibe Coding 实践：优化一个真实的ML原型</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ch01/index.html">第1章：AI 时代的知识悖论与 Vibe Coding 突破</a></li><li class="breadcrumb-item"><a href="../ch01/1_4_vibe_coding_practice.html"><span class="chapter-title">1.4 首次 Vibe Coding 实践：优化一个真实的ML原型</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -145,185 +145,824 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">机器学习系统架构师</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">前言：欢迎来到一个被 AI 重新定义的时代</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ch01/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第1章：AI 时代的知识悖论与 Vibe Coding 突破</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch01/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第1章：AI 时代的知识悖论与 Vibe Coding 突破</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch01/1_1_crisis_opportunity.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.1 危机与机遇：AI 时代的知识大洗牌</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch01/1_2_player_to_designer.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.2 从“代码玩家”到“系统设计师”：身份的转变</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch01/1_3_vibe_coding_paradigm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.3 Vibe Coding：人机协作的新范式</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch01/1_4_vibe_coding_practice.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">1.4 首次 Vibe Coding 实践：优化一个真实的ML原型</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch01/1_5_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.5 练习与作业</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ch02/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第2章：架构师的翻译艺术——将商业语言转化为机器语言</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch02/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第2章：架构师的翻译艺术——将商业语言转化为机器语言</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch02/2_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.1 商业挑战的本质：从“痛点”到“目标”</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch02/2_2_definition_framework.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.2 问题定义框架：一个系统性的翻译流程</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch02/2_3_ml_problem_types.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.3 ML 问题类型勘探：选择正确的工具</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch02/2_4_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.4 Vibe Coding 实践：与 AI 一起进行头脑风暴</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch02/2_5_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.5 练习与作业</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ch03/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第3章：第一性原理工具箱——数学与物理直觉激活</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch03/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第3章：第一性原理工具箱——数学与物理直觉激活</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch03/3_1_vector_space.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.1 向量空间：数据的“几何”宿命</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch03/3_2_probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.2 概率：拥抱与量化“不确定性”</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch03/3_3_optimization.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.3 优化：寻找“能量”最低点</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch03/3_4_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.4 Vibe Coding 实践：让 AI 成为你的数学老师</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch03/3_5_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">练习与作业</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ch04/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第4章：数据侦探——可视化探索的第一性原理</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch04/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第4章：数据侦探——可视化探索的第一性原理</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch04/4_1_beyond_charts.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.1 超越图表：可视化作为一种“对话”</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch04/4_2_human_vision.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 人类视觉的“超能力”：几何视角下的模式识别</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch04/4_3_insight_framework.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 从“是什么”到“为什么”：洞察提炼框架</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch04/4_4_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 Vibe Coding 实践：高效的探索性数据分析 (EDA)</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch04/4_5_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">练习与作业</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ch05/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第5章：回归问题——线性与非线性的优雅与局限</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch05/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第5章：回归问题——线性模型的优雅与局限</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch05/5_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1 商业挑战：预测未来</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch05/5_2_linear_regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 线性回归：优雅的基石</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch05/5_3_overfitting_regularization.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3 过拟合的诅咒与正则化的解药</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch05/5_4_xai.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4 即时引入 XAI：模型为何如此预测？</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch05/5_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.5 Vibe Coding 实践：从标准模型到业务对齐</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch05/5_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">练习与作业</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch06/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第6章：分类问题——逻辑回归与支持向量机</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/6_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.1 商业挑战：做出“是”或“否”的判断</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/6_2_probability_vs_geometry.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.2 两种基础思路：概率 vs.&nbsp;几何</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/6_3_kernel_trick.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.3 核技巧：SVM的非线性魔法</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/6_4_xai.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.4 即时引入 XAI：警惕模型中的偏见</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/6_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.5 Vibe Coding 实践：处理不平衡的世界</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/6_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.6 练习与作业</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch07/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第七章：基于树的集成模型：从决策树到梯度提升</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.1 商业挑战：非线性和特征交互的复杂决策</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_2_decision_tree.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.2 决策树：直观的判断逻辑与局限</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_3_ensemble_philosophy.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.3 集成学习的哲学：群体的智慧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_4_random_forest.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.4 随机森林：Bagging 的力量</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_5_gradient_boosting.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.5 梯度提升：Boosting 的精髓</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_6_xai_for_trees.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.6 XAI 深度解密：洞察树模型的复杂决策</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_7_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.7 Vibe Coding 实践：Kaggle 竞赛级挑战</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_8_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.8 练习与思考</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch08/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第八章：聚类与无监督学习：发现隐藏结构的艺术</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/8_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.1 商业挑战：当没有“正确答案”时</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/8_2_kmeans.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.2 K-means：寻找群体的“能量中心”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/8_3_beyond_kmeans.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.3 超越 K-means：从密度、层次到概率的视角</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/8_4_clustering_evaluation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.4 评估聚类：在没有答案时如何判断好坏？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/8_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.5 Vibe Coding 实践：从簇到“用户画像”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/8_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.6 练习与思考</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch09/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第九章：深度学习的基石</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_1_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.1 挑战：当世界不再是线性的</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_2_history.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.2 历史的回响：神经网络的三次浪潮</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_3_neuron_activation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.3 神经元与激活函数：引入非线性的“拐点”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_4_fully_connected_network.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.4 全连接网络：从神经元到决策委员会</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_5_training_engine.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.5 训练的引擎：反向传播与梯度下降</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_6_deep_learning_gears.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.6 深度网络的“神级装备”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_7_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.7 Vibe Coding 实践：拟合非线性边界</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_8_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.8 练习与思考</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch10/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第十章：语言智能：从词袋到大型语言模型</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch10/10_1_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.1 挑战：如何让机器“理解”语言？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch10/10_2_word_embeddings.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 语义几何：词嵌入 (Word Embeddings)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch10/10_3_rag_architecture.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 RAG 系统架构：当大模型记忆不够用时</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch10/10_4_transformer_attention.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.4 初探 Transformer 与注意力机制</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch10/10_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.5 Vibe Coding 实践：构建一个迷你问答机器人</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch10/10_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.6 练习与思考</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch11/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第十一章：注意力革命：Transformer 的内部世界</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch11/11_1_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.1 挑战：如何处理“序列”信息？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch11/11_2_attention_mechanism.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.2 注意力机制：摆脱循环的革命</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch11/11_3_transformer_architecture.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.3 Transformer 宏观架构：组装一台“注意力机器”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch11/11_4_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.4 Vibe Coding 实践：可视化注意力</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch11/11_5_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.5 练习与思考</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch12/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第十二章：空间智慧：CNN 与 ViT 的视觉哲学</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch12/12_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.1 商业挑战：让机器“看见”商机</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch12/12_2_cnn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.2 卷积神经网络 (CNN)：生物启发的智慧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch12/12_3_vit.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.3 视觉 Transformer (ViT)：当 Transformer 开始“看”世界</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch12/12_4_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.4 Vibe Coding 实践：模型“看见”了什么？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch12/12_5_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.5 练习与思考</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch13/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第十三章：迁移学习与 Transformer 架构模式</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch13/13_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.1 商业挑战：如何经济高效地赋能“文本理解”能力？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch13/13_2_transfer_learning_intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.2 核心思想：站在巨人的肩膀上</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch13/13_3_finetuning_techniques.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.3 微调的艺术：如何高效地“定制”巨人？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch13/13_4_transformer_architectures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.4 架构选型：认识 Transformer 家族的三大主力</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch13/13_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.5 Vibe Coding 实践：三十分钟微调一个“懂你”的情感分类器</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch13/13_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.6 思考与练习</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch14/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第十四章 生成式智能：当机器开始“创造”</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch14/14_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.1 商业挑战：从“预测分析”到“内容创造”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch14/14_2_generative_adversarial_networks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.2 生成对抗网络 (GAN)：一场“伪造者”与“鉴赏家”的博弈</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch14/14_3_diffusion_models.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.3 扩散模型 (Diffusion Models)：从混沌中有序地创造</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch14/14_4_autoregressive_models.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.4 自回归模型：优雅的文本续写者</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch14/14_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.5 Vibe Coding 实践：驾驭 AI 的创造力旋钮</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch14/14_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.6 练习与作业</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch15/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第15章 AI 的“世界模型”：构建可信的检索增强生成(RAG)系统</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch15/15_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.1 商业挑战：当 LLM 产生“幻觉”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch15/15_2_first_principle.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.2 第一性原理：从“封闭大脑”到“开卷考试”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch15/15_3_rag_foundation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.3 RAG 的基石：嵌入模型与向量数据库</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch15/15_4_chunking.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.4 文档分块的艺术：如何把“大象”切成“小块”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch15/15_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.5 Vibe Coding 实践：构建一个迷你“公司文档问答机器人”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch15/15_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.6 练习与作业</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch16/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第16章 教 AI 明辨是非：强化学习与偏好对齐</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch16/16_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.1 商业挑战：无法量化的“品牌形象”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch16/16_2_first_principle.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.2 第一性原理：从“对错”到“好坏”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch16/16_3_alignment_paths.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.3 对齐的三大路径：RM, DPO, 与 AI 反馈</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch16/16_4_safe_rlhf.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.4 戴着镣铐跳舞：安全约束与多目标优化</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch16/16_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.5 Vibe Coding 实践：用 DPO 打造一个“礼貌待人”的 AI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch16/16_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.6 练习与作业</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch17/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第十七章：AI 的“手脚”与“大脑”：设计与构建自主智能体</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch17/17_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.1 商业挑战：从“聊天机器人”到“数字员工”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch17/17_2_agent_architectures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.2 架构师的蓝图：主流智能体架构模式</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch17/17_3_agent_pillars.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.3 智能体的三大支柱：规划、工具与记忆</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch17/17_4_stateful_langgraph.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.4 用 LangGraph 构建“有状态”的智能体</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch17/17_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.5 Vibe Coding 实践：用 LangGraph 构建一个“差旅申请审批”机器人</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch17/17_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.6 练习与作业</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch18/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第十八章：构建 AI 团队：多智能体协作与工作流编排</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch18/18_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.1 商业挑战：组建一支“AI 创业梦之队”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch18/18_2_first_principles.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.2 第一性原理：从“个体智能”到“群体智能”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch18/18_3_framework_comparison.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.3 架构师的工具箱：主流多智能体框架解析</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch18/18_4_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.4 Vibe Coding 实践：用 CrewAI 组建一个“市场新闻分析”团队</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch18/18_5_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.5 练习与作业</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch19/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第十九章 未来已来：AI的机遇、挑战与前沿</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch19/19_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.1 商业挑战：超越增长的远见</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch19/19_2_first_principle.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.2 第一性原理：智能的“相变”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch19/19_3_safety_and_alignment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.3 核心挑战一：AI安全与价值对齐 (AI Safety &amp; Alignment)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch19/19_4_embodied_ai.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.4 核心挑战二：AI与物理世界的融合 (Embodied AI)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch19/19_5_governance.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.5 核心挑战三：AI的社会影响与治理 (AI Governance)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch19/19_6_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.6 Vibe Coding 设想：设计一个“AGI安全测试”沙盒</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch19/19_7_architects_reflection.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.7 架构师的沉思：你的责任与远方</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch20/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第二十章 旗舰毕业项目：构建你的AI创业公司</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-20" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch20/20_1_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.1 挑战：从0到1，定义你的价值主张</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch20/20_2_architecture_design.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.2 架构设计：你的第一份蓝图</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch20/20_3_vibe_coding_mvp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.3 Vibe Coding：最小可行性产品 (MVP) 的冲刺</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch20/20_4_pitch_day.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.4 “融资”路演：向世界展示你的作品</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch20/20_5_reflection.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.5 反思与复盘：从“术”到“道”的升华</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#任务背景与数据" id="toc-任务背景与数据" class="nav-link active" data-scroll-target="#任务背景与数据">任务背景与数据</a></li>
-  <li><a href="#第一阶段ai-起草-15分钟" id="toc-第一阶段ai-起草-15分钟" class="nav-link" data-scroll-target="#第一阶段ai-起草-15分钟">第一阶段：AI 起草 (15分钟)</a></li>
-  <li><a href="#第二阶段人类优化-25分钟" id="toc-第二阶段人类优化-25分钟" class="nav-link" data-scroll-target="#第二阶段人类优化-25分钟">第二阶段：人类优化 (25分钟)</a></li>
-  <li><a href="#第三阶段系统验证与反思-10分钟" id="toc-第三阶段系统验证与反思-10分钟" class="nav-link" data-scroll-target="#第三阶段系统验证与反思-10分钟">第三阶段：系统验证与反思 (10分钟)</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ch01/index.html">第1章：AI 时代的知识悖论与 Vibe Coding 突破</a></li><li class="breadcrumb-item"><a href="../ch01/1_4_vibe_coding_practice.html"><span class="chapter-title">1.4 首次 Vibe Coding 实践：优化一个真实的ML原型</span></a></li></ol></nav>
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title"><span class="chapter-title">1.4 首次 Vibe Coding 实践：优化一个真实的ML原型</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
@@ -357,25 +996,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>提示 (Prompt):</strong></p>
 <p>“你好，请扮演一名初级数据分析师。我希望你用 Python 和 scikit-learn 帮我分析一个客户流失数据集 (<code>churn_data.csv</code>)。</p>
-<p>请你完成以下任务： 1. 加载数据，并做一个非常基础的数据探索（EDA），特别是看一看目标变量 <code>Churn</code> 的分布情况。 2. 对数据进行预处理，为建模做准备。你可以自己判断选择哪些特征列，并处理一下缺失值。 3. 帮我构建一个逻辑回归（Logistic Regression）模型来预测客户是否流失。 4. 最后，请评估模型的表现，告诉我它的准确率和完整的分类报告。</p>
+<p>请你完成以下任务： 1. 加载数据，并做一个非常基础的数据探索（EDA），特别是看一看目标变量 <code>Churn</code> 的分布情况。 2. 对数据进行预处理，为建模做准备。你需要处理类别特征和数值特征，并处理缺失值。 3. 帮我构建一个逻辑回归（Logistic Regression）模型来预测客户是否流失。 4. 最后，请评估模型的表现，告诉我它的准确率和完整的分类报告。</p>
 <p>请给出完整、可以直接运行的 Python 代码。”</p>
 </blockquote>
 <p><strong>学生观察与执行</strong>： 1. 将上述提示输入 AI 助手。 2. AI 会为你生成一个 Python 脚本。 3. <strong>在你自己的环境中运行这个脚本。</strong> 4. 仔细观察 AI 的输出。它可能会打印出数据集的基本信息、一个图表、以及模型的评估结果。</p>
 <p>至此，AI 的起草工作完成了。我们有了一个能跑通的原型。但这个原型真的能解决我们面临的商业问题吗？一个真正的系统设计师的旅程，现在才刚刚开始。</p>
 </section>
-<section id="第二阶段人类优化-25分钟" class="level3">
-<h3 class="anchored" data-anchor-id="第二阶段人类优化-25分钟">第二阶段：人类优化 (25分钟)</h3>
+<section id="第二阶段人类优化与人机协作-25分钟" class="level3">
+<h3 class="anchored" data-anchor-id="第二阶段人类优化与人机协作-25分钟">第二阶段：人类优化与人机协作 (25分钟)</h3>
 <p>现在，系统设计师登场。我们的工作不是全盘接受，而是对 AI 的初稿进行<strong>批判性审查和优化</strong>，将我们的智慧、商业理解和第一性原理的思考注入其中。</p>
 <p><strong>请带着以下问题，像侦探一样审视 AI 生成的代码和结果：</strong></p>
 <p><strong>1. 业务层面的灵魂拷问：我们追求的目标正确吗？</strong> - AI 给了我们一个“准确率”(Accuracy) 分数。这看起来很直观，但它真的是我们老板最关心的指标吗？ - <strong>思考实验</strong>: 假设我们公司有两种运营错误： - <strong>错误A (错失)</strong>: 模型说某个客户<strong>不会</strong>流失，结果他下个月就走了。我们因此失去了一个客户，损失了他未来可能带来的所有收入（比如 $500）。 - <strong>错误B (骚扰)</strong>: 模型说某个客户<strong>会</strong>流失，结果他其实很忠诚。我们给他发了挽留优惠券，花费了 $50 的营销成本。 - <strong>请回答</strong>: 哪种错误的代价更高？如果你是项目负责人，你更希望你的模型避免犯哪种错误？ - <strong>行动指引</strong>: 查看 AI 生成的“分类报告”(Classification Report)，在 <code>precision</code>、<code>recall</code>、<code>f1-score</code> 中，哪个指标能更好地衡量我们“识别出真正要流失客户”的能力？它是否应该成为我们优化的核心？</p>
-<p><strong>2. 数据层面的审视：我们信任 AI 的数据处理方式吗？</strong> - <strong>提问</strong>: AI 是如何处理数据中的缺失值的？它选择的填充策略（比如用平均值、中位数或直接删除）在所有情况下都合理吗？对于一个刚入网1个月的新用户和一个在网10年的老用户，他们的 <code>TotalCharges</code>（总消费）如果缺失，用同一个值填充是否会引入偏差？ - <strong>提问</strong>: 查看 <code>Churn</code> 列的分布图。流失的客户和未流失的客户数量是否大致相等？如果不是，这种“类别不平衡”可能会对模型产生什么影响？（提示：一个只预测“不流失”的模型，在不平衡数据上准确率也会很高，但它毫无用处。） - <strong>行动指引</strong>: 你能想到哪些更好的数据处理策略来解决这些潜在问题？（例如：<code>class_weight</code> 参数、SMOTE 过采样技术、更精细的缺失值填充逻辑等）。</p>
-<p><strong>3. 模型层面的探索：有没有更好的工具？</strong> - <strong>提问</strong>: AI 使用了逻辑回归。这是一个经典、简单且可解释性强的模型。但它的一个核心假设是什么？（提示：与线性和非线性有关）。 - <strong>提问</strong>: 我们凭什么相信客户流失的行为是能被一条直线或一个简单的线性平面分开的？有没有可能存在更复杂的模式，例如“在网时间很短”和“在网时间很长”的客户都容易流失，呈现一个U型关系？ - <strong>行动指引</strong>: 除了逻辑回归，你还知道哪些其他的分类模型？（例如：决策树、随机森林、梯度提升树等）。选择其中一个，替换掉 AI 原本的逻辑回归模型，看看性能表现有何不同。</p>
-<p><strong>学生动手</strong>： 现在，基于你以上的独立思考，动手修改 AI 生成的代码。你不必追求一次性完美，选择你认为最重要的一两个点进行优化即可。比如： - 在模型中加入 <code>class_weight='balanced'</code> 来应对类别不平衡。 - 将核心评估指标的关注点从 <code>accuracy</code> 转移到你认为更重要的指标上。 - 尝试使用 <code>RandomForestClassifier</code> 替换 <code>LogisticRegression</code>。</p>
+<p><strong>2. 数据与工程层面的审视：我们信任 AI 的处理方式吗？</strong> - <strong>提问</strong>: AI 是如何处理数据中的缺失值的？它选择的填充策略在所有情况下都合理吗？ - <strong>提问</strong>: 查看 <code>Churn</code> 列的分布图。流失和未流失客户数量是否平衡？如果不平衡，会对模型产生什么影响？ - <strong>行动指引 (最佳实践)</strong>: 在真实的机器学习项目中，为了避免“数据泄露”（Data Leakage），一个关键的最佳实践是使用 <code>sklearn.pipeline.Pipeline</code>。它能将数据预处理步骤和模型训练步骤“打包”在一起，确保只在训练数据上“学习”预处理规则，然后应用到测试数据上。 &gt; <strong>与AI协作</strong>: 你可以向你的AI助手提问：“请帮我重构之前的代码，使用 scikit-learn 的 Pipeline 将预处理步骤和模型封装起来。”</p>
+<p><strong>3. 模型层面的探索：有没有更好的工具？</strong> - <strong>提问</strong>: AI 使用了逻辑回归。这是一个经典、可解释性强的模型，但它的核心假设是线性的。我们凭什么相信客户流失的行为能被一个简单的线性平面分开？ - <strong>行动指引 (人机协作)</strong>: 现在，让我们把 AI 当作一个“技术顾问”。向它提出一个更开放的问题： &gt; “针对这个电信客户流失预测问题，除了逻辑回归，还有哪些更强大的分类模型可以选择？请推荐两到三种，并简单说明它们各自的优缺点，尤其是在处理复杂关系和类别不平衡问题上的能力。” - AI 可能会推荐 <code>RandomForestClassifier</code> 或 <code>HistGradientBoostingClassifier</code> 等。根据它的建议，选择一个更强大的模型来替换掉 <code>Pipeline</code> 中的逻辑回归。</p>
+<p><strong>学生动手</strong>： 现在，基于你以上的独立思考和与AI的协作，动手修改 AI 生成的代码。你不必追求一次性完美，选择你认为最重要的一两个点进行优化即可。比如： - 使用 <code>Pipeline</code> 重构代码。 - 在模型中加入 <code>class_weight='balanced'</code> 来应对类别不平衡。 - 尝试使用 AI 推荐的 <code>HistGradientBoostingClassifier</code> 替换 <code>LogisticRegression</code>。</p>
 </section>
 <section id="第三阶段系统验证与反思-10分钟" class="level3">
 <h3 class="anchored" data-anchor-id="第三阶段系统验证与反思-10分钟">第三阶段：系统验证与反思 (10分钟)</h3>
 <p>重新运行你优化后的代码，并将新的结果与第一阶段的进行对比。</p>
-<p><strong>请回答并记录你的发现</strong>: - 优化后，你最关心的那个<strong>核心业务指标</strong>（比如召回率 Recall）发生了什么变化？是提升了还是下降了？整体准确率呢？你如何解释这种变化？ - 对比两个模型的结果，你认为哪个模型更能帮助公司实现其商业目标？为什么？ - <strong>反思讨论</strong>: - 在这个 Vibe Coding 循环中，AI 的价值体现在哪里？ - 你，作为人类设计师，最关键的贡献是什么？是写了更复杂的代码，还是提出了更深刻的问题？ - 我们是如何发现 AI 的“盲点”的？这个过程给你未来与 AI 协作带来什么启发？</p>
+<p><strong>请回答并记录你的发现</strong>: - 优化后，你最关心的那个<strong>核心业务指标</strong>（比如召回率 Recall）发生了什么变化？是提升了还是下降了？整体准确率呢？你如何解释这种变化？ - 对比两个模型的结果，你认为哪个模型更能帮助公司实现其商业目标？为什么？ - <strong>反思讨论</strong>: - 在这个 Vibe Coding 循环中，AI 的价值体现在哪里？ - 你，作为人类设计师，最关键的贡献是什么？是写了更复杂的代码，还是提出了更深刻的问题并引导AI去解决？ - 我们是如何发现并弥补 AI 的“盲点”的？这个过程给你未来与 AI 协作带来什么启发？</p>
 <p>恭喜你！你刚刚完成了一次更接近真实的 Vibe Coding 实践。你没有盲从 AI 的指令，而是引导它、审视它、并最终改进了它的工作成果，将一个平庸的原型，变成了一个真正对业务有价值的系统雏形。这，就是系统设计师的价值所在。</p>
 
 
@@ -875,7 +1514,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 请你完成以下任务：</span></span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 1.  加载数据，并做一个非常基础的数据探索（EDA），特别是看一看目标变量 </span><span class="in">`Churn`</span><span class="at"> 的分布情况。</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 2.  对数据进行预处理，为建模做准备。你可以自己判断选择哪些特征列，并处理一下缺失值。</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 2.  对数据进行预处理，为建模做准备。你需要处理类别特征和数值特征，并处理缺失值。</span></span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 3.  帮我构建一个逻辑回归（Logistic Regression）模型来预测客户是否流失。</span></span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 4.  最后，请评估模型的表现，告诉我它的准确率和完整的分类报告。</span></span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
@@ -889,7 +1528,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>至此，AI 的起草工作完成了。我们有了一个能跑通的原型。但这个原型真的能解决我们面临的商业问题吗？一个真正的系统设计师的旅程，现在才刚刚开始。</span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">### 第二阶段：人类优化 (25分钟)</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">### 第二阶段：人类优化与人机协作 (25分钟)</span></span>
 <span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>现在，系统设计师登场。我们的工作不是全盘接受，而是对 AI 的初稿进行**批判性审查和优化**，将我们的智慧、商业理解和第一性原理的思考注入其中。</span>
 <span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
@@ -903,35 +1542,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>**请回答**: 哪种错误的代价更高？如果你是项目负责人，你更希望你的模型避免犯哪种错误？</span>
 <span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>**行动指引**: 查看 AI 生成的“分类报告”(Classification Report)，在 <span class="in">`precision`</span>、<span class="in">`recall`</span>、<span class="in">`f1-score`</span> 中，哪个指标能更好地衡量我们“识别出真正要流失客户”的能力？它是否应该成为我们优化的核心？</span>
 <span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>**2. 数据层面的审视：我们信任 AI 的数据处理方式吗？**</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>**提问**: AI 是如何处理数据中的缺失值的？它选择的填充策略（比如用平均值、中位数或直接删除）在所有情况下都合理吗？对于一个刚入网1个月的新用户和一个在网10年的老用户，他们的 <span class="in">`TotalCharges`</span>（总消费）如果缺失，用同一个值填充是否会引入偏差？</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>**提问**: 查看 <span class="in">`Churn`</span> 列的分布图。流失的客户和未流失的客户数量是否大致相等？如果不是，这种“类别不平衡”可能会对模型产生什么影响？（提示：一个只预测“不流失”的模型，在不平衡数据上准确率也会很高，但它毫无用处。）</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>**行动指引**: 你能想到哪些更好的数据处理策略来解决这些潜在问题？（例如：<span class="in">`class_weight`</span> 参数、SMOTE 过采样技术、更精细的缺失值填充逻辑等）。</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>**3. 模型层面的探索：有没有更好的工具？**</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>**提问**: AI 使用了逻辑回归。这是一个经典、简单且可解释性强的模型。但它的一个核心假设是什么？（提示：与线性和非线性有关）。</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>**提问**: 我们凭什么相信客户流失的行为是能被一条直线或一个简单的线性平面分开的？有没有可能存在更复杂的模式，例如“在网时间很短”和“在网时间很长”的客户都容易流失，呈现一个U型关系？</span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>**行动指引**: 除了逻辑回归，你还知道哪些其他的分类模型？（例如：决策树、随机森林、梯度提升树等）。选择其中一个，替换掉 AI 原本的逻辑回归模型，看看性能表现有何不同。</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>**学生动手**：</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>现在，基于你以上的独立思考，动手修改 AI 生成的代码。你不必追求一次性完美，选择你认为最重要的一两个点进行优化即可。比如：</span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>在模型中加入 <span class="in">`class_weight='balanced'`</span> 来应对类别不平衡。</span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>将核心评估指标的关注点从 <span class="in">`accuracy`</span> 转移到你认为更重要的指标上。</span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>尝试使用 <span class="in">`RandomForestClassifier`</span> 替换 <span class="in">`LogisticRegression`</span>。</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="fu">### 第三阶段：系统验证与反思 (10分钟)</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>**2. 数据与工程层面的审视：我们信任 AI 的处理方式吗？**</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>**提问**: AI 是如何处理数据中的缺失值的？它选择的填充策略在所有情况下都合理吗？</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>**提问**: 查看 <span class="in">`Churn`</span> 列的分布图。流失和未流失客户数量是否平衡？如果不平衡，会对模型产生什么影响？</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>**行动指引 (最佳实践)**: 在真实的机器学习项目中，为了避免“数据泄露”（Data Leakage），一个关键的最佳实践是使用 <span class="in">`sklearn.pipeline.Pipeline`</span>。它能将数据预处理步骤和模型训练步骤“打包”在一起，确保只在训练数据上“学习”预处理规则，然后应用到测试数据上。</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="at">       &gt; **与AI协作**: 你可以向你的AI助手提问：“请帮我重构之前的代码，使用 scikit-learn 的 Pipeline 将预处理步骤和模型封装起来。”</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>**3. 模型层面的探索：有没有更好的工具？**</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>**提问**: AI 使用了逻辑回归。这是一个经典、可解释性强的模型，但它的核心假设是线性的。我们凭什么相信客户流失的行为能被一个简单的线性平面分开？</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>**行动指引 (人机协作)**: 现在，让我们把 AI 当作一个“技术顾问”。向它提出一个更开放的问题：</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="at">       &gt; “针对这个电信客户流失预测问题，除了逻辑回归，还有哪些更强大的分类模型可以选择？请推荐两到三种，并简单说明它们各自的优缺点，尤其是在处理复杂关系和类别不平衡问题上的能力。”</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>AI 可能会推荐 <span class="in">`RandomForestClassifier`</span> 或 <span class="in">`HistGradientBoostingClassifier`</span> 等。根据它的建议，选择一个更强大的模型来替换掉 <span class="in">`Pipeline`</span> 中的逻辑回归。</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>**学生动手**：</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>现在，基于你以上的独立思考和与AI的协作，动手修改 AI 生成的代码。你不必追求一次性完美，选择你认为最重要的一两个点进行优化即可。比如：</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>使用 <span class="in">`Pipeline`</span> 重构代码。</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>在模型中加入 <span class="in">`class_weight='balanced'`</span> 来应对类别不平衡。</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>尝试使用 AI 推荐的 <span class="in">`HistGradientBoostingClassifier`</span> 替换 <span class="in">`LogisticRegression`</span>。</span>
 <span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>重新运行你优化后的代码，并将新的结果与第一阶段的进行对比。</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="fu">### 第三阶段：系统验证与反思 (10分钟)</span></span>
 <span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>**请回答并记录你的发现**:</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>优化后，你最关心的那个**核心业务指标**（比如召回率 Recall）发生了什么变化？是提升了还是下降了？整体准确率呢？你如何解释这种变化？</span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>对比两个模型的结果，你认为哪个模型更能帮助公司实现其商业目标？为什么？</span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**反思讨论**:</span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>在这个 Vibe Coding 循环中，AI 的价值体现在哪里？</span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>你，作为人类设计师，最关键的贡献是什么？是写了更复杂的代码，还是提出了更深刻的问题？</span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>我们是如何发现 AI 的“盲点”的？这个过程给你未来与 AI 协作带来什么启发？</span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>恭喜你！你刚刚完成了一次更接近真实的 Vibe Coding 实践。你没有盲从 AI 的指令，而是引导它、审视它、并最终改进了它的工作成果，将一个平庸的原型，变成了一个真正对业务有价值的系统雏形。这，就是系统设计师的价值所在。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>重新运行你优化后的代码，并将新的结果与第一阶段的进行对比。</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>**请回答并记录你的发现**:</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>优化后，你最关心的那个**核心业务指标**（比如召回率 Recall）发生了什么变化？是提升了还是下降了？整体准确率呢？你如何解释这种变化？</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>对比两个模型的结果，你认为哪个模型更能帮助公司实现其商业目标？为什么？</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**反思讨论**:</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>在这个 Vibe Coding 循环中，AI 的价值体现在哪里？</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>你，作为人类设计师，最关键的贡献是什么？是写了更复杂的代码，还是提出了更深刻的问题并引导AI去解决？</span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>我们是如何发现并弥补 AI 的“盲点”的？这个过程给你未来与 AI 协作带来什么启发？</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>恭喜你！你刚刚完成了一次更接近真实的 Vibe Coding 实践。你没有盲从 AI 的指令，而是引导它、审视它、并最终改进了它的工作成果，将一个平庸的原型，变成了一个真正对业务有价值的系统雏形。这，就是系统设计师的价值所在。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

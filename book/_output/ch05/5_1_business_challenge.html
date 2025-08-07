@@ -133,7 +133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -142,7 +142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ch05/5_1_business_challenge.html"><span class="chapter-title">5.1 商业挑战：预测未来</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ch05/index.html">第5章：回归问题——线性模型的优雅与局限</a></li><li class="breadcrumb-item"><a href="../ch05/5_1_business_challenge.html"><span class="chapter-title">5.1 商业挑战：预测未来</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -169,183 +169,824 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">机器学习系统架构师</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">前言：欢迎来到一个被 AI 重新定义的时代</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ch01/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第1章：AI 时代的知识悖论与 Vibe Coding 突破</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch01/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第1章：AI 时代的知识悖论与 Vibe Coding 突破</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch01/1_1_crisis_opportunity.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.1 危机与机遇：AI 时代的知识大洗牌</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch01/1_2_player_to_designer.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.2 从“代码玩家”到“系统设计师”：身份的转变</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch01/1_3_vibe_coding_paradigm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.3 Vibe Coding：人机协作的新范式</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch01/1_4_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.4 首次 Vibe Coding 实践：优化一个真实的ML原型</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch01/1_5_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.5 练习与作业</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ch02/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第2章：架构师的翻译艺术——将商业语言转化为机器语言</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch02/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第2章：架构师的翻译艺术——将商业语言转化为机器语言</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch02/2_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.1 商业挑战的本质：从“痛点”到“目标”</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch02/2_2_definition_framework.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.2 问题定义框架：一个系统性的翻译流程</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch02/2_3_ml_problem_types.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.3 ML 问题类型勘探：选择正确的工具</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch02/2_4_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.4 Vibe Coding 实践：与 AI 一起进行头脑风暴</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch02/2_5_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.5 练习与作业</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ch03/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第3章：第一性原理工具箱——数学与物理直觉激活</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch03/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第3章：第一性原理工具箱——数学与物理直觉激活</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch03/3_1_vector_space.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.1 向量空间：数据的“几何”宿命</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch03/3_2_probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.2 概率：拥抱与量化“不确定性”</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch03/3_3_optimization.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.3 优化：寻找“能量”最低点</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch03/3_4_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.4 Vibe Coding 实践：让 AI 成为你的数学老师</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch03/3_5_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">练习与作业</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ch04/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第4章：数据侦探——可视化探索的第一性原理</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch04/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第4章：数据侦探——可视化探索的第一性原理</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch04/4_1_beyond_charts.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.1 超越图表：可视化作为一种“对话”</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch04/4_2_human_vision.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 人类视觉的“超能力”：几何视角下的模式识别</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch04/4_3_insight_framework.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 从“是什么”到“为什么”：洞察提炼框架</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch04/4_4_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 Vibe Coding 实践：高效的探索性数据分析 (EDA)</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch04/4_5_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">练习与作业</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../ch05/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第5章：回归问题——线性与非线性的优雅与局限</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch05/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第5章：回归问题——线性模型的优雅与局限</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch05/5_1_business_challenge.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">5.1 商业挑战：预测未来</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch05/5_2_linear_regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 线性回归：优雅的基石</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch05/5_3_overfitting_regularization.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3 过拟合的诅咒与正则化的解药</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch05/5_4_xai.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4 即时引入 XAI：模型为何如此预测？</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch05/5_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.5 Vibe Coding 实践：从标准模型到业务对齐</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ch05/5_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">练习与作业</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch06/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第6章：分类问题——逻辑回归与支持向量机</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/6_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.1 商业挑战：做出“是”或“否”的判断</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/6_2_probability_vs_geometry.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.2 两种基础思路：概率 vs.&nbsp;几何</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/6_3_kernel_trick.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.3 核技巧：SVM的非线性魔法</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/6_4_xai.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.4 即时引入 XAI：警惕模型中的偏见</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/6_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.5 Vibe Coding 实践：处理不平衡的世界</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/6_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.6 练习与作业</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch07/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第七章：基于树的集成模型：从决策树到梯度提升</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.1 商业挑战：非线性和特征交互的复杂决策</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_2_decision_tree.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.2 决策树：直观的判断逻辑与局限</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_3_ensemble_philosophy.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.3 集成学习的哲学：群体的智慧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_4_random_forest.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.4 随机森林：Bagging 的力量</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_5_gradient_boosting.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.5 梯度提升：Boosting 的精髓</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_6_xai_for_trees.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.6 XAI 深度解密：洞察树模型的复杂决策</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_7_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.7 Vibe Coding 实践：Kaggle 竞赛级挑战</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_8_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.8 练习与思考</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch08/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第八章：聚类与无监督学习：发现隐藏结构的艺术</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/8_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.1 商业挑战：当没有“正确答案”时</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/8_2_kmeans.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.2 K-means：寻找群体的“能量中心”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/8_3_beyond_kmeans.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.3 超越 K-means：从密度、层次到概率的视角</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/8_4_clustering_evaluation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.4 评估聚类：在没有答案时如何判断好坏？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/8_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.5 Vibe Coding 实践：从簇到“用户画像”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/8_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.6 练习与思考</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch09/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第九章：深度学习的基石</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_1_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.1 挑战：当世界不再是线性的</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_2_history.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.2 历史的回响：神经网络的三次浪潮</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_3_neuron_activation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.3 神经元与激活函数：引入非线性的“拐点”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_4_fully_connected_network.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.4 全连接网络：从神经元到决策委员会</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_5_training_engine.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.5 训练的引擎：反向传播与梯度下降</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_6_deep_learning_gears.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.6 深度网络的“神级装备”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_7_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.7 Vibe Coding 实践：拟合非线性边界</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_8_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.8 练习与思考</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch10/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第十章：语言智能：从词袋到大型语言模型</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch10/10_1_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.1 挑战：如何让机器“理解”语言？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch10/10_2_word_embeddings.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.2 语义几何：词嵌入 (Word Embeddings)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch10/10_3_rag_architecture.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.3 RAG 系统架构：当大模型记忆不够用时</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch10/10_4_transformer_attention.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.4 初探 Transformer 与注意力机制</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch10/10_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.5 Vibe Coding 实践：构建一个迷你问答机器人</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch10/10_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.6 练习与思考</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch11/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第十一章：注意力革命：Transformer 的内部世界</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch11/11_1_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.1 挑战：如何处理“序列”信息？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch11/11_2_attention_mechanism.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.2 注意力机制：摆脱循环的革命</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch11/11_3_transformer_architecture.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.3 Transformer 宏观架构：组装一台“注意力机器”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch11/11_4_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.4 Vibe Coding 实践：可视化注意力</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch11/11_5_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.5 练习与思考</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch12/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第十二章：空间智慧：CNN 与 ViT 的视觉哲学</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch12/12_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.1 商业挑战：让机器“看见”商机</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch12/12_2_cnn.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.2 卷积神经网络 (CNN)：生物启发的智慧</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch12/12_3_vit.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.3 视觉 Transformer (ViT)：当 Transformer 开始“看”世界</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch12/12_4_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.4 Vibe Coding 实践：模型“看见”了什么？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch12/12_5_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">12.5 练习与思考</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch13/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第十三章：迁移学习与 Transformer 架构模式</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch13/13_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.1 商业挑战：如何经济高效地赋能“文本理解”能力？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch13/13_2_transfer_learning_intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.2 核心思想：站在巨人的肩膀上</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch13/13_3_finetuning_techniques.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.3 微调的艺术：如何高效地“定制”巨人？</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch13/13_4_transformer_architectures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.4 架构选型：认识 Transformer 家族的三大主力</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch13/13_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.5 Vibe Coding 实践：三十分钟微调一个“懂你”的情感分类器</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch13/13_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.6 思考与练习</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch14/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第十四章 生成式智能：当机器开始“创造”</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch14/14_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.1 商业挑战：从“预测分析”到“内容创造”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch14/14_2_generative_adversarial_networks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.2 生成对抗网络 (GAN)：一场“伪造者”与“鉴赏家”的博弈</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch14/14_3_diffusion_models.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.3 扩散模型 (Diffusion Models)：从混沌中有序地创造</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch14/14_4_autoregressive_models.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.4 自回归模型：优雅的文本续写者</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch14/14_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.5 Vibe Coding 实践：驾驭 AI 的创造力旋钮</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch14/14_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">14.6 练习与作业</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch15/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第15章 AI 的“世界模型”：构建可信的检索增强生成(RAG)系统</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch15/15_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.1 商业挑战：当 LLM 产生“幻觉”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch15/15_2_first_principle.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.2 第一性原理：从“封闭大脑”到“开卷考试”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch15/15_3_rag_foundation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.3 RAG 的基石：嵌入模型与向量数据库</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch15/15_4_chunking.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.4 文档分块的艺术：如何把“大象”切成“小块”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch15/15_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.5 Vibe Coding 实践：构建一个迷你“公司文档问答机器人”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch15/15_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">15.6 练习与作业</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch16/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第16章 教 AI 明辨是非：强化学习与偏好对齐</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch16/16_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.1 商业挑战：无法量化的“品牌形象”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch16/16_2_first_principle.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.2 第一性原理：从“对错”到“好坏”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch16/16_3_alignment_paths.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.3 对齐的三大路径：RM, DPO, 与 AI 反馈</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch16/16_4_safe_rlhf.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.4 戴着镣铐跳舞：安全约束与多目标优化</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch16/16_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.5 Vibe Coding 实践：用 DPO 打造一个“礼貌待人”的 AI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch16/16_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">16.6 练习与作业</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch17/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第十七章：AI 的“手脚”与“大脑”：设计与构建自主智能体</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch17/17_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.1 商业挑战：从“聊天机器人”到“数字员工”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch17/17_2_agent_architectures.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.2 架构师的蓝图：主流智能体架构模式</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch17/17_3_agent_pillars.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.3 智能体的三大支柱：规划、工具与记忆</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch17/17_4_stateful_langgraph.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.4 用 LangGraph 构建“有状态”的智能体</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch17/17_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.5 Vibe Coding 实践：用 LangGraph 构建一个“差旅申请审批”机器人</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch17/17_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">17.6 练习与作业</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch18/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第十八章：构建 AI 团队：多智能体协作与工作流编排</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch18/18_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.1 商业挑战：组建一支“AI 创业梦之队”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch18/18_2_first_principles.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.2 第一性原理：从“个体智能”到“群体智能”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch18/18_3_framework_comparison.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.3 架构师的工具箱：主流多智能体框架解析</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch18/18_4_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.4 Vibe Coding 实践：用 CrewAI 组建一个“市场新闻分析”团队</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch18/18_5_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">18.5 练习与作业</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch19/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第十九章 未来已来：AI的机遇、挑战与前沿</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch19/19_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.1 商业挑战：超越增长的远见</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch19/19_2_first_principle.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.2 第一性原理：智能的“相变”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch19/19_3_safety_and_alignment.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.3 核心挑战一：AI安全与价值对齐 (AI Safety &amp; Alignment)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch19/19_4_embodied_ai.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.4 核心挑战二：AI与物理世界的融合 (Embodied AI)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch19/19_5_governance.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.5 核心挑战三：AI的社会影响与治理 (AI Governance)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch19/19_6_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.6 Vibe Coding 设想：设计一个“AGI安全测试”沙盒</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch19/19_7_architects_reflection.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">19.7 架构师的沉思：你的责任与远方</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../ch20/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第二十章 旗舰毕业项目：构建你的AI创业公司</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-20" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch20/20_1_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.1 挑战：从0到1，定义你的价值主张</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch20/20_2_architecture_design.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.2 架构设计：你的第一份蓝图</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch20/20_3_vibe_coding_mvp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.3 Vibe Coding：最小可行性产品 (MVP) 的冲刺</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch20/20_4_pitch_day.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.4 “融资”路演：向世界展示你的作品</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch20/20_5_reflection.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">20.5 反思与复盘：从“术”到“道”的升华</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#开篇商业挑战" id="toc-开篇商业挑战" class="nav-link active" data-scroll-target="#开篇商业挑战">开篇商业挑战</a></li>
-  <li><a href="#第一性原理回归是在特征空间中寻找最佳函数" id="toc-第一性原理回归是在特征空间中寻找最佳函数" class="nav-link" data-scroll-target="#第一性原理回归是在特征空间中寻找最佳函数">第一性原理：回归是在特征空间中寻找“最佳函数”</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ch05/index.html">第5章：回归问题——线性模型的优雅与局限</a></li><li class="breadcrumb-item"><a href="../ch05/5_1_business_challenge.html"><span class="chapter-title">5.1 商业挑战：预测未来</span></a></li></ol></nav>
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title"><span class="chapter-title">5.1 商业挑战：预测未来</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
@@ -379,9 +1020,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="fig-feature-space-intro" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-feature-space-intro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div>                            <div id="1f0d7323-8fe2-44ba-8187-d1bb24f3a34d" class="plotly-graph-div" style="height:600px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("1f0d7323-8fe2-44ba-8187-d1bb24f3a34d")) {                    Plotly.newPlot(                        "1f0d7323-8fe2-44ba-8187-d1bb24f3a34d",                        [{"hovertemplate":"面积 (平方米)=%{x}\u003cbr\u003e位置便利度 (0-10分)=%{y}\u003cbr\u003e价格 (万元)=%{marker.color}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":[221.87041965594622,524.1695901656752,410.36701659852883,370.7804331876024,483.98187918126564,276.14178124249867,204.68405171519473,551.3830523250922,299.5644088840967,379.83634125527936,288.40909527881706,376.0520711422041,595.7049076342513,403.12062595796453,380.0284144885111,484.11238778914066,389.95623501456646,284.56310126544656,405.1492973960952,302.9979130985742,468.3742484262834,401.6228903714752,311.34781563101643,311.90148134369394,316.13222517653617,504.0339307828077,368.47686016745666,597.4646294563756,331.03659279375995,239.85039858247416,335.80927743601166,274.1341887906532,193.63519629546875,485.09845658136646,603.9401264920821,411.12057341771873,300.14444272669505,258.8678457851305,372.98889986153597,510.9284881789856,405.27722198442876,267.0021479627629,285.8186497808842,452.0474045156895,238.8491278692153,329.5000282213742,366.05393817819584,330.4293847515372,316.7097186321499,293.1472363013437,628.0449394587868,442.40298489806014,337.9317165932448,422.22998150875316,532.2658539561533,448.9426074432268,351.81166223221874,561.6728377960744,253.62454977793334,447.9030396392549,377.38693622583673,391.4073191390682,468.7437165869547,395.73064318642025,208.52985566420782,450.67921244734544,239.80358687193095,388.75691482294445,306.0696028881243,417.77381917505977,515.3565985973529,132.55867886055603,250.18542530618788,450.49046404227295,462.7431893064715,311.75632400380505,447.8675675428572,296.854356810017,405.84975497131876,230.7728661429115,433.1007965377536,296.4915006164334,540.8349198966106,395.2378441402619,187.88163487332633,386.0856128616671,467.6887289299003,467.66426823062125,436.2234516127998,316.3005171771885,236.70965052437958,557.1831460038786,465.24960759031245,407.5136136884755,385.91660605195557,316.7715582219611,523.3382911877538,469.83896926876264,293.96325489634376,398.94253305633333],"coloraxis":"coloraxis","symbol":"circle"},"mode":"markers","name":"","scene":"scene","showlegend":false,"x":[106.18101782710437,192.60714596148742,159.79909127171078,139.7987726295555,73.40279606636548,73.3991780504304,58.71254182522992,179.92642186624028,140.16725176148134,156.21088666940682,53.08767414437037,195.48647782429916,174.86639612006326,81.85086660174142,77.2737450810651,77.51067647801507,95.63633644393066,128.71346474483568,114.79175279631737,93.68437102970628,141.77793420835692,70.92407909780627,93.82169728028272,104.95427649405376,118.41049763255539,167.77639420895204,79.95106732375396,127.13516576204174,138.86218532930639,56.96756190799966,141.13172778521576,75.57861855309373,59.75773894779193,192.33283058799998,194.8448049611839,171.25960221746917,95.6920653760056,64.65081710095758,152.63495397682354,116.0228740609402,68.30573522671682,124.27653651669053,55.15827816728276,186.39806031181732,88.81699724000254,149.3783426530973,96.75666141341165,128.0102031766716,132.00654190149194,77.72816832882906,195.4376941646838,166.2699235041672,190.92484123462836,184.22410256414733,139.68499682166276,188.2811352534675,63.273875307787925,79.39742936287178,56.78409333658071,98.79954961448965,108.3015934534223,90.70235476608438,174.3106263727894,103.51299900403839,92.14017645310712,131.40441247373727,71.1386337462144,170.32954711310595,61.182596551965624,198.03304049007758,165.8367153944986,79.80735223012586,50.828317568540356,172.31921426822512,156.02860157714258,159.3510752061481,165.69055200289188,61.106697760113555,103.76985928164089,67.38035892876945,179.46551388133904,143.4947190241337,99.63470372789737,59.53375254290354,96.64734825734934,98.77749830401206,159.4409267507096,145.63362070328196,183.08191138644898,120.83223877429239,67.93913689074526,156.98671808344926,164.11775729253463,134.19157963542443,165.64507699318415,124.06933945465862,128.40992440729912,114.13115275378244,53.81286901161428,66.18371404899567],"y":[3.22000429980714,7.454872878846463,5.200491867534287,6.559994838152919,9.352965317482651,4.745045604042124,5.872680461249408,8.288857969801342,4.601587158441357,3.538859368801551,5.028260170396376,4.1285490107780305,9.50788356639801,8.656842656950918,7.433826295572964,9.100224131314024,8.625704538293801,4.3059904122022505,9.247912989429844,6.775395693409555,8.652081086148439,9.272639099464453,5.226024324803047,3.770363471693737,4.595546137793592,5.989754520383794,8.72610336145745,9.025114082794405,3.048664913718335,6.57523111804296,5.921877022041453,4.554754673295111,3.8390575713357795,5.363306199825396,9.600367927387634,5.262420524145287,6.631534352203563,7.921132712266245,5.545407216655057,9.802474579046724,9.737131064594779,4.762476070777549,6.480739541246698,5.106148168717388,4.993883460642273,3.25820863148173,7.266950337859278,6.51875316260203,3.3603512587499256,4.95052524965628,9.357861201766575,4.676933234668807,4.014264104638562,6.426169321942941,9.899553178774205,4.694386900580502,7.70494883184115,8.331337307301023,4.6634628079467975,8.097514440283017,5.574481929034773,7.4261408141550564,7.434707975326263,6.750422788523309,3.6320283903808583,8.847117469124665,5.245460454802151,4.3056295727989795,3.2854259908833474,7.136250602317693,7.742950532895977,3.116114802494993,6.584651408094967,4.585470426385566,7.516209532866149,4.22056500303494,7.836564166717261,5.707147424103762,9.557109921157142,3.9626466090219528,5.387464457351809,3.7943146486841233,9.47285532794994,9.141375473666868,4.80559139400609,7.6198883222392535,8.720555401408511,6.886405681196236,6.707554048492046,4.692966036303162,3.6517193746412944,9.280510305673287,9.302926400143313,7.4317102009128755,5.373208537340904,5.4444670222886264,8.081689752091677,9.279771819668039,9.209604969855821,8.459128821003368],"z":[221.87041965594622,524.1695901656752,410.36701659852883,370.7804331876024,483.98187918126564,276.14178124249867,204.68405171519473,551.3830523250922,299.5644088840967,379.83634125527936,288.40909527881706,376.0520711422041,595.7049076342513,403.12062595796453,380.0284144885111,484.11238778914066,389.95623501456646,284.56310126544656,405.1492973960952,302.9979130985742,468.3742484262834,401.6228903714752,311.34781563101643,311.90148134369394,316.13222517653617,504.0339307828077,368.47686016745666,597.4646294563756,331.03659279375995,239.85039858247416,335.80927743601166,274.1341887906532,193.63519629546875,485.09845658136646,603.9401264920821,411.12057341771873,300.14444272669505,258.8678457851305,372.98889986153597,510.9284881789856,405.27722198442876,267.0021479627629,285.8186497808842,452.0474045156895,238.8491278692153,329.5000282213742,366.05393817819584,330.4293847515372,316.7097186321499,293.1472363013437,628.0449394587868,442.40298489806014,337.9317165932448,422.22998150875316,532.2658539561533,448.9426074432268,351.81166223221874,561.6728377960744,253.62454977793334,447.9030396392549,377.38693622583673,391.4073191390682,468.7437165869547,395.73064318642025,208.52985566420782,450.67921244734544,239.80358687193095,388.75691482294445,306.0696028881243,417.77381917505977,515.3565985973529,132.55867886055603,250.18542530618788,450.49046404227295,462.7431893064715,311.75632400380505,447.8675675428572,296.854356810017,405.84975497131876,230.7728661429115,433.1007965377536,296.4915006164334,540.8349198966106,395.2378441402619,187.88163487332633,386.0856128616671,467.6887289299003,467.66426823062125,436.2234516127998,316.3005171771885,236.70965052437958,557.1831460038786,465.24960759031245,407.5136136884755,385.91660605195557,316.7715582219611,523.3382911877538,469.83896926876264,293.96325489634376,398.94253305633333],"type":"scatter3d"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"scene":{"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"xaxis":{"title":{"text":"面积 (平方米)"}},"yaxis":{"title":{"text":"位置便利度 (0-10分)"}},"zaxis":{"title":{"text":"价格 (万元)"}}},"coloraxis":{"colorbar":{"title":{"text":"价格 (万元)"}},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]]},"legend":{"tracegroupgap":0},"title":{"text":"房产数据的三维特征空间视图"},"height":600},                        {"responsive": true}                    ).then(function(){
+<div>                            <div id="9c598948-a39c-4ce9-9e6b-c13148eb328e" class="plotly-graph-div" style="height:600px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("9c598948-a39c-4ce9-9e6b-c13148eb328e")) {                    Plotly.newPlot(                        "9c598948-a39c-4ce9-9e6b-c13148eb328e",                        [{"hovertemplate":"面积 (平方米)=%{x}\u003cbr\u003e位置便利度 (0-10分)=%{y}\u003cbr\u003e价格 (万元)=%{marker.color}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":[221.87041965594622,524.1695901656752,410.36701659852883,370.7804331876024,483.98187918126564,276.14178124249867,204.68405171519473,551.3830523250922,299.5644088840967,379.83634125527936,288.40909527881706,376.0520711422041,595.7049076342513,403.12062595796453,380.0284144885111,484.11238778914066,389.95623501456646,284.56310126544656,405.1492973960952,302.9979130985742,468.3742484262834,401.6228903714752,311.34781563101643,311.90148134369394,316.13222517653617,504.0339307828077,368.47686016745666,597.4646294563756,331.03659279375995,239.85039858247416,335.80927743601166,274.1341887906532,193.63519629546875,485.09845658136646,603.9401264920821,411.12057341771873,300.14444272669505,258.8678457851305,372.98889986153597,510.9284881789856,405.27722198442876,267.0021479627629,285.8186497808842,452.0474045156895,238.8491278692153,329.5000282213742,366.05393817819584,330.4293847515372,316.7097186321499,293.1472363013437,628.0449394587868,442.40298489806014,337.9317165932448,422.22998150875316,532.2658539561533,448.9426074432268,351.81166223221874,561.6728377960744,253.62454977793334,447.9030396392549,377.38693622583673,391.4073191390682,468.7437165869547,395.73064318642025,208.52985566420782,450.67921244734544,239.80358687193095,388.75691482294445,306.0696028881243,417.77381917505977,515.3565985973529,132.55867886055603,250.18542530618788,450.49046404227295,462.7431893064715,311.75632400380505,447.8675675428572,296.854356810017,405.84975497131876,230.7728661429115,433.1007965377536,296.4915006164334,540.8349198966106,395.2378441402619,187.88163487332633,386.0856128616671,467.6887289299003,467.66426823062125,436.2234516127998,316.3005171771885,236.70965052437958,557.1831460038786,465.24960759031245,407.5136136884755,385.91660605195557,316.7715582219611,523.3382911877538,469.83896926876264,293.96325489634376,398.94253305633333],"coloraxis":"coloraxis","symbol":"circle"},"mode":"markers","name":"","scene":"scene","showlegend":false,"x":[106.18101782710437,192.60714596148742,159.79909127171078,139.7987726295555,73.40279606636548,73.3991780504304,58.71254182522992,179.92642186624028,140.16725176148134,156.21088666940682,53.08767414437037,195.48647782429916,174.86639612006326,81.85086660174142,77.2737450810651,77.51067647801507,95.63633644393066,128.71346474483568,114.79175279631737,93.68437102970628,141.77793420835692,70.92407909780627,93.82169728028272,104.95427649405376,118.41049763255539,167.77639420895204,79.95106732375396,127.13516576204174,138.86218532930639,56.96756190799966,141.13172778521576,75.57861855309373,59.75773894779193,192.33283058799998,194.8448049611839,171.25960221746917,95.6920653760056,64.65081710095758,152.63495397682354,116.0228740609402,68.30573522671682,124.27653651669053,55.15827816728276,186.39806031181732,88.81699724000254,149.3783426530973,96.75666141341165,128.0102031766716,132.00654190149194,77.72816832882906,195.4376941646838,166.2699235041672,190.92484123462836,184.22410256414733,139.68499682166276,188.2811352534675,63.273875307787925,79.39742936287178,56.78409333658071,98.79954961448965,108.3015934534223,90.70235476608438,174.3106263727894,103.51299900403839,92.14017645310712,131.40441247373727,71.1386337462144,170.32954711310595,61.182596551965624,198.03304049007758,165.8367153944986,79.80735223012586,50.828317568540356,172.31921426822512,156.02860157714258,159.3510752061481,165.69055200289188,61.106697760113555,103.76985928164089,67.38035892876945,179.46551388133904,143.4947190241337,99.63470372789737,59.53375254290354,96.64734825734934,98.77749830401206,159.4409267507096,145.63362070328196,183.08191138644898,120.83223877429239,67.93913689074526,156.98671808344926,164.11775729253463,134.19157963542443,165.64507699318415,124.06933945465862,128.40992440729912,114.13115275378244,53.81286901161428,66.18371404899567],"y":[3.22000429980714,7.454872878846463,5.200491867534287,6.559994838152919,9.352965317482651,4.745045604042124,5.872680461249408,8.288857969801342,4.601587158441357,3.538859368801551,5.028260170396376,4.1285490107780305,9.50788356639801,8.656842656950918,7.433826295572964,9.100224131314024,8.625704538293801,4.3059904122022505,9.247912989429844,6.775395693409555,8.652081086148439,9.272639099464453,5.226024324803047,3.770363471693737,4.595546137793592,5.989754520383794,8.72610336145745,9.025114082794405,3.048664913718335,6.57523111804296,5.921877022041453,4.554754673295111,3.8390575713357795,5.363306199825396,9.600367927387634,5.262420524145287,6.631534352203563,7.921132712266245,5.545407216655057,9.802474579046724,9.737131064594779,4.762476070777549,6.480739541246698,5.106148168717388,4.993883460642273,3.25820863148173,7.266950337859278,6.51875316260203,3.3603512587499256,4.95052524965628,9.357861201766575,4.676933234668807,4.014264104638562,6.426169321942941,9.899553178774205,4.694386900580502,7.70494883184115,8.331337307301023,4.6634628079467975,8.097514440283017,5.574481929034773,7.4261408141550564,7.434707975326263,6.750422788523309,3.6320283903808583,8.847117469124665,5.245460454802151,4.3056295727989795,3.2854259908833474,7.136250602317693,7.742950532895977,3.116114802494993,6.584651408094967,4.585470426385566,7.516209532866149,4.22056500303494,7.836564166717261,5.707147424103762,9.557109921157142,3.9626466090219528,5.387464457351809,3.7943146486841233,9.47285532794994,9.141375473666868,4.80559139400609,7.6198883222392535,8.720555401408511,6.886405681196236,6.707554048492046,4.692966036303162,3.6517193746412944,9.280510305673287,9.302926400143313,7.4317102009128755,5.373208537340904,5.4444670222886264,8.081689752091677,9.279771819668039,9.209604969855821,8.459128821003368],"z":[221.87041965594622,524.1695901656752,410.36701659852883,370.7804331876024,483.98187918126564,276.14178124249867,204.68405171519473,551.3830523250922,299.5644088840967,379.83634125527936,288.40909527881706,376.0520711422041,595.7049076342513,403.12062595796453,380.0284144885111,484.11238778914066,389.95623501456646,284.56310126544656,405.1492973960952,302.9979130985742,468.3742484262834,401.6228903714752,311.34781563101643,311.90148134369394,316.13222517653617,504.0339307828077,368.47686016745666,597.4646294563756,331.03659279375995,239.85039858247416,335.80927743601166,274.1341887906532,193.63519629546875,485.09845658136646,603.9401264920821,411.12057341771873,300.14444272669505,258.8678457851305,372.98889986153597,510.9284881789856,405.27722198442876,267.0021479627629,285.8186497808842,452.0474045156895,238.8491278692153,329.5000282213742,366.05393817819584,330.4293847515372,316.7097186321499,293.1472363013437,628.0449394587868,442.40298489806014,337.9317165932448,422.22998150875316,532.2658539561533,448.9426074432268,351.81166223221874,561.6728377960744,253.62454977793334,447.9030396392549,377.38693622583673,391.4073191390682,468.7437165869547,395.73064318642025,208.52985566420782,450.67921244734544,239.80358687193095,388.75691482294445,306.0696028881243,417.77381917505977,515.3565985973529,132.55867886055603,250.18542530618788,450.49046404227295,462.7431893064715,311.75632400380505,447.8675675428572,296.854356810017,405.84975497131876,230.7728661429115,433.1007965377536,296.4915006164334,540.8349198966106,395.2378441402619,187.88163487332633,386.0856128616671,467.6887289299003,467.66426823062125,436.2234516127998,316.3005171771885,236.70965052437958,557.1831460038786,465.24960759031245,407.5136136884755,385.91660605195557,316.7715582219611,523.3382911877538,469.83896926876264,293.96325489634376,398.94253305633333],"type":"scatter3d"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"scene":{"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"xaxis":{"title":{"text":"面积 (平方米)"}},"yaxis":{"title":{"text":"位置便利度 (0-10分)"}},"zaxis":{"title":{"text":"价格 (万元)"}}},"coloraxis":{"colorbar":{"title":{"text":"价格 (万元)"}},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]]},"legend":{"tracegroupgap":0},"title":{"text":"房产数据的三维特征空间视图"},"height":600},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('1f0d7323-8fe2-44ba-8187-d1bb24f3a34d');
+var gd = document.getElementById('9c598948-a39c-4ce9-9e6b-c13148eb328e');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -406,7 +1047,7 @@ if (outputEl) {{
                         })                };                });            </script>        </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-feature-space-intro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;27.1: 将房产数据点化在二维特征空间中
+Figure&nbsp;22.1: 将房产数据点化在二维特征空间中
 </figcaption>
 </figure>
 </div>
@@ -881,8 +1522,8 @@ Figure&nbsp;27.1: 将房产数据点化在二维特征空间中
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../ch05/index.html" class="pagination-link" aria-label="第5章：回归问题——线性与非线性的优雅与局限">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">第5章：回归问题——线性与非线性的优雅与局限</span></span>
+      <a href="../ch05/index.html" class="pagination-link" aria-label="第5章：回归问题——线性模型的优雅与局限">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">第5章：回归问题——线性模型的优雅与局限</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -1,0 +1,79 @@
+/* 侧边栏折叠样式 */
+.sidebar-item[data-bs-level="1"] {
+  position: relative;
+}
+
+/* 为part级别的侧边栏项目添加折叠图标 */
+.sidebar-item[data-bs-level="1"] > .sidebar-link::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease;
+  font-size: 0.8em;
+  width: 1em;
+}
+
+/* 展开状态的图标 */
+.sidebar-item[data-bs-level="1"].expanded > .sidebar-link::before {
+  content: "▼";
+  transform: rotate(0deg);
+}
+
+/* 隐藏子章节的样式 */
+.sidebar-item[data-bs-level="2"] {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* 显示子章节的样式 */
+.sidebar-item[data-bs-level="1"].expanded ~ .sidebar-item[data-bs-level="2"],
+.sidebar-item[data-bs-level="1"].expanded + .sidebar-section .sidebar-item[data-bs-level="2"] {
+  max-height: 50px;
+  opacity: 1;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+/* 为子章节添加缩进 */
+.sidebar-item[data-bs-level="2"] .sidebar-link {
+  padding-left: 2rem;
+  font-size: 0.9em;
+  color: #6c757d;
+}
+
+/* 鼠标悬停效果 */
+.sidebar-item[data-bs-level="1"] > .sidebar-link:hover::before {
+  color: #0d6efd;
+}
+
+/* 活跃状态样式 */
+.sidebar-item[data-bs-level="1"].active {
+  background-color: rgba(13, 110, 253, 0.1);
+}
+
+.sidebar-item[data-bs-level="1"].active > .sidebar-link {
+  font-weight: 600;
+  color: #0d6efd;
+}
+
+/* 确保当前章节自动展开 */
+.sidebar-item[data-bs-level="1"].current-chapter {
+  background-color: rgba(13, 110, 253, 0.05);
+}
+
+/* 平滑过渡动画 */
+.sidebar-item {
+  transition: all 0.3s ease;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .sidebar-item[data-bs-level="2"] .sidebar-link {
+    padding-left: 1.5rem;
+    font-size: 0.85em;
+  }
+}
