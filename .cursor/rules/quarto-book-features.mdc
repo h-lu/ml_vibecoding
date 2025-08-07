@@ -1,0 +1,53 @@
+---
+globs: *.qmd,*.yml,*.yaml,_quarto.yml
+description: "Quarto Book特性和格式规范"
+---
+
+# Quarto Book 教材开发规范
+
+## Quarto Book 特性应用
+在编写教材时，充分利用Quarto Book的交互特性：
+
+### 代码块和执行
+```python
+#| label: fig-example
+#| fig-cap: "ML模型可视化示例"
+#| echo: true
+#| eval: true
+```
+
+### 交互式组件
+- 使用 `{python}` 代码块创建可执行示例
+- 集成 `plotly` 创建交互式图表
+- 使用 `ipywidgets` 创建参数调节界面
+
+### 章节结构
+```yaml
+# _quarto.yml 配置参考
+book:
+  title: "机器学习系统架构师"
+  subtitle: "从第一性原理到实际应用的 Vibe Coding 之旅"
+  chapters:
+    - index.qmd
+    - part: "智慧觉醒与基础架构"
+      chapters:
+        - chapter_01_vibe_coding_breakthrough.qmd
+```
+
+### 特殊功能
+- **Callout Blocks**：用于突出重要概念
+  ```
+  ::: {.callout-tip}
+  ## Vibe Coding 提示
+  记住：AI负责70%的代码生成，人类负责30%的关键优化
+  :::
+  ```
+
+- **Cross-references**：章节间的交叉引用
+- **Margin notes**：边注解释
+- **Tabsets**：多标签页内容组织
+
+### 无障碍设计
+- 为图片添加alt文本
+- 使用语义化标题结构
+- 确保颜色对比度符合标准

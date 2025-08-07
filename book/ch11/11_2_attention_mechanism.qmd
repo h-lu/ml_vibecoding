@@ -1,0 +1,122 @@
+---
+title: "11.2 注意力机制：摆脱循环的革命"
+---
+
+面对 RNN 的两大根本瓶颈，研究者们提出了一个颠覆性的问题：**我们真的需要“循环”吗？**
+
+我们能否设计一种全新的机制，让序列中的每一个元素，都能够**直接**、**不受距离限制**地看到所有其他元素，并根据当前任务的需要，**动态地**计算出谁对它最重要？
+
+答案就是**注意力机制 (Attention Mechanism)**。而当一个模型用这种机制来处理序列内部的依赖关系时，我们称之为**自注意力 (Self-Attention)**。
+
+### 核心思想：从“信息传递”到“信息聚合”
+
+自注意力彻底抛弃了 RNN“传送带式”的信息传递模型，转向了一种更高效、更强大的**信息聚合 (Information Aggregation)** 模型。
+
+它的核心思想是：对于序列中的每一个元素，其更新后的表示，应该由**整个序列**的所有元素根据一定的权重**加权求和**得到。而这个**权重**，就代表了其他所有元素对于当前这个元素的“重要性”或“注意力”。
+
+最关键的是，这个权重不是固定的，而是由模型**动态计算**出来的。
+
+### 自注意力 (Self-Attention) 的数据库类比
+
+为了从第一性原理层面理解自注意力的计算过程，我们可以使用一个非常直观的类比：把它想象成一次**数据库的查询操作**。
+
+想象序列中的每一个词，都像是一个进入了数据库的人。为了找到与自己相关的信息，每个人都分饰三个角色：
+
+1.  **查询 (Query, Q)**：这是一个向量，代表“**我想要找什么？**”。它是由当前这个词的原始嵌入向量，乘以一个专门的权重矩阵 `WQ` 得到的。
+2.  **键 (Key, K)**：这也是一个向量，代表“**我有什么信息可以被别人查找？**”。它是由当前词的原始嵌入向量，乘以另一个权重矩阵 `WK` 得到的。你可以把它理解为一个词对外展示的“标签”或“索引”。
+3.  **值 (Value, V)**：这还是一个向量，代表“**我实际包含的信息内容是什么？**”。它是由当前词的原始嵌入向量，乘以第三个权重矩阵 `WV` 得到的。
+
+这三个权重矩阵 `WQ`, `WK`, `WV` 是模型在训练过程中需要学习的参数，它们的作用就是教会模型如何根据原始词义，生成最适合用于注意力计算的 Q, K, V 向量。
+
+现在，对于序列中的任意一个词（我们称之为“当前查询者”），它更新自身表示的过程分为三步：
+
+![Attention Calculation](https://jalammar.github.io/images/t/self-attention-output.png)
+*图片来源: "The Illustrated Transformer" by Jay Alammar*
+
+#### 第一步：打分 (Score)
+
+当前查询者，会拿着自己的 **Q (查询)** 向量，去和**序列中所有元素（包括它自己）的 K (键)** 向量进行一次“匹配度”计算。这个计算通常就是向量的**点积 (Dot Product)**。
+
+这个分数 `Score = Q · K` 代表了“键”所对应的那个词，与“查询者”的查找意图有多么相关。分数越高，相关性越强。
+
+#### 第二步：归一化 (Softmax)
+
+得到所有元素的分数后，为了方便后续的加权操作，我们需要将这些分数进行归一化。通常会先将分数除以一个缩放因子（通常是 `sqrt(d_k)`，即 K 向量维度的平方根，用以稳定梯度），然后通过一个 **Softmax** 函数。
+
+Softmax 函数能将一组任意的分数，转化为一组总和为 1 的、非负的**注意力权重 (Attention Weights)**。这就像是当前查询者，明智地将其 100% 的“注意力”预算，分配给了序列中的所有成员。相关性越高的词，分到的注意力权重就越大。
+
+#### 第三步：加权求和 (Weighted Sum)
+
+最后一步，就是用刚刚得到的这组注意力权重，去对**序列中所有元素的 V (值)** 向量进行加权求和。
+
+`最终输出 = Σ (注意力权重_i * V_i)`
+
+这个最终的输出向量，就是“当前查询者”经过一次自注意力计算后，得到的新表示。
+
+这个新表示非常奇妙：它不再仅仅是当前词自己的信息，而是**整个序列根据它自己的“视角”（即它的 Q 向量）进行的一次信息的动态重组和聚合**。它“吸收”了所有它认为重要的上下文信息，同时忽略了那些不相关的信息。
+
+由于上述所有计算（点积、矩阵乘法）都是高度可并行的，自注意力机制彻底摆脱了 RNN 的计算瓶颈。同时，由于每个词都直接与其他所有词进行了交互，长距离依赖问题也迎刃而解。
+
+### 互动演示：观察注意力的流动
+
+下面的简单动画，模拟了自注意力机制的计算过程。请将鼠标悬停在句子中的某个词（查询者）上，观察其他词（键）的颜色变化，颜色越深代表该词获得的注意力权重越高。
+
+<div id="attention-vis" style="font-family: sans-serif; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+    <p><strong>句子:</strong> The cat sat on the mat</p>
+    <p><strong>查询 (Query):</strong> <span id="query-word" style="background-color: #add8e6; padding: 2px;">(悬停在下方词语上)</span></p>
+    <p><strong>注意力权重 (Weights):</strong>
+        <span class="word" data-word="The" style="padding: 5px; margin: 2px; border-radius: 3px;">The</span>
+        <span class="word" data-word="cat" style="padding: 5px; margin: 2px; border-radius: 3px;">cat</span>
+        <span class="word" data-word="sat" style="padding: 5px; margin: 2px; border-radius: 3px;">sat</span>
+        <span class="word" data-word="on" style="padding: 5px; margin: 2px; border-radius: 3px;">on</span>
+        <span class="word" data-word="the" style="padding: 5px; margin: 2px; border-radius: 3px;">the</span>
+        <span class="word" data-word="mat" style="padding: 5px; margin: 2px; border-radius: 3px;">mat</span>
+    </p>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const words = document.querySelectorAll('#attention-vis .word');
+    const queryWordSpan = document.getElementById('query-word');
+
+    // Pre-defined attention scores for demonstration
+    const attentionScores = {
+        'The': {'The': 0.8, 'cat': 0.1, 'sat': 0.05, 'on': 0.02, 'the': 0.02, 'mat': 0.01},
+        'cat': {'The': 0.2, 'cat': 0.7, 'sat': 0.1, 'on': 0.0, 'the': 0.0, 'mat': 0.0},
+        'sat': {'The': 0.05, 'cat': 0.4, 'sat': 0.4, 'on': 0.1, 'the': 0.0, 'mat': 0.05},
+        'on':  {'The': 0.0, 'cat': 0.1, 'sat': 0.3, 'on': 0.3, 'the': 0.1, 'mat': 0.2},
+        'the': {'The': 0.1, 'cat': 0.0, 'sat': 0.0, 'on': 0.1, 'the': 0.7, 'mat': 0.1},
+        'mat': {'The': 0.0, 'cat': 0.1, 'sat': 0.3, 'on': 0.3, 'the': 0.1, 'mat': 0.2}
+    };
+
+    words.forEach(word => {
+        word.addEventListener('mouseover', () => {
+            const currentWord = word.dataset.word;
+            queryWordSpan.textContent = currentWord;
+            const scores = attentionScores[currentWord];
+
+            words.forEach(targetWordSpan => {
+                const targetWord = targetWordSpan.dataset.word;
+                const score = scores[targetWord];
+                // Map score (0-1) to a grayscale color (255-0) and then to a blue scale
+                const colorValue = 255 * (1 - score);
+                const blueIntensity = 255 - colorValue;
+                targetWordSpan.style.backgroundColor = `rgba(70, 130, 180, ${score})`; // SteelBlue with opacity
+                targetWordSpan.style.color = score > 0.5 ? 'white' : 'black';
+            });
+        });
+
+        word.addEventListener('mouseout', () => {
+            queryWordSpan.textContent = '(悬停在下方词语上)';
+            words.forEach(w => {
+                w.style.backgroundColor = 'transparent';
+                w.style.color = 'black';
+            });
+        });
+    });
+});
+</script>
+
+请尝试将鼠标悬停在动词 "sat" 上，观察它是如何同时给予主语 "cat" 和地点 "mat" 较高注意力的。再试试悬停在代词 "The" 上，观察它主要关注自身和后面的名词 "cat"。
+
+通过这个精巧的“查询-键-值”机制，自注意力赋予了模型一种前所未有的、全局的、动态的视角来理解序列。这是构建更强大的 Transformer 模型的基石。

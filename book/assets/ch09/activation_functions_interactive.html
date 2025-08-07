@@ -1,0 +1,104 @@
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>激活函数交互演示：Sigmoid / Tanh / ReLU</title>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<style>
+body{font-family:-apple-system,system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#fafafa;}
+.wrap{max-width:900px;margin:24px auto;padding:0 16px;}
+h1{font-size:20px;margin:0 0 10px;}
+.sub{color:#555;font-size:14px;margin-bottom:14px;}
+.controls{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+.ctrl{background:#f7f7f9;border:1px solid #e3e3e7;border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;font-size:13px;color:#333;}
+select,input[type=range]{padding:6px 8px;border:1px solid #ccc;border-radius:6px;width:180px;}
+.range-wrap{display:flex;align-items:center;gap:8px;}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;background:#eef;border:1px solid #ccf;font-size:12px;}
+#plot{width:100%;height:520px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>非线性激活函数：Sigmoid · Tanh · ReLU</h1>
+  <div class="sub">选择激活函数并拖动 <b>x</b>，观察函数值 (实线) 与梯度 (虚线) 如何变化。梯度消失 / Dying ReLU 等现象将在曲线与数值中直观看到。</div>
+
+  <div class="controls">
+    <div class="ctrl">
+      <label>激活函数：</label>
+      <select id="funcSel">
+        <option value="sigmoid">Sigmoid σ(x) = 1/(1+e<sup>−x</sup>)</option>
+        <option value="tanh">Tanh = (e<sup>x</sup>−e<sup>−x</sup>)/(e<sup>x</sup>+e<sup>−x</sup>)</option>
+        <option value="relu" selected>ReLU = max(0, x)</option>
+      </select>
+    </div>
+
+    <div class="ctrl">
+      <label>x 值：<span id="xVal" class="badge"></span></label>
+      <div class="range-wrap">
+        <input id="xSlider" type="range" min="-6" max="6" step="0.05" value="0">
+      </div>
+      <div>f(x) = <span id="fx"></span></div>
+      <div>f′(x) = <span id="fprime"></span></div>
+    </div>
+  </div>
+
+  <div id="plot"></div>
+</div>
+
+<script>
+// Generate x grid
+const xs = [];
+for(let v=-6; v<=6; v+=0.05) xs.push(v);
+
+function sigmoid(x){ return 1/(1+Math.exp(-x)); }
+function dsigmoid(x){ const s=sigmoid(x); return s*(1-s); }
+function tanh(x){ return Math.tanh(x); }
+function dtanh(x){ const t=Math.tanh(x); return 1-t*t; }
+function relu(x){ return Math.max(0,x); }
+function drelu(x){ return x>0?1:0; }
+
+let current="relu";
+
+function updatePlot(){
+  const x0 = parseFloat(document.getElementById("xSlider").value);
+  document.getElementById("xVal").textContent = x0.toFixed(2);
+
+  let f, fp;
+  if(current==="sigmoid"){ f=sigmoid; fp=dsigmoid; }
+  else if(current==="tanh"){ f=tanh; fp=dtanh; }
+  else { f=relu; fp=drelu; }
+
+  const ys = xs.map(f);
+  const dys= xs.map(fp);
+
+  const trace1 = { x: xs, y: ys, type:"scatter", mode:"lines", name:"f(x)", line:{color:"#1f77b4",width:2}};
+  const trace2 = { x: xs, y: dys, type:"scatter", mode:"lines", name:"f'(x)", line:{color:"#ff7f0e",width:2,dash:"dot"}};
+  const trace3 = { x:[x0], y:[f(x0)], mode:"markers", name:"当前点", marker:{size:9,color:"#d62728"}};
+
+  const layout = {
+    title:`${current.toUpperCase()} 激活函数与梯度`,
+    xaxis:{title:"x",zeroline:false},
+    yaxis:{title:"y / y'",zeroline:false},
+    margin:{l:60,r:20,t:60,b:60},
+    legend:{orientation:"h",y:-0.2}
+  };
+
+  Plotly.react("plot",[trace1,trace2,trace3],layout,{displayModeBar:false});
+
+  document.getElementById("fx").textContent = f(x0).toFixed(4);
+  document.getElementById("fprime").textContent = fp(x0).toFixed(4);
+}
+
+document.getElementById("funcSel").addEventListener("change",e=>{
+  current=e.target.value;
+  updatePlot();
+});
+document.getElementById("xSlider").addEventListener("input",updatePlot);
+
+// initial draw
+updatePlot();
+</script>
+</body>
+</html>

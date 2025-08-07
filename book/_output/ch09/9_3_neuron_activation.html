@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.14">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>9.3 神经元与激活函数：引入非线性的“拐点” – 机器学习系统架构师</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../ch09/9_4_fully_connected_network.html" rel="next">
+<link href="../ch09/9_2_history.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-8f1af79587c2686b78fe4e1fbadd71ab.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-8359656b1bfce9895e00fd740ef11612.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ch09/9_3_neuron_activation.html"><span class="chapter-title">9.3 神经元与激活函数：引入非线性的“拐点”</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">机器学习系统架构师</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">机器学习系统架构师</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch01/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第1章：AI 时代的知识悖论与 Vibe Coding 突破</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch01/1_1_crisis_opportunity.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.1 危机与机遇：AI 时代的知识大洗牌</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch01/1_2_player_to_designer.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.2 从“代码玩家”到“系统设计师”：身份的转变</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch01/1_3_vibe_coding_paradigm.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.3 Vibe Coding：人机协作的新范式</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch01/1_4_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.4 首次 Vibe Coding 实践：优化一个真实的ML原型</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch01/1_5_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.5 练习与作业</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch02/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第2章：架构师的翻译艺术——将商业语言转化为机器语言</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch02/2_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.1 商业挑战的本质：从“痛点”到“目标”</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch02/2_2_definition_framework.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.2 问题定义框架：一个系统性的翻译流程</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch02/2_3_ml_problem_types.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.3 ML 问题类型勘探：选择正确的工具</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch02/2_4_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.4 Vibe Coding 实践：与 AI 一起进行头脑风暴</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch02/2_5_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.5 练习与作业</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch03/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第3章：第一性原理工具箱——数学与物理直觉激活</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch03/3_1_vector_space.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.1 向量空间：数据的“几何”宿命</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch03/3_2_probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.2 概率：拥抱与量化“不确定性”</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch03/3_3_optimization.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.3 优化：寻找“能量”最低点</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch03/3_4_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.4 Vibe Coding 实践：让 AI 成为你的数学老师</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch03/3_5_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">练习与作业</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch04/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第4章：数据侦探——可视化探索的第一性原理</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch04/4_1_beyond_charts.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.1 超越图表：可视化作为一种“对话”</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch04/4_2_human_vision.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.2 人类视觉的“超能力”：几何视角下的模式识别</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch04/4_3_insight_framework.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.3 从“是什么”到“为什么”：洞察提炼框架</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch04/4_4_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.4 Vibe Coding 实践：高效的探索性数据分析 (EDA)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch04/4_5_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">练习与作业</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch05/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第5章：回归问题——线性模型的优雅与局限</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch05/5_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.1 商业挑战：预测未来</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch05/5_2_linear_regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 线性回归：优雅的基石</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch05/5_3_overfitting_regularization.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.3 过拟合的诅咒与正则化的解药</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch05/5_4_xai.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.4 即时引入 XAI：模型为何如此预测？</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch05/5_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.5 Vibe Coding 实践：从标准模型到业务对齐</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch05/5_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">练习与作业</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第6章：分类问题——逻辑回归与支持向量机</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/6_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.1 商业挑战：做出“是”或“否”的判断</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/6_2_probability_vs_geometry.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.2 两种基础思路：概率 vs.&nbsp;几何</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/6_3_kernel_trick.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.3 核技巧：SVM的非线性魔法</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/6_4_xai.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.4 即时引入 XAI：警惕模型中的偏见</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/6_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.5 Vibe Coding 实践：处理不平衡的世界</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch06/6_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.6 练习与作业</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第七章：基于树的集成模型：从决策树到梯度提升</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.1 商业挑战：非线性和特征交互的复杂决策</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_2_decision_tree.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.2 决策树：直观的判断逻辑与局限</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_3_ensemble_philosophy.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.3 集成学习的哲学：群体的智慧</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_4_random_forest.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.4 随机森林：Bagging 的力量</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_5_gradient_boosting.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.5 梯度提升：Boosting 的精髓</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_6_xai_for_trees.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.6 XAI 深度解密：洞察树模型的复杂决策</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_7_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.7 Vibe Coding 实践：Kaggle 竞赛级挑战</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch07/7_8_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.8 练习与思考</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第八章：聚类与无监督学习：发现隐藏结构的艺术</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/8_1_business_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.1 商业挑战：当没有“正确答案”时</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/8_2_kmeans.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.2 K-means：寻找群体的“能量中心”</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/8_3_beyond_kmeans.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.3 超越 K-means：从密度、层次到概率的视角</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/8_4_clustering_evaluation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.4 评估聚类：在没有答案时如何判断好坏？</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/8_5_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.5 Vibe Coding 实践：从簇到“用户画像”</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch08/8_6_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.6 练习与思考</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">第九章：深度学习的基石</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_1_challenge.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.1 挑战：当世界不再是线性的</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_2_history.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.2 历史的回响：神经网络的三次浪潮</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_3_neuron_activation.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">9.3 神经元与激活函数：引入非线性的“拐点”</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_4_fully_connected_network.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.4 全连接网络：从神经元到决策委员会</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_5_training_engine.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.5 训练的引擎：反向传播与梯度下降</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_6_deep_learning_gears.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.6 深度网络的“神级装备”</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_7_vibe_coding_practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.7 Vibe Coding 实践：拟合非线性边界</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ch09/9_8_exercises.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.8 练习与思考</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-title">9.3 神经元与激活函数：引入非线性的“拐点”</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>为了构建一个能够学习复杂曲线的强大模型，我们需要从它的最基本单元开始——<strong>人工神经元 (Artificial Neuron)</strong>。这个概念的灵感，松散地来源于生物学中的神经元。</p>
+<section id="生物灵感一个简化的抽象" class="level3">
+<h3 class="anchored" data-anchor-id="生物灵感一个简化的抽象">生物灵感：一个简化的抽象</h3>
+<p>生物神经元是一个细胞，它从其他神经元接收信号（通过树突），在细胞体内进行处理，如果信号的强度超过某个阈值，它就会被“激活”，并向其他神经元发送一个信号（通过轴突）。</p>
+<p>人工神经元是对这个过程的高度简化和数学抽象。它并不试图模拟生物过程的所有复杂细节，而是抓住了最核心的思想：<strong>接收输入，进行计算，然后决定是否激活并传递一个输出。</strong></p>
+</section>
+<section id="人工神经元的两步走" class="level3">
+<h3 class="anchored" data-anchor-id="人工神经元的两步走">人工神经元的“两步走”</h3>
+<p>一个人工神经元的工作可以分解为两个简单的步骤：</p>
+<p><strong>第一步：加权求和 (Weighted Sum)</strong></p>
+<p>神经元会接收来自上一层或其他数据源的多个输入值（例如，<span class="math inline">\(x_1, x_2, x_3\)</span>）。每一个输入，都被赋予一个<strong>权重 (Weight)</strong>（例如，<span class="math inline">\(w_1, w_2, w_3\)</span>）。这个权重代表了对应输入的重要性。一个大的正权重意味着这个输入对神经元的激活有很强的促进作用；一个大的负权重则意味着它有很强的抑制作用。</p>
+<p>除了输入和权重，还有一个特殊的参数叫做<strong>偏置 (Bias)</strong>（<span class="math inline">\(b\)</span>）。你可以把它理解为一个“激活阈值”的调节器。偏置值决定了在没有任何输入的情况下，神经元有多容易被激活。</p>
+<p>神经元做的第一件事，就是把所有的输入和它们对应的权重相乘，然后再加上这个偏置。这个过程，就是一个简单的线性运算——<strong>加权求和</strong>。</p>
+<p><span class="math display">\[
+\text{加权和} = (w_1 \cdot x_1 + w_2 \cdot x_2 + w_3 \cdot x_3 + \dots) + b = \sum_{i} w_i x_i + b
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Artificial_neuron_structure.svg" class="img-fluid" alt="人工神经元模型" width="500">
+<figcaption>
+人工神经元模型示意图 (图片来源: Wikimedia Commons)
+</figcaption>
+</div>
+<p><strong>第二步：非线性激活 (Non-linear Activation)</strong></p>
+<p>如果神经元只做加权求和，那么无论我们把多少个这样的神经元堆叠在一起，最终整个网络也只是一个复杂的线性模型，它永远无法学习出“曲线”边界。</p>
+<p><strong>因此，为了引入非线性，我们需要第二步，也是至关重要的一步：激活函数 (Activation Function)。</strong></p>
+<p>在计算出加权和之后，这个结果会被送入一个<strong>非线性</strong>的激活函数（通常用 <span class="math inline">\(\sigma\)</span> 或 <span class="math inline">\(f\)</span> 表示），生成神经元最终的输出值。</p>
+<p><span class="math display">\[
+\text{输出} = f(\text{加权和}) = f(\sum_{i} w_i x_i + b)
+\]</span></p>
+<p><strong>激活函数，就是赋予神经元“拐弯”能力的关键。</strong> 它在神经元的输出中引入了非线性，使得整个网络能够摆脱直线的束缚。</p>
+</section>
+<section id="常见的激活函数从-s-型到硬拐弯" class="level3">
+<h3 class="anchored" data-anchor-id="常见的激活函数从-s-型到硬拐弯">常见的激活函数：从 S 型到“硬拐弯”</h3>
+<p>历史上有许多种激活函数，这里我们介绍几个最重要的：</p>
+<ol type="1">
+<li><strong>Sigmoid 函数</strong>
+<ul>
+<li><strong>形状</strong>：一个平滑的“S”型曲线，可以将任何实数输入压缩到 (0, 1) 的范围内。</li>
+<li><strong>优点</strong>：输出值在 (0, 1) 之间，可以被解释为“概率”；函数平滑，处处可导。</li>
+<li><strong>缺点</strong>：在输入值很大或很小时，函数的梯度（斜率）会变得非常小，接近于零。这会导致一个严重的问题，叫做<strong>梯度消失 (Vanishing Gradients)</strong>，使得深层网络的训练变得非常困难。同时，它的计算也相对复杂。</li>
+</ul></li>
+<li><strong>Tanh (双曲正切) 函数</strong>
+<ul>
+<li><strong>形状</strong>：也是一个“S”型曲线，但它将输入压缩到 (-1, 1) 的范围内。</li>
+<li><strong>优点</strong>：与 Sigmoid 相比，它的输出是“零中心”的，这在某些情况下能帮助模型更快地收敛。</li>
+<li><strong>缺点</strong>：同样存在梯度消失的问题。</li>
+</ul></li>
+<li><strong>ReLU (Rectified Linear Unit, 修正线性单元)</strong>
+<ul>
+<li><strong>形状</strong>：这是迄今为止最重要、最常用的激活函数。它的规则极其简单：<strong>如果输入大于0，则输出等于输入；如果输入小于或等于0，则输出为0。</strong> <span class="math display">\[
+\text{ReLU}(x) = \max(0, x)
+\]</span></li>
+<li><strong>优点</strong>：
+<ul>
+<li><strong>计算高效</strong>：没有复杂的指数运算，计算速度极快。</li>
+<li><strong>解决梯度消失</strong>：在输入为正的部分，梯度恒为1，极大地缓解了梯度消失问题，使得训练深度网络成为可能。</li>
+<li><strong>稀疏性</strong>：它会让一部分神经元的输出为0，这使得网络变得“稀疏”，在计算上更高效，并且可能有助于学习到更鲁棒的特征。</li>
+</ul></li>
+<li><strong>缺点</strong>：存在一个叫做“Dying ReLU”的问题，即如果一个神经元的输入恒为负，那么它可能永远不会被激活，其梯度也永远为0，导致它无法再进行学习。</li>
+</ul></li>
+</ol>
+<iframe src="../assets/ch09/activation_functions_interactive.html" width="100%" height="800" frameborder="0">
+</iframe>
+<div class="callout callout-style-default callout-note callout-titled" title="架构师视角">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>架构师视角
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>激活函数的选择，是深度学习架构设计中的一个基础但关键的决策。</p>
+<ul>
+<li><strong>ReLU 是现代深度学习的默认和首选。</strong> 它的简洁和高效，是引爆第三次神经网络浪潮的关键算法创新之一。在设计一个新的网络时，通常应该从 ReLU 开始。</li>
+<li>Sigmoid 和 Tanh 由于其梯度消失的固有缺陷，现在已经很少被用在深度网络的隐藏层中。Sigmoid 主要用于二元分类问题的<strong>输出层</strong>，因为它的 (0, 1) 输出可以很好地代表概率。</li>
+<li>还有许多 ReLU 的变体，如 Leaky ReLU, ELU 等，它们试图解决“Dying ReLU”的问题，但在实践中，标准的 ReLU 往往已经足够好。</li>
+</ul>
+<p>一个神经元，通过<strong>加权求和</strong>与<strong>非线性激活</strong>这两个简单的步骤，就从一个线性处理器，蜕变成了一个可以产生“拐点”的非线性单元。这看似微小的一步，却是构建出能够拟合任意复杂函数的深度神经网络的基石。</p>
+</div>
+</div>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../ch09/9_2_history.html" class="pagination-link" aria-label="9.2 历史的回响：神经网络的三次浪潮">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">9.2 历史的回响：神经网络的三次浪潮</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../ch09/9_4_fully_connected_network.html" class="pagination-link" aria-label="9.4 全连接网络：从神经元到决策委员会">
+        <span class="nav-page-text"><span class="chapter-title">9.4 全连接网络：从神经元到决策委员会</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "9.3 神经元与激活函数：引入非线性的“拐点”"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>为了构建一个能够学习复杂曲线的强大模型，我们需要从它的最基本单元开始——**人工神经元 (Artificial Neuron)**。这个概念的灵感，松散地来源于生物学中的神经元。</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">### 生物灵感：一个简化的抽象</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>生物神经元是一个细胞，它从其他神经元接收信号（通过树突），在细胞体内进行处理，如果信号的强度超过某个阈值，它就会被“激活”，并向其他神经元发送一个信号（通过轴突）。</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>人工神经元是对这个过程的高度简化和数学抽象。它并不试图模拟生物过程的所有复杂细节，而是抓住了最核心的思想：**接收输入，进行计算，然后决定是否激活并传递一个输出。**</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">### 人工神经元的“两步走”</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>一个人工神经元的工作可以分解为两个简单的步骤：</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>**第一步：加权求和 (Weighted Sum)**</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>神经元会接收来自上一层或其他数据源的多个输入值（例如，$x_1, x_2, x_3$）。每一个输入，都被赋予一个**权重 (Weight)**（例如，$w_1, w_2, w_3$）。这个权重代表了对应输入的重要性。一个大的正权重意味着这个输入对神经元的激活有很强的促进作用；一个大的负权重则意味着它有很强的抑制作用。</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>除了输入和权重，还有一个特殊的参数叫做**偏置 (Bias)**（$b$）。你可以把它理解为一个“激活阈值”的调节器。偏置值决定了在没有任何输入的情况下，神经元有多容易被激活。</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>神经元做的第一件事，就是把所有的输入和它们对应的权重相乘，然后再加上这个偏置。这个过程，就是一个简单的线性运算——**加权求和**。</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>\text{加权和} = (w_1 \cdot x_1 + w_2 \cdot x_2 + w_3 \cdot x_3 + \dots) + b = \sum_{i} w_i x_i + b</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"quarto-figure quarto-figure-center"</span><span class="dt">&gt;</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://upload.wikimedia.org/wikipedia/commons/c/c6/Artificial_neuron_structure.svg"</span><span class="ot"> class</span><span class="op">=</span><span class="st">"img-fluid"</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"人工神经元模型"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"500"</span><span class="dt">&gt;</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">figcaption</span><span class="dt">&gt;</span>人工神经元模型示意图 (图片来源: Wikimedia Commons)<span class="dt">&lt;/</span><span class="kw">figcaption</span><span class="dt">&gt;</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>**第二步：非线性激活 (Non-linear Activation)**</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>如果神经元只做加权求和，那么无论我们把多少个这样的神经元堆叠在一起，最终整个网络也只是一个复杂的线性模型，它永远无法学习出“曲线”边界。</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>**因此，为了引入非线性，我们需要第二步，也是至关重要的一步：激活函数 (Activation Function)。**</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>在计算出加权和之后，这个结果会被送入一个**非线性**的激活函数（通常用 $\sigma$ 或 $f$ 表示），生成神经元最终的输出值。</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>\text{输出} = f(\text{加权和}) = f(\sum_{i} w_i x_i + b)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>**激活函数，就是赋予神经元“拐弯”能力的关键。** 它在神经元的输出中引入了非线性，使得整个网络能够摆脱直线的束缚。</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="fu">### 常见的激活函数：从 S 型到“硬拐弯”</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>历史上有许多种激活函数，这里我们介绍几个最重要的：</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Sigmoid 函数**</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**形状**：一个平滑的“S”型曲线，可以将任何实数输入压缩到 (0, 1) 的范围内。</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**优点**：输出值在 (0, 1) 之间，可以被解释为“概率”；函数平滑，处处可导。</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**缺点**：在输入值很大或很小时，函数的梯度（斜率）会变得非常小，接近于零。这会导致一个严重的问题，叫做**梯度消失 (Vanishing Gradients)**，使得深层网络的训练变得非常困难。同时，它的计算也相对复杂。</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Tanh (双曲正切) 函数**</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**形状**：也是一个“S”型曲线，但它将输入压缩到 (-1, 1) 的范围内。</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**优点**：与 Sigmoid 相比，它的输出是“零中心”的，这在某些情况下能帮助模型更快地收敛。</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**缺点**：同样存在梯度消失的问题。</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**ReLU (Rectified Linear Unit, 修正线性单元)**</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**形状**：这是迄今为止最重要、最常用的激活函数。它的规则极其简单：**如果输入大于0，则输出等于输入；如果输入小于或等于0，则输出为0。**</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>        $$</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>        \text{ReLU}(x) = \max(0, x)</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>        $$</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**优点**：</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>**计算高效**：没有复杂的指数运算，计算速度极快。</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>**解决梯度消失**：在输入为正的部分，梯度恒为1，极大地缓解了梯度消失问题，使得训练深度网络成为可能。</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>**稀疏性**：它会让一部分神经元的输出为0，这使得网络变得“稀疏”，在计算上更高效，并且可能有助于学习到更鲁棒的特征。</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**缺点**：存在一个叫做“Dying ReLU”的问题，即如果一个神经元的输入恒为负，那么它可能永远不会被激活，其梯度也永远为0，导致它无法再进行学习。</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> src</span><span class="op">=</span><span class="st">"../assets/ch09/activation_functions_interactive.html"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"800"</span><span class="ot"> frameborder</span><span class="op">=</span><span class="st">"0"</span><span class="dt">&gt;&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>::: {.callout-note title="架构师视角"}</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>激活函数的选择，是深度学习架构设计中的一个基础但关键的决策。</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**ReLU 是现代深度学习的默认和首选。** 它的简洁和高效，是引爆第三次神经网络浪潮的关键算法创新之一。在设计一个新的网络时，通常应该从 ReLU 开始。</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Sigmoid 和 Tanh 由于其梯度消失的固有缺陷，现在已经很少被用在深度网络的隐藏层中。Sigmoid 主要用于二元分类问题的**输出层**，因为它的 (0, 1) 输出可以很好地代表概率。</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>还有许多 ReLU 的变体，如 Leaky ReLU, ELU 等，它们试图解决“Dying ReLU”的问题，但在实践中，标准的 ReLU 往往已经足够好。</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>一个神经元，通过**加权求和**与**非线性激活**这两个简单的步骤，就从一个线性处理器，蜕变成了一个可以产生“拐点”的非线性单元。这看似微小的一步，却是构建出能够拟合任意复杂函数的深度神经网络的基石。</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

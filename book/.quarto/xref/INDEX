@@ -1,0 +1,443 @@
+{
+  "index.qmd": {
+    "index.html": "2998626a"
+  },
+  "ch01/index.qmd": {
+    "index.html": "679c02d6"
+  },
+  "ch01/1_1_crisis_opportunity.qmd": {
+    "1_1_crisis_opportunity.html": "80a8d920"
+  },
+  "ch01/1_2_player_to_designer.qmd": {
+    "1_2_player_to_designer.html": "913bb0f4"
+  },
+  "ch01/1_3_vibe_coding_paradigm.qmd": {
+    "1_3_vibe_coding_paradigm.html": "f639c58d"
+  },
+  "ch01/1_4_vibe_coding_practice.qmd": {
+    "1_4_vibe_coding_practice.html": "45486fe7"
+  },
+  "ch01/1_5_exercises.qmd": {
+    "1_5_exercises.html": "e8ea7e4e"
+  },
+  "ch02/index.qmd": {
+    "index.html": "80a2f7db"
+  },
+  "ch02/2_1_business_challenge.qmd": {
+    "2_1_business_challenge.html": "1c1524ba"
+  },
+  "ch02/2_2_definition_framework.qmd": {
+    "2_2_definition_framework.html": "a1a82172"
+  },
+  "ch02/2_3_ml_problem_types.qmd": {
+    "2_3_ml_problem_types.html": "14a7e1f7"
+  },
+  "ch02/2_4_vibe_coding_practice.qmd": {
+    "2_4_vibe_coding_practice.html": "2ea94917"
+  },
+  "ch02/2_5_exercises.qmd": {
+    "2_5_exercises.html": "e998de25"
+  },
+  "ch03/index.qmd": {
+    "index.html": "95358dc9"
+  },
+  "ch03/3_1_vector_space.qmd": {
+    "3_1_vector_space.html": "2cc19084"
+  },
+  "ch03/3_2_probability.qmd": {
+    "3_2_probability.html": "da0ffa36"
+  },
+  "ch03/3_3_optimization.qmd": {
+    "3_3_optimization.html": "80ba8527"
+  },
+  "ch03/3_4_vibe_coding_practice.qmd": {
+    "3_4_vibe_coding_practice.html": "959fe432"
+  },
+  "ch03/3_5_exercises.qmd": {
+    "3_5_exercises.html": "c73267c3"
+  },
+  "ch04/index.qmd": {
+    "index.html": "7e197f4b"
+  },
+  "ch04/4_1_beyond_charts.qmd": {
+    "4_1_beyond_charts.html": "04aa380f"
+  },
+  "ch04/4_2_human_vision.qmd": {
+    "4_2_human_vision.html": "c73d90a0"
+  },
+  "ch04/4_3_insight_framework.qmd": {
+    "4_3_insight_framework.html": "2ecbaeca"
+  },
+  "ch04/4_4_vibe_coding_practice.qmd": {
+    "4_4_vibe_coding_practice.html": "168999ad"
+  },
+  "ch04/4_5_exercises.qmd": {
+    "4_5_exercises.html": "26de82c4"
+  },
+  "ch05/index.qmd": {
+    "index.html": "72862b5b"
+  },
+  "ch05/5_1_business_challenge.qmd": {
+    "5_1_business_challenge.html": "7f580122"
+  },
+  "ch05/5_2_linear_regression.qmd": {
+    "5_2_linear_regression.html": "e75d57aa"
+  },
+  "ch05/5_3_overfitting_regularization.qmd": {
+    "5_3_overfitting_regularization.html": "f212564b"
+  },
+  "ch05/5_4_xai.qmd": {
+    "5_4_xai.html": "fdb86a01"
+  },
+  "ch05/5_5_vibe_coding_practice.qmd": {
+    "5_5_vibe_coding_practice.html": "5a5699ba"
+  },
+  "ch05/5_6_exercises.qmd": {
+    "5_6_exercises.html": "c8eedf67"
+  },
+  "ch06/index.qmd": {
+    "index.html": "45d453d8"
+  },
+  "ch06/6_1_business_challenge.qmd": {
+    "6_1_business_challenge.html": "dbc803a6"
+  },
+  "ch06/6_2_probability_vs_geometry.qmd": {
+    "6_2_probability_vs_geometry.html": "480d68c4"
+  },
+  "ch06/6_3_kernel_trick.qmd": {
+    "6_3_kernel_trick.html": "adee68a9"
+  },
+  "ch06/6_4_xai.qmd": {
+    "6_4_xai.html": "b2b3fbf1"
+  },
+  "ch06/6_5_vibe_coding_practice.qmd": {
+    "6_5_vibe_coding_practice.html": "6a601977"
+  },
+  "ch06/6_6_exercises.qmd": {
+    "6_6_exercises.html": "5f2d9bfb"
+  },
+  "ch07/index.qmd": {
+    "index.html": "4b83379b"
+  },
+  "ch07/7_1_business_challenge.qmd": {
+    "7_1_business_challenge.html": "1ec01f7a"
+  },
+  "ch07/7_2_decision_tree.qmd": {
+    "7_2_decision_tree.html": "63ee3451"
+  },
+  "ch07/7_3_ensemble_philosophy.qmd": {
+    "7_3_ensemble_philosophy.html": "a2b560de"
+  },
+  "ch07/7_4_random_forest.qmd": {
+    "7_4_random_forest.html": "627442cc"
+  },
+  "ch07/7_5_gradient_boosting.qmd": {
+    "7_5_gradient_boosting.html": "7520cf07"
+  },
+  "ch07/7_6_xai_for_trees.qmd": {
+    "7_6_xai_for_trees.html": "4fbeeef0"
+  },
+  "ch07/7_7_vibe_coding_practice.qmd": {
+    "7_7_vibe_coding_practice.html": "17d1b3a4"
+  },
+  "ch07/7_8_exercises.qmd": {
+    "7_8_exercises.html": "cd5f9d34"
+  },
+  "ch08/index.qmd": {
+    "index.html": "d7dad511"
+  },
+  "ch08/8_1_business_challenge.qmd": {
+    "8_1_business_challenge.html": "49b76178"
+  },
+  "ch08/8_2_kmeans.qmd": {
+    "8_2_kmeans.html": "4e203cac"
+  },
+  "ch08/8_3_beyond_kmeans.qmd": {
+    "8_3_beyond_kmeans.html": "9147921e"
+  },
+  "ch08/8_4_clustering_evaluation.qmd": {
+    "8_4_clustering_evaluation.html": "6d8356a4"
+  },
+  "ch08/8_5_vibe_coding_practice.qmd": {
+    "8_5_vibe_coding_practice.html": "2e6c3479"
+  },
+  "ch08/8_6_exercises.qmd": {
+    "8_6_exercises.html": "d5af1368"
+  },
+  "ch09/index.qmd": {
+    "index.html": "3be2b03c"
+  },
+  "ch09/9_1_challenge.qmd": {
+    "9_1_challenge.html": "9419431f"
+  },
+  "ch09/9_2_word_embeddings.qmd": {
+    "9_2_word_embeddings.html": "a4cca417"
+  },
+  "ch09/9_4_transformer_attention.qmd": {
+    "9_4_transformer_attention.html": "060315b5"
+  },
+  "ch09/9_5_vibe_coding_practice.qmd": {
+    "9_5_vibe_coding_practice.html": "e99f567c"
+  },
+  "ch09/9_6_exercises.qmd": {
+    "9_6_exercises.html": "8f229be0"
+  },
+  "ch09/9_3_rag_architecture.qmd": {
+    "9_3_rag_architecture.html": "7e668259"
+  },
+  "ch10/index.qmd": {
+    "index.html": "f9554fa7"
+  },
+  "ch10/10_1_challenge.qmd": {
+    "10_1_challenge.html": "9308af69"
+  },
+  "ch10/10_2_attention_mechanism.qmd": {
+    "10_2_attention_mechanism.html": "c877a964"
+  },
+  "ch10/10_3_transformer_architecture.qmd": {
+    "10_3_transformer_architecture.html": "2212d052"
+  },
+  "ch09/9_2_history.qmd": {
+    "9_2_history.html": "cfe20f3a"
+  },
+  "ch09/9_3_neuron_activation.qmd": {
+    "9_3_neuron_activation.html": "5e51b65f"
+  },
+  "ch09/9_4_fully_connected_network.qmd": {
+    "9_4_fully_connected_network.html": "3307ed22"
+  },
+  "ch09/9_5_training_engine.qmd": {
+    "9_5_training_engine.html": "b3b76bde"
+  },
+  "ch09/9_6_deep_learning_gears.qmd": {
+    "9_6_deep_learning_gears.html": "b7f8ff92"
+  },
+  "ch09/9_7_vibe_coding_practice.qmd": {
+    "9_7_vibe_coding_practice.html": "156f6d8b"
+  },
+  "ch09/9_8_exercises.qmd": {
+    "9_8_exercises.html": "f0886d01"
+  },
+  "ch10/10_2_word_embeddings.qmd": {
+    "10_2_word_embeddings.html": "b8ade7a4"
+  },
+  "ch10/10_3_rag_architecture.qmd": {
+    "10_3_rag_architecture.html": "840ada22"
+  },
+  "ch10/10_4_transformer_attention.qmd": {
+    "10_4_transformer_attention.html": "f916ff57"
+  },
+  "ch10/10_5_vibe_coding_practice.qmd": {
+    "10_5_vibe_coding_practice.html": "486e9ca4"
+  },
+  "ch10/10_6_exercises.qmd": {
+    "10_6_exercises.html": "fc6fb9c4"
+  },
+  "ch11/index.qmd": {
+    "index.html": "a049c603"
+  },
+  "ch11/11_1_challenge.qmd": {
+    "11_1_challenge.html": "24904316"
+  },
+  "ch11/11_2_attention_mechanism.qmd": {
+    "11_2_attention_mechanism.html": "38838cd7"
+  },
+  "ch11/11_3_transformer_architecture.qmd": {
+    "11_3_transformer_architecture.html": "c87ecc5c"
+  },
+  "ch11/11_4_vibe_coding_practice.qmd": {
+    "11_4_vibe_coding_practice.html": "17ec62e2"
+  },
+  "ch11/11_5_exercises.qmd": {
+    "11_5_exercises.html": "0357a3af"
+  },
+  "ch12/index.qmd": {
+    "index.html": "9a1720c8"
+  },
+  "ch12/12_1_business_challenge.qmd": {
+    "12_1_business_challenge.html": "f3f183d4"
+  },
+  "ch12/12_2_cnn.qmd": {
+    "12_2_cnn.html": "0b2ee134"
+  },
+  "ch12/12_3_vit.qmd": {
+    "12_3_vit.html": "0a2e7487"
+  },
+  "ch12/12_4_vibe_coding_practice.qmd": {
+    "12_4_vibe_coding_practice.html": "6d418b84"
+  },
+  "ch12/12_5_exercises.qmd": {
+    "12_5_exercises.html": "9e9070e1"
+  },
+  "ch13/index.qmd": {
+    "index.html": "ebe742b5"
+  },
+  "ch13/13_1_business_challenge.qmd": {
+    "13_1_business_challenge.html": "4633e5b9"
+  },
+  "ch13/13_2_transfer_learning_intro.qmd": {
+    "13_2_transfer_learning_intro.html": "580bf860"
+  },
+  "ch13/13_3_finetuning_techniques.qmd": {
+    "13_3_finetuning_techniques.html": "dd7eff6b"
+  },
+  "ch13/13_4_transformer_architectures.qmd": {
+    "13_4_transformer_architectures.html": "a791e202"
+  },
+  "ch13/13_5_vibe_coding_practice.qmd": {
+    "13_5_vibe_coding_practice.html": "6815ee84"
+  },
+  "ch13/13_6_exercises.qmd": {
+    "13_6_exercises.html": "4bafb0fd"
+  },
+  "ch14/index.qmd": {
+    "index.html": "b23d3f25"
+  },
+  "ch14/14_1_business_challenge.qmd": {
+    "14_1_business_challenge.html": "578369d7"
+  },
+  "ch14/14_2_generative_adversarial_networks.qmd": {
+    "14_2_generative_adversarial_networks.html": "2512aa69"
+  },
+  "ch14/14_3_diffusion_models.qmd": {
+    "14_3_diffusion_models.html": "05324e0b"
+  },
+  "ch14/14_4_autoregressive_models.qmd": {
+    "14_4_autoregressive_models.html": "1e505277"
+  },
+  "ch14/14_5_vibe_coding_practice.qmd": {
+    "14_5_vibe_coding_practice.html": "99d17e3e"
+  },
+  "ch14/14_6_exercises.qmd": {
+    "14_6_exercises.html": "90001e9e"
+  },
+  "ch15/index.qmd": {
+    "index.html": "b163184f"
+  },
+  "ch15/15_1_business_challenge.qmd": {
+    "15_1_business_challenge.html": "a4902ca6"
+  },
+  "ch15/15_2_first_principle.qmd": {
+    "15_2_first_principle.html": "9db1d702"
+  },
+  "ch15/15_3_rag_foundation.qmd": {
+    "15_3_rag_foundation.html": "0e3fb33e"
+  },
+  "ch15/15_4_chunking.qmd": {
+    "15_4_chunking.html": "a46f5d2a"
+  },
+  "ch15/15_5_vibe_coding_practice.qmd": {
+    "15_5_vibe_coding_practice.html": "c9a2de4d"
+  },
+  "ch15/15_6_exercises.qmd": {
+    "15_6_exercises.html": "169da99a"
+  },
+  "ch16/index.qmd": {
+    "index.html": "118ae942"
+  },
+  "ch16/16_1_business_challenge.qmd": {
+    "16_1_business_challenge.html": "5f06d1f9"
+  },
+  "ch16/16_2_first_principle.qmd": {
+    "16_2_first_principle.html": "12392b7a"
+  },
+  "ch16/16_3_alignment_paths.qmd": {
+    "16_3_alignment_paths.html": "482c7fff"
+  },
+  "ch16/16_4_safe_rlhf.qmd": {
+    "16_4_safe_rlhf.html": "de149576"
+  },
+  "ch16/16_5_vibe_coding_practice.qmd": {
+    "16_5_vibe_coding_practice.html": "202d6dc7"
+  },
+  "ch16/16_6_exercises.qmd": {
+    "16_6_exercises.html": "e294453c"
+  },
+  "ch17/index.qmd": {
+    "index.html": "7b7409ca"
+  },
+  "ch17/17_1_business_challenge.qmd": {
+    "17_1_business_challenge.html": "c4ce343d"
+  },
+  "ch17/17_2_agent_architectures.qmd": {
+    "17_2_agent_architectures.html": "199940ab"
+  },
+  "ch17/17_3_agent_pillars.qmd": {
+    "17_3_agent_pillars.html": "ba642a81"
+  },
+  "ch17/17_4_stateful_langgraph.qmd": {
+    "17_4_stateful_langgraph.html": "7d8f65ac"
+  },
+  "ch17/17_5_vibe_coding_practice.qmd": {
+    "17_5_vibe_coding_practice.html": "55f06d46"
+  },
+  "ch17/17_6_exercises.qmd": {
+    "17_6_exercises.html": "7ebeabb8"
+  },
+  "ch18/index.qmd": {
+    "index.html": "fbb7c88b"
+  },
+  "ch18/18_1_business_challenge.qmd": {
+    "18_1_business_challenge.html": "8dafe28a"
+  },
+  "ch18/18_2_first_principles.qmd": {
+    "18_2_first_principles.html": "6c1fd5b0"
+  },
+  "ch18/18_3_framework_comparison.qmd": {
+    "18_3_framework_comparison.html": "b409ad84"
+  },
+  "ch18/18_4_vibe_coding_practice.qmd": {
+    "18_4_vibe_coding_practice.html": "b2595757"
+  },
+  "ch18/18_5_challenges_frontiers.qmd": {
+    "18_5_challenges_frontiers.html": "e30903f2"
+  },
+  "ch18/18_6_exercises.qmd": {
+    "18_6_exercises.html": "bccbfdcb"
+  },
+  "ch18/18_5_exercises.qmd": {
+    "18_5_exercises.html": "d5714e4e"
+  },
+  "ch19/index.qmd": {
+    "index.html": "c40d23e5"
+  },
+  "ch19/19_1_business_challenge.qmd": {
+    "19_1_business_challenge.html": "c969fdf3"
+  },
+  "ch19/19_2_first_principle.qmd": {
+    "19_2_first_principle.html": "24283860"
+  },
+  "ch19/19_3_safety_and_alignment.qmd": {
+    "19_3_safety_and_alignment.html": "563bbe88"
+  },
+  "ch19/19_4_embodied_ai.qmd": {
+    "19_4_embodied_ai.html": "3f4f3d6c"
+  },
+  "ch19/19_5_governance.qmd": {
+    "19_5_governance.html": "5f3410f5"
+  },
+  "ch19/19_6_vibe_coding_practice.qmd": {
+    "19_6_vibe_coding_practice.html": "adbc3867"
+  },
+  "ch19/19_7_architects_reflection.qmd": {
+    "19_7_architects_reflection.html": "2c0754e4"
+  },
+  "ch20/index.qmd": {
+    "index.html": "64303948"
+  },
+  "ch20/20_1_challenge.qmd": {
+    "20_1_challenge.html": "75f9e981"
+  },
+  "ch20/20_2_architecture_design.qmd": {
+    "20_2_architecture_design.html": "66d43bf2"
+  },
+  "ch20/20_3_vibe_coding_mvp.qmd": {
+    "20_3_vibe_coding_mvp.html": "ada8d882"
+  },
+  "ch20/20_4_pitch_day.qmd": {
+    "20_4_pitch_day.html": "0b8ea5c8"
+  },
+  "ch20/20_5_reflection.qmd": {
+    "20_5_reflection.html": "afa92071"
+  }
+}

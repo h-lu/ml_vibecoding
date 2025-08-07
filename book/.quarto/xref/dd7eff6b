@@ -1,0 +1,1 @@
+{"entries":[],"headings":["模型改装为特定任务安装合适的头","训练策略你应该更新巨人的哪些部分","策略一全量微调-full-fine-tuning","策略二特征提取-feature-extraction-freezing","策略三分层微调-layer-wise-fine-tuning","前沿技术参数高效微调-peft"],"options":{"chapters":true}}

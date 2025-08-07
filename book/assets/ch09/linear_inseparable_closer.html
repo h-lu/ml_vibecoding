@@ -1,0 +1,101 @@
+
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>线性模型天花板：月牙</title>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<style>
+body{font-family:-apple-system,system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#fafafa;}
+.wrap{max-width:900px;margin:24px auto;padding:0 16px;}
+h1{font-size:20px;margin:0 0 10px;}
+.sub{color:#555;font-size:14px;margin-bottom:14px;}
+.controls{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
+.ctrl{background:#f7f7f9;border:1px solid #e3e3e7;border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;font-size:13px;color:#333;}
+input[type=range]{width:220px;}
+button{padding:6px 10px;border:1px solid #ccc;border-radius:6px;background:white;cursor:pointer;}
+button:hover{background:#f3f3f3;}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;background:#eef;border:1px solid #ccf;font-size:12px;}
+#plot{width:100%;height:600px;}
+</style></head>
+<body>
+<div class="wrap">
+<h1>线性模型的“天花板”：更紧密的双月牙</h1>
+<div class="sub">通过角度 θ 与截距 b 完整控制直线，验证在更紧密交错的月牙数据上，任何线性决策边界都无法完美分割。</div>
+
+<div class="controls">
+  <div class="ctrl"><label>角度 θ (°)：<span id="angleVal" class="badge"></span></label><input id="angle" type="range" min="0" max="180" step="1" value="0"></div>
+  <div class="ctrl"><label>截距偏移 b：<span id="offsetVal" class="badge"></span></label><input id="offset" type="range" min="-0.5" max="0.5" step="0.01" value="0"></div>
+  <div class="ctrl"><label>动画：</label><button id="play">播放旋转</button><button id="stop" disabled>停止</button><button id="reset">重置</button></div>
+</div>
+
+<div id="plot"></div>
+</div>
+
+<script>
+function makeMoons(n=400, noise=0.05){
+  const pts=[];
+  const n1=Math.floor(n/2), n2=n-n1;
+  for(let i=0;i<n1;i++){
+    const t=Math.PI*i/n1;
+    pts.push([Math.cos(t), Math.sin(t), 0]);
+  }
+  for(let i=0;i<n2;i++){
+    const t=Math.PI*i/n2;
+    pts.push([1 - Math.cos(t) + 0.05, -Math.sin(t) - 0.05, 1]); // smaller vertical gap
+  }
+  for(let p of pts){
+    p[0]+= (Math.random()-0.5)*noise*3;
+    p[1]+= (Math.random()-0.5)*noise*3;
+  }
+  let xmin=Math.min(...pts.map(p=>p[0])), xmax=Math.max(...pts.map(p=>p[0]));
+  let ymin=Math.min(...pts.map(p=>p[1])), ymax=Math.max(...pts.map(p=>p[1]));
+  const xr=xmax-xmin, yr=ymax-ymin;
+  for(let p of pts){
+    p[0]=(p[0]-xmin)/xr;
+    p[1]=(p[1]-ymin)/yr;
+  }
+  return pts;
+}
+
+const data=makeMoons();
+const xs0=data.filter(p=>p[2]==0).map(p=>p[0]), ys0=data.filter(p=>p[2]==0).map(p=>p[1]);
+const xs1=data.filter(p=>p[2]==1).map(p=>p[0]), ys1=data.filter(p=>p[2]==1).map(p=>p[1]);
+
+let angle=0; let offset=0;
+const center=[0.5,0.3];
+function linePts(thetaDeg, off){
+  const rad=thetaDeg*Math.PI/180;
+  const n=[Math.cos(rad+Math.PI/2), Math.sin(rad+Math.PI/2)];
+  const base=[center[0]+n[0]*off, center[1]+n[1]*off];
+  const dir=[Math.cos(rad), Math.sin(rad)];
+  const len=2;
+  return [[base[0]-dir[0]*len, base[1]-dir[1]*len],[base[0]+dir[0]*len, base[1]+dir[1]*len]];
+}
+function draw(){
+  document.getElementById('angleVal').textContent=angle.toFixed(0)+'°';
+  document.getElementById('offsetVal').textContent=offset.toFixed(2);
+  const [p1,p2]=linePts(angle,offset);
+  Plotly.react('plot',[
+    {x:xs0,y:ys0,mode:'markers',type:'scattergl',marker:{color:'#1f77b4',size:7},name:'蓝'},
+    {x:xs1,y:ys1,mode:'markers',type:'scattergl',marker:{color:'#d62728',size:7},name:'红'},
+    {x:[p1[0],p2[0]],y:[p1[1],p2[1]],mode:'lines',line:{color:'green',width:3},name:'直线'}
+  ],{
+    xaxis:{range:[-0.1,1.1],zeroline:false},
+    yaxis:{range:[-0.4,1.1],scaleanchor:'x',scaleratio:1,zeroline:false},
+    margin:{l:60,r:20,t:60,b:60},
+    title:'月牙：线性不可分',
+    legend:{orientation:'h',y:-0.15}
+  },{displayModeBar:false});
+}
+draw();
+
+document.getElementById('angle').oninput=e=>{angle=parseFloat(e.target.value);draw();};
+document.getElementById('offset').oninput=e=>{offset=parseFloat(e.target.value);draw();};
+
+let playing=false,timer=null;
+document.getElementById('play').onclick=()=>{
+  if(playing)return;playing=true;
+  document.getElementById('play').disabled=true;document.getElementById('stop').disabled=false;
+  timer=setInterval(()=>{angle=(angle+1)%180;document.getElementById('angle').value=angle;draw();},60);
+};
+document.getElementById('stop').onclick=()=>{if(timer)clearInterval(timer);playing=false;document.getElementById('play').disabled=false;document.getElementById('stop').disabled=true;};
+document.getElementById('reset').onclick=()=>{angle=0;offset=0;document.getElementById('angle').value=0;document.getElementById('offset').value=0;draw();};
+</script></body></html>
