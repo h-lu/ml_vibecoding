@@ -209,3 +209,13 @@ format:
           --chatgpt-accent: #10a37f;
         }
         </style>
+    mermaid:            # 全局作用于所有 Mermaid 图
+      theme: neutral    # 内置 default / dark / forest / neutral 任选
+      config:           # 直接写入 themeVariables
+        themeVariables:
+          fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif'
+          primaryColor:  "#2F5597"
+          primaryBorderColor: "#1F4E79"
+          secondaryColor: "#A5A5A5"
+          tertiaryColor: "#FAF3E0"
+          lineColor: "#555555"
