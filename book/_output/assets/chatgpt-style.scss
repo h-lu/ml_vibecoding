@@ -1,0 +1,556 @@
+/*-- scss:defaults --*/
+
+// ChatGPT 风格的 Sass 变量
+$primary: #000000;
+$secondary: #6b7280;
+$light: #f7f7f8;
+$white: #ffffff;
+$border-color: #e5e5e5;
+$success: #10a37f;
+
+// 字体配置
+$font-family-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-monospace: "Monaco", "SF Mono", "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+
+// 字体大小
+$font-size-base: 1rem;
+$font-size-sm: 0.875rem;
+$font-size-lg: 1.125rem;
+$line-height-base: 1.6;
+
+// 颜色配置
+$body-bg: $white;
+$body-color: $primary;
+$text-muted: $secondary;
+
+// 链接颜色
+$link-color: $success;
+$link-hover-color: darken($success, 10%);
+
+// 代码块样式
+$code-bg: #f6f8fa;
+$code-color: #24292e;
+$pre-color: $code-color;
+
+// 边框和圆角
+$border-radius: 8px;
+$border-radius-sm: 6px;
+$border-radius-lg: 12px;
+
+/*-- scss:rules --*/
+
+// 全局样式重置和优化
+body {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--chatgpt-background);
+  color: var(--chatgpt-primary);
+}
+
+// 主容器样式
+.quarto-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+// 标题样式 - ChatGPT 风格
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--chatgpt-primary);
+}
+
+h1 { 
+  font-size: 2.25rem; 
+  margin-top: 0;
+}
+h2 { font-size: 1.875rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+// 段落样式
+p {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  color: var(--chatgpt-primary);
+}
+
+// 代码块样式 - 模仿 ChatGPT
+pre {
+  background-color: #0d1117;
+  color: #c9d1d9;
+  border-radius: $border-radius;
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  border: 1px solid #30363d;
+  margin: 1.5rem 0;
+}
+
+code {
+  font-family: $font-family-monospace;
+  font-size: 0.875em;
+  
+  // 内联代码样式
+  &:not(pre code) {
+    background-color: rgba(175, 184, 193, 0.2);
+    padding: 0.125rem 0.25rem;
+    border-radius: 4px;
+    color: #e36209;
+  }
+}
+
+// 代码复制按钮样式
+.code-copy-button {
+  background-color: transparent;
+  border: 1px solid var(--chatgpt-border);
+  color: var(--chatgpt-secondary);
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  
+  &:hover {
+    background-color: var(--chatgpt-surface);
+    color: var(--chatgpt-primary);
+  }
+}
+
+// 表格样式
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  border-radius: $border-radius;
+  overflow: hidden;
+  border: 1px solid var(--chatgpt-border);
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--chatgpt-border);
+}
+
+th {
+  background-color: var(--chatgpt-surface);
+  font-weight: 600;
+  color: var(--chatgpt-primary);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+// 引用块样式
+blockquote {
+  border-left: 4px solid var(--chatgpt-accent);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--chatgpt-secondary);
+  background-color: var(--chatgpt-surface);
+  padding: 1rem;
+  border-radius: 0 $border-radius $border-radius 0;
+}
+
+// 链接样式
+a {
+  color: var(--chatgpt-accent);
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+    color: darken(#10a37f, 10%);
+  }
+}
+
+// 列表样式
+ul, ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+  
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+}
+
+// Callout 块样式
+.callout {
+  border-radius: $border-radius;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-left: 4px solid;
+  
+  &.callout-note {
+    background-color: #eff6ff;
+    border-left-color: #3b82f6;
+  }
+  
+  &.callout-tip {
+    background-color: #f0fdf4;
+    border-left-color: #10b981;
+  }
+  
+  &.callout-warning {
+    background-color: #fffbeb;
+    border-left-color: #f59e0b;
+  }
+  
+  &.callout-important {
+    background-color: #fef2f2;
+    border-left-color: #ef4444;
+  }
+}
+
+// 导航栏样式
+.navbar {
+  background-color: var(--chatgpt-background);
+  border-bottom: 1px solid var(--chatgpt-border);
+  padding: 1rem 0;
+  
+  .navbar-brand {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--chatgpt-primary);
+  }
+}
+
+// 侧边栏样式 - 手风琴效果
+.sidebar {
+  background-color: var(--chatgpt-background);
+  border-right: 1px solid var(--chatgpt-border);
+  
+  .sidebar-title {
+    font-weight: 600;
+    color: var(--chatgpt-primary);
+  }
+  
+  .sidebar-item {
+    padding: 0.5rem 1rem;
+    color: var(--chatgpt-secondary);
+    
+    &:hover {
+      background-color: var(--chatgpt-surface);
+      color: var(--chatgpt-primary);
+    }
+    
+    &.active {
+      background-color: var(--chatgpt-accent);
+      color: white;
+    }
+  }
+}
+
+// 书籍导航手风琴样式
+.sidebar-navigation {
+  .sidebar-section {
+    border-bottom: 1px solid var(--chatgpt-border);
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  
+  .sidebar-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background-color: var(--chatgpt-surface);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-weight: 600;
+    color: var(--chatgpt-primary);
+    
+    &:hover {
+      background-color: darken(#f7f7f8, 5%);
+    }
+    
+    &.collapsed {
+      .chevron {
+        transform: rotate(-90deg);
+      }
+    }
+    
+    .chevron {
+      transition: transform 0.2s ease;
+      font-size: 0.8rem;
+      color: var(--chatgpt-secondary);
+    }
+  }
+  
+  .sidebar-section-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    
+    &.expanded {
+      max-height: 1000px; // 足够大的值来容纳内容
+    }
+    
+    .sidebar-item {
+      padding: 0.5rem 1.5rem;
+      border-left: 3px solid transparent;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        background-color: var(--chatgpt-surface);
+        border-left-color: var(--chatgpt-accent);
+      }
+      
+      &.active {
+        background-color: rgba(16, 163, 127, 0.1);
+        border-left-color: var(--chatgpt-accent);
+        color: var(--chatgpt-primary);
+        font-weight: 500;
+      }
+      
+      a {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+        font-size: 0.875rem;
+        
+        &:hover {
+          color: var(--chatgpt-primary);
+        }
+      }
+    }
+  }
+}
+
+// Quarto 特定的侧边栏样式
+.sidebar .sidebar-menu {
+  .sidebar-item {
+    border-radius: 0;
+    margin: 0;
+  }
+  
+  // 章节标题样式
+  .sidebar-item.sidebar-item-section {
+    background-color: var(--chatgpt-surface);
+    font-weight: 600;
+    color: var(--chatgpt-primary);
+    cursor: pointer;
+    position: relative;
+    
+    &::after {
+      content: "▼";
+      position: absolute;
+      right: 1rem;
+      font-size: 0.7rem;
+      transition: transform 0.2s ease;
+      color: var(--chatgpt-secondary);
+    }
+    
+    &.collapsed::after {
+      transform: rotate(-90deg);
+    }
+    
+    &:hover {
+      background-color: darken(#f7f7f8, 5%);
+    }
+  }
+  
+  // 子页面容器
+  .sidebar-item-container {
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    max-height: 1000px;
+    
+    &.collapsed {
+      max-height: 0;
+    }
+    
+    .sidebar-item {
+      padding-left: 2rem;
+      font-size: 0.875rem;
+      border-left: 3px solid transparent;
+      
+      &:hover {
+        background-color: var(--chatgpt-surface);
+        border-left-color: var(--chatgpt-accent);
+      }
+      
+      &.active {
+        background-color: rgba(16, 163, 127, 0.1);
+        border-left-color: var(--chatgpt-accent);
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+// 适用于 Quarto Book 的特定样式
+.quarto-sidebar .sidebar-menu {
+  .quarto-navigation-tool {
+    border-bottom: 1px solid var(--chatgpt-border);
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  // 主要章节
+  .sidebar-item {
+    &[data-bs-toggle="collapse"] {
+      background-color: var(--chatgpt-surface);
+      font-weight: 600;
+      position: relative;
+      
+      &::after {
+        content: "▼";
+        position: absolute;
+        right: 1rem;
+        font-size: 0.7rem;
+        transition: transform 0.2s ease;
+        color: var(--chatgpt-secondary);
+      }
+      
+      &[aria-expanded="false"]::after {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+  
+  // 折叠的内容
+  .collapse {
+    .sidebar-item {
+      padding-left: 2rem;
+      font-size: 0.875rem;
+      border-left: 3px solid transparent;
+      
+      &:hover {
+        background-color: var(--chatgpt-surface);
+        border-left-color: var(--chatgpt-accent);
+      }
+      
+      &.active {
+        background-color: rgba(16, 163, 127, 0.1);
+        border-left-color: var(--chatgpt-accent);
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+// 搜索框样式
+.form-control {
+  border: 1px solid var(--chatgpt-border);
+  border-radius: $border-radius;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--chatgpt-background);
+  color: var(--chatgpt-primary);
+  
+  &:focus {
+    border-color: var(--chatgpt-accent);
+    box-shadow: 0 0 0 3px rgba(16, 163, 127, 0.1);
+    outline: none;
+  }
+}
+
+// 按钮样式
+.btn {
+  border-radius: $border-radius;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  border: 1px solid;
+  transition: all 0.2s ease;
+  
+  &.btn-primary {
+    background-color: var(--chatgpt-accent);
+    border-color: var(--chatgpt-accent);
+    color: white;
+    
+    &:hover {
+      background-color: darken(#10a37f, 10%);
+      border-color: darken(#10a37f, 10%);
+    }
+  }
+  
+  &.btn-outline-primary {
+    color: var(--chatgpt-accent);
+    border-color: var(--chatgpt-accent);
+    background-color: transparent;
+    
+    &:hover {
+      background-color: var(--chatgpt-accent);
+      color: white;
+    }
+  }
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+  .quarto-container {
+    padding: 0 16px;
+  }
+  
+  h1 { font-size: 1.875rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  
+  pre {
+    font-size: 0.8rem;
+  }
+}
+
+// 打印样式
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+  
+  .sidebar, .navbar {
+    display: none;
+  }
+}
+
+// 图片和图表样式
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: $border-radius;
+}
+
+figure {
+  margin: 2rem 0;
+  text-align: center;
+  
+  figcaption {
+    color: var(--chatgpt-secondary);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+  }
+}
+
+// 滚动条样式
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--chatgpt-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--chatgpt-border);
+  border-radius: 4px;
+  
+  &:hover {
+    background: var(--chatgpt-secondary);
+  }
+}

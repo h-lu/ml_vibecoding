@@ -1,220 +1,264 @@
-// 侧边栏折叠功能 JavaScript
-document.addEventListener('DOMContentLoaded', function() {
+/**
+ * 侧边栏手风琴效果 - ChatGPT 风格
+ * 为 Quarto Book 侧边栏添加手风琴折叠功能
+ */
+
+(function() {
+    'use strict';
     
-    // 初始化侧边栏折叠功能
-    function initSidebarCollapse() {
-        const sidebar = document.querySelector('.sidebar');
-        if (!sidebar) return;
-        
-        // 查找所有章节链接
-        const chapterLinks = sidebar.querySelectorAll('.sidebar-item .sidebar-link');
-        const currentPath = window.location.pathname;
-        
-        // 为每个链接添加数据属性和事件监听器
-        chapterLinks.forEach((link, index) => {
-            const item = link.closest('.sidebar-item');
-            const href = link.getAttribute('href') || '';
-            
-            // 判断是否为章节首页 (如 ch01/index.html)
-            const isChapterIndex = href.includes('/index.html') || href.match(/ch\d+\/$/);
-            
-            if (isChapterIndex) {
-                // 标记为章节首页
-                item.setAttribute('data-bs-level', '1');
-                item.classList.add('chapter-header');
-                
-                // 检查是否为当前章节
-                const chapterMatch = href.match(/ch(\d+)/);
-                const currentChapterMatch = currentPath.match(/ch(\d+)/);
-                
-                if (chapterMatch && currentChapterMatch && 
-                    chapterMatch[1] === currentChapterMatch[1]) {
-                    item.classList.add('current-chapter', 'expanded');
-                }
-                
-                // 添加点击事件
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    toggleChapter(item);
-                    
-                    // 如果点击的是当前页面，不需要跳转
-                    if (href !== currentPath) {
-                        setTimeout(() => {
-                            window.location.href = href;
-                        }, 150);
-                    }
-                });
-                
-            } else {
-                // 标记为子章节
-                item.setAttribute('data-bs-level', '2');
-                item.classList.add('chapter-section');
-                
-                // 检查是否为当前页面
-                if (href === currentPath || currentPath.includes(href)) {
-                    item.classList.add('active');
-                    
-                    // 确保父章节展开
-                    const parentChapter = findParentChapter(item);
-                    if (parentChapter) {
-                        parentChapter.classList.add('expanded', 'current-chapter');
-                    }
-                }
-            }
-        });
-        
-        // 初始化：隐藏所有非当前章节的子项
-        hideNonCurrentChapterSections();
-    }
+    // 等待DOM加载完成
+    document.addEventListener('DOMContentLoaded', function() {
+        initSidebarAccordion();
+    });
     
-    // 切换章节展开/折叠状态
-    function toggleChapter(chapterItem) {
-        const isExpanded = chapterItem.classList.contains('expanded');
-        
-        // 首先折叠所有其他章节
-        document.querySelectorAll('.sidebar-item[data-bs-level="1"]').forEach(item => {
-            if (item !== chapterItem) {
-                item.classList.remove('expanded');
-            }
-        });
-        
-        // 切换当前章节状态
-        if (isExpanded) {
-            chapterItem.classList.remove('expanded');
-        } else {
-            chapterItem.classList.add('expanded');
+    function initSidebarAccordion() {
+        // 查找侧边栏容器
+        const sidebar = document.querySelector('.sidebar-navigation, .quarto-sidebar, .sidebar');
+        if (!sidebar) {
+            console.log('Sidebar not found, retrying...');
+            // 如果侧边栏还没有加载，稍后重试
+            setTimeout(initSidebarAccordion, 500);
+            return;
         }
         
-        // 更新当前章节标记
-        document.querySelectorAll('.sidebar-item[data-bs-level="1"]').forEach(item => {
-            item.classList.remove('current-chapter');
-        });
-        chapterItem.classList.add('current-chapter');
-    }
-    
-    // 查找父章节
-    function findParentChapter(sectionItem) {
-        let current = sectionItem.previousElementSibling;
-        while (current) {
-            if (current.classList.contains('sidebar-item') && 
-                current.getAttribute('data-bs-level') === '1') {
-                return current;
-            }
-            current = current.previousElementSibling;
-        }
-        return null;
-    }
-    
-    // 隐藏非当前章节的子项
-    function hideNonCurrentChapterSections() {
-        const allSections = document.querySelectorAll('.sidebar-item[data-bs-level="2"]');
-        allSections.forEach(section => {
-            const parentChapter = findParentChapter(section);
-            if (parentChapter && !parentChapter.classList.contains('expanded')) {
-                section.style.display = 'none';
-            } else {
-                section.style.display = 'block';
-            }
-        });
-    }
-    
-    // 监听展开状态变化
-    function observeExpansionChanges() {
+        console.log('Initializing sidebar accordion...');
+        
+        // 处理现有的 Quarto 导航结构
+        setupQuartoAccordion(sidebar);
+        
+        // 如果Quarto还没有完全加载，监听变化
         const observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
-                if (mutation.type === 'attributes' && 
-                    mutation.attributeName === 'class') {
-                    const target = mutation.target;
-                    if (target.getAttribute('data-bs-level') === '1') {
-                        updateSectionVisibility(target);
-                    }
+                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                    setupQuartoAccordion(sidebar);
                 }
             });
         });
         
-        document.querySelectorAll('.sidebar-item[data-bs-level="1"]').forEach(item => {
-            observer.observe(item, { attributes: true });
+        observer.observe(sidebar, {
+            childList: true,
+            subtree: true
         });
     }
     
-    // 更新子章节显示状态
-    function updateSectionVisibility(chapterItem) {
-        const isExpanded = chapterItem.classList.contains('expanded');
-        let nextSibling = chapterItem.nextElementSibling;
+    function setupQuartoAccordion(sidebar) {
+        // 查找所有的章节容器
+        const sectionItems = sidebar.querySelectorAll('.sidebar-item');
+        const processedSections = new Set();
         
-        while (nextSibling && nextSibling.getAttribute('data-bs-level') === '2') {
-            if (isExpanded) {
-                nextSibling.style.display = 'block';
-                setTimeout(() => {
-                    nextSibling.style.opacity = '1';
-                    nextSibling.style.maxHeight = '50px';
-                }, 10);
-            } else {
-                nextSibling.style.opacity = '0';
-                nextSibling.style.maxHeight = '0';
-                setTimeout(() => {
-                    nextSibling.style.display = 'none';
-                }, 300);
+        sectionItems.forEach(function(item, index) {
+            // 跳过已处理的项目
+            if (processedSections.has(item)) return;
+            
+            const link = item.querySelector('a');
+            if (!link) return;
+            
+            const href = link.getAttribute('href');
+            
+            // 检查这是否是一个章节标题（通常以 index.html 结尾或者是主要章节）
+            if (href && (href.includes('/index.html') || isChapterHeader(link.textContent))) {
+                processedSections.add(item);
+                convertToAccordionSection(item, index);
+            }
+        });
+        
+        // 默认折叠所有章节，除了当前活动的章节
+        collapseAllSections(sidebar);
+        
+        // 展开包含当前页面的章节
+        expandCurrentSection(sidebar);
+    }
+    
+    function isChapterHeader(text) {
+        // 检查文本是否像章节标题（包含"第"字或"Chapter"或只有数字等）
+        const chapterPatterns = [
+            /第\s*\d+\s*章/,     // 第1章
+            /Chapter\s*\d+/i,   // Chapter 1
+            /^\d+\s*[\.、]\s*/,  // 1. 或 1、
+            /^\d+\s*$/          // 纯数字
+        ];
+        
+        return chapterPatterns.some(pattern => pattern.test(text.trim()));
+    }
+    
+    function convertToAccordionSection(sectionItem, index) {
+        // 如果已经处理过，跳过
+        if (sectionItem.classList.contains('accordion-processed')) {
+            return;
+        }
+        
+        sectionItem.classList.add('accordion-processed');
+        sectionItem.classList.add('sidebar-section-header');
+        
+        // 添加展开/收起图标
+        const chevron = document.createElement('span');
+        chevron.className = 'chevron';
+        chevron.innerHTML = '▼';
+        sectionItem.appendChild(chevron);
+        
+        // 查找该章节的子项目
+        const nextItems = [];
+        let nextSibling = sectionItem.nextElementSibling;
+        
+        while (nextSibling) {
+            const nextLink = nextSibling.querySelector('a');
+            if (nextLink) {
+                const nextHref = nextLink.getAttribute('href');
+                // 如果下一个项目也是章节标题，停止收集
+                if (nextHref && (nextHref.includes('/index.html') || isChapterHeader(nextLink.textContent))) {
+                    break;
+                }
+                nextItems.push(nextSibling);
             }
             nextSibling = nextSibling.nextElementSibling;
         }
+        
+        // 创建内容容器
+        if (nextItems.length > 0) {
+            const contentContainer = document.createElement('div');
+            contentContainer.className = 'sidebar-section-content collapsed';
+            contentContainer.id = 'section-content-' + index;
+            
+            // 将子项目移动到容器中
+            nextItems.forEach(function(item) {
+                item.classList.add('sidebar-subsection-item');
+                contentContainer.appendChild(item);
+            });
+            
+            // 将容器插入到章节标题后面
+            sectionItem.parentNode.insertBefore(contentContainer, sectionItem.nextSibling);
+            
+            // 添加点击事件
+            sectionItem.style.cursor = 'pointer';
+            sectionItem.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleSection(sectionItem, contentContainer);
+            });
+            
+            // 默认收起
+            sectionItem.classList.add('collapsed');
+        }
     }
     
-    // 键盘导航支持
-    function addKeyboardSupport() {
-        document.addEventListener('keydown', function(e) {
-            if (e.target.closest('.sidebar')) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    const focusedLink = document.activeElement;
-                    if (focusedLink && focusedLink.closest('.sidebar-item[data-bs-level="1"]')) {
-                        e.preventDefault();
-                        focusedLink.click();
+    function toggleSection(headerItem, contentContainer) {
+        const isCollapsed = headerItem.classList.contains('collapsed');
+        
+        if (isCollapsed) {
+            // 展开
+            headerItem.classList.remove('collapsed');
+            contentContainer.classList.remove('collapsed');
+            contentContainer.classList.add('expanded');
+            contentContainer.style.maxHeight = contentContainer.scrollHeight + 'px';
+        } else {
+            // 收起
+            headerItem.classList.add('collapsed');
+            contentContainer.classList.remove('expanded');
+            contentContainer.classList.add('collapsed');
+            contentContainer.style.maxHeight = '0px';
+        }
+        
+        // 手风琴效果：收起其他章节
+        collapseOtherSections(headerItem);
+    }
+    
+    function collapseOtherSections(currentHeader) {
+        const sidebar = currentHeader.closest('.sidebar-navigation, .quarto-sidebar, .sidebar');
+        if (!sidebar) return;
+        
+        const allHeaders = sidebar.querySelectorAll('.sidebar-section-header');
+        allHeaders.forEach(function(header) {
+            if (header !== currentHeader && !header.classList.contains('collapsed')) {
+                const contentId = header.nextElementSibling;
+                if (contentId && contentId.classList.contains('sidebar-section-content')) {
+                    header.classList.add('collapsed');
+                    contentId.classList.remove('expanded');
+                    contentId.classList.add('collapsed');
+                    contentId.style.maxHeight = '0px';
+                }
+            }
+        });
+    }
+    
+    function collapseAllSections(sidebar) {
+        const headers = sidebar.querySelectorAll('.sidebar-section-header');
+        headers.forEach(function(header) {
+            header.classList.add('collapsed');
+            const content = header.nextElementSibling;
+            if (content && content.classList.contains('sidebar-section-content')) {
+                content.classList.add('collapsed');
+                content.classList.remove('expanded');
+                content.style.maxHeight = '0px';
+            }
+        });
+    }
+    
+    function expandCurrentSection(sidebar) {
+        // 查找当前活动的页面
+        const activeItem = sidebar.querySelector('.sidebar-item.active, .sidebar-item-text.active') || 
+                          sidebar.querySelector('[aria-current="page"]');
+        
+        if (activeItem) {
+            // 查找包含当前页面的章节
+            let container = activeItem.closest('.sidebar-section-content');
+            if (container) {
+                const header = container.previousElementSibling;
+                if (header && header.classList.contains('sidebar-section-header')) {
+                    header.classList.remove('collapsed');
+                    container.classList.remove('collapsed');
+                    container.classList.add('expanded');
+                    container.style.maxHeight = container.scrollHeight + 'px';
+                }
+            }
+        }
+        
+        // 如果没有找到活动项目，可以根据URL来确定
+        const currentPath = window.location.pathname;
+        const sidebarLinks = sidebar.querySelectorAll('a[href]');
+        
+        sidebarLinks.forEach(function(link) {
+            const href = link.getAttribute('href');
+            if (href && currentPath.includes(href.replace('.html', ''))) {
+                link.closest('.sidebar-item')?.classList.add('active');
+                
+                // 展开包含此链接的章节
+                let container = link.closest('.sidebar-section-content');
+                if (container) {
+                    const header = container.previousElementSibling;
+                    if (header && header.classList.contains('sidebar-section-header')) {
+                        header.classList.remove('collapsed');
+                        container.classList.remove('collapsed');
+                        container.classList.add('expanded');
+                        container.style.maxHeight = container.scrollHeight + 'px';
                     }
                 }
             }
         });
     }
     
-    // 初始化所有功能
-    function initialize() {
-        // 等待侧边栏渲染完成
-        setTimeout(() => {
-            initSidebarCollapse();
-            observeExpansionChanges();
-            addKeyboardSupport();
-        }, 100);
-    }
+    // 导出函数供外部使用
+    window.SidebarAccordion = {
+        init: initSidebarAccordion,
+        expandCurrentSection: expandCurrentSection,
+        collapseAllSections: collapseAllSections
+    };
     
-    // 如果页面已经加载完成，直接初始化
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initialize);
-    } else {
-        initialize();
-    }
-});
+})();
 
-// 页面导航时保持状态
-window.addEventListener('beforeunload', function() {
-    const expandedChapters = [];
-    document.querySelectorAll('.sidebar-item[data-bs-level="1"].expanded').forEach(item => {
-        const link = item.querySelector('.sidebar-link');
-        if (link) {
-            expandedChapters.push(link.getAttribute('href'));
+// 页面路由变化时重新初始化（单页应用场景）
+if (typeof window !== 'undefined') {
+    let lastUrl = location.href;
+    new MutationObserver(() => {
+        const url = location.href;
+        if (url !== lastUrl) {
+            lastUrl = url;
+            setTimeout(() => {
+                if (window.SidebarAccordion) {
+                    window.SidebarAccordion.expandCurrentSection(
+                        document.querySelector('.sidebar-navigation, .quarto-sidebar, .sidebar')
+                    );
+                }
+            }, 100);
         }
-    });
-    localStorage.setItem('quarto-sidebar-expanded', JSON.stringify(expandedChapters));
-});
-
-// 页面加载时恢复状态
-window.addEventListener('load', function() {
-    const expandedChapters = JSON.parse(localStorage.getItem('quarto-sidebar-expanded') || '[]');
-    expandedChapters.forEach(href => {
-        const link = document.querySelector(`.sidebar-link[href="${href}"]`);
-        if (link) {
-            const item = link.closest('.sidebar-item');
-            if (item) {
-                item.classList.add('expanded');
-            }
-        }
-    });
-});
+    }).observe(document, { subtree: true, childList: true });
+}

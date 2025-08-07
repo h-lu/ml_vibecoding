@@ -11,6 +11,10 @@ book:
   date: today
   language: zh-CN
   page-navigation: true
+  sidebar:
+    style: "docked"
+    search: true
+    collapse-level: 1
   chapters:
     - index.qmd
     - part: ch01/index.qmd
@@ -173,9 +177,43 @@ book:
 
 format:
   html:
-    theme: cosmo
+    theme: 
+      - cosmo
+      - assets/chatgpt-style.scss
+    css: assets/sidebar-collapse.css
     toc: false
     number-sections: false
     fig-cap-location: bottom
     code-fold: false
     code-tools: true
+    # ChatGPT 风格字体配置
+    mainfont: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'"
+    monofont: "Monaco, 'SF Mono', 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace"
+    fontsize: "16px"
+    linestretch: 1.6
+    # 改进的代码高亮
+    highlight-style: github
+    code-line-numbers: false
+    code-copy: true
+    # 响应式设计
+    max-width: 1200px
+    # 包含自定义样式和脚本
+    include-in-header:
+      text: |
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+        /* ChatGPT 风格变量 */
+        :root {
+          --chatgpt-primary: #000000;
+          --chatgpt-secondary: #6b7280;
+          --chatgpt-background: #ffffff;
+          --chatgpt-surface: #f7f7f8;
+          --chatgpt-border: #e5e5e5;
+          --chatgpt-accent: #10a37f;
+        }
+        </style>
+    include-after-body:
+      text: |
+        <script src="assets/sidebar-collapse.js"></script>
