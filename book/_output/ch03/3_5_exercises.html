@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7ec80faf2f76fb0b865d1103a6b470c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4748502d1f1e86460223ec0d74b9caae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-e4f0b921bea972c06d94a524d5d8c001.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -998,17 +998,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>本章的练习旨在强化你的“第一性原理”直觉，让你习惯于用几何、概率和物理的眼光来看待数据和模型。</p>
 <section id="几何直觉练习" class="level3">
 <h3 class="anchored" data-anchor-id="几何直觉练习">1. 几何直觉练习</h3>
-<p><strong>问题</strong>: 想象一个描述饮品的三维向量空间，三个维度（特征）分别是： 1. <strong>价格 (Price)</strong>：从低到高 2. <strong>含糖量 (Sugar Content)</strong>：从低到高 3. <strong>咖啡因含量 (Caffeine Content)</strong>：从低到高</p>
+<p><strong>问题</strong>: 想象一个描述饮品的三维向量空间，三个维度（特征）分别是：</p>
+<ol type="1">
+<li><strong>价格 (Price)</strong>：从低到高</li>
+<li><strong>含糖量 (Sugar Content)</strong>：从低到高</li>
+<li><strong>咖啡因含量 (Caffeine Content)</strong>：从低到高</li>
+</ol>
 <p>现在，请你在这个三维空间中，大致描述以下三种饮品作为“数据点”的<strong>可能位置</strong>，并思考它们之间的<strong>相对几何距离</strong>，哪两个点可能靠得更近？</p>
 <ul>
 <li><strong>数据点A：一杯可口可乐</strong></li>
 <li><strong>数据点B：一杯无糖可乐（零度）</strong></li>
 <li><strong>数据点C：一杯美式咖啡（无糖无奶）</strong></li>
 </ul>
-<p><strong>思考引导</strong>: - <strong>可口可乐</strong>：价格适中，含糖量高，咖啡因含量中等。 - <strong>无糖可乐</strong>：价格与可口可乐相近，含糖量极低，咖啡因含量与可口可乐相近。 - <strong>美式咖啡</strong>：价格可能略高于可乐，含糖量为零，咖啡因含量高。</p>
+<p><strong>思考引导</strong>:</p>
 <ul>
-<li>A和B的距离主要体现在哪个维度上？</li>
-<li>B和C的距离与A和C的距离相比，哪个可能更近？为什么？这个“距离”在商业上可能意味着什么？（例如，替代品关系？）</li>
+<li><p><strong>可口可乐</strong>：价格适中，含糖量高，咖啡因含量中等。</p></li>
+<li><p><strong>无糖可乐</strong>：价格与可口可乐相近，含糖量极低，咖啡因含量与可口可乐相近。</p></li>
+<li><p><strong>美式咖啡</strong>：价格可能略高于可乐，含糖量为零，咖啡因含量高。</p></li>
+<li><p>A和B的距离主要体现在哪个维度上？</p></li>
+<li><p>B和C的距离与A和C的距离相比，哪个可能更近？为什么？这个“距离”在商业上可能意味着什么？（例如，替代品关系？）</p></li>
 </ul>
 <hr>
 </section>
@@ -1017,17 +1025,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>问题</strong>: 你有一位朋友，他是一位非常敬业的创业者。根据过去的经验，他在工作日（周一至周五）的白天，有 <strong>90%</strong> 的概率会在<strong>5分钟内</strong>回复你的即时消息。</p>
 <p>今天（一个周三的上午），你给他发了一条消息，但已经过去了<strong>30分钟</strong>，他还没有回复。</p>
 <p>请运用<strong>条件概率</strong>和<strong>贝叶斯定理</strong>的直觉（无需计算精确值），定性地分析：在得到“30分钟未回复”这个新证据后，你对他<strong>“此刻正在一个非常重要的会议中”</strong>这个假设的<strong>信念强度（后验概率）</strong>，相比于你发消息前的<strong>信念（先验概率）</strong>，是<strong>大幅上升、略微上升、保持不变、还是下降了</strong>？请阐述你的推理过程。</p>
-<p><strong>思考引导</strong>: - <strong>先验概率 <code>P(开重要会议)</code></strong>: 在没有任何信息时，一个创业者在周三上午开重要会议的概率本身是高还是低？ - <strong>证据 <code>E</code>: “30分钟未回复”</strong> - <strong>条件概率1 <code>P(E | 开重要会议)</code></strong>: 如果他真的在开重要会议，那么他30分钟不回消息的概率是高还是低？（应该是很高的） - <strong>条件概率2 <code>P(E | 没开重要会议)</code></strong>: 如果他没在开会，根据他“90%概率5分钟内回复”的习惯，他30分钟不回消息的概率是高还是低？（应该是很低的）</p>
+<p><strong>思考引导</strong>:</p>
 <ul>
-<li>对比这两个条件概率，这个证据对于“开重要会议”这个假设的支持强度如何？</li>
+<li><p><strong>先验概率 <code>P(开重要会议)</code></strong>: 在没有任何信息时，一个创业者在周三上午开重要会议的概率本身是高还是低？</p></li>
+<li><p><strong>证据 <code>E</code>: “30分钟未回复”</strong></p></li>
+<li><p><strong>条件概率1 <code>P(E | 开重要会议)</code></strong>: 如果他真的在开重要会议，那么他30分钟不回消息的概率是高还是低？（应该是很高的）</p></li>
+<li><p><strong>条件概率2 <code>P(E | 没开重要会议)</code></strong>: 如果他没在开会，根据他“90%概率5分钟内回复”的习惯，他30分钟不回消息的概率是高还是低？（应该是很低的）</p></li>
+<li><p>对比这两个条件概率，这个证据对于“开重要会议”这个假设的支持强度如何？</p></li>
 </ul>
-<hr>
 </section>
 <section id="vibe-coding-可视化挑战" class="level3">
 <h3 class="anchored" data-anchor-id="vibe-coding-可视化挑战">3. Vibe Coding 可视化挑战</h3>
 <p><strong>问题</strong>: 在本章的Vibe Coding实践中，我们构思了如何让AI创建一个解释“梯度下降”的动画。现在，请你挑战一个更复杂的概念。</p>
 <p>请你设计一个<strong>提示词 (Prompt)</strong>，用来指导 AI（如 Copilot Chat, ChatGPT, Claude 等）为你生成一个<strong>可视化“贝叶斯定理”如何更新信念</strong>的动画或交互式图表。</p>
-<p><strong>任务要求</strong>: 1. 写出你给 AI 的具体<strong>提示词</strong>。 2. 阐述你希望这个可视化工具包含哪些<strong>核心元素</strong>（例如，先验概率条、后验概率条、证据输入区等）。 3. 思考你会从哪些方面对 AI 的“初稿”进行<strong>人类优化</strong>，才能让这个工具对初学者更友好、更直观？（例如，加入具体的场景故事？允许用户调整证据的“强度”？）。</p>
+<p><strong>任务要求</strong>:</p>
+<ol type="1">
+<li>写出你给 AI 的具体<strong>提示词</strong>。</li>
+<li>阐述你希望这个可视化工具包含哪些<strong>核心元素</strong>（例如，先验概率条、后验概率条、证据输入区等）。</li>
+<li>思考你会从哪些方面对 AI 的“初稿”进行<strong>人类优化</strong>，才能让这个工具对初学者更友好、更直观？（例如，加入具体的场景故事？允许用户调整证据的“强度”？）。</li>
+</ol>
 <p>这个练习不要求你真的去编写代码，而是考察你作为“系统设计师”，如何将一个抽象的教学目标，分解成一个清晰、可执行的、可以指导 AI 工作的人机协作计划。</p>
 
 
@@ -1508,105 +1524,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>**问题**:</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>想象一个描述饮品的三维向量空间，三个维度（特征）分别是：</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**价格 (Price)**：从低到高</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**含糖量 (Sugar Content)**：从低到高</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**咖啡因含量 (Caffeine Content)**：从低到高</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>现在，请你在这个三维空间中，大致描述以下三种饮品作为“数据点”的**可能位置**，并思考它们之间的**相对几何距离**，哪两个点可能靠得更近？</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**数据点A：一杯可口可乐**</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**数据点B：一杯无糖可乐（零度）**</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**数据点C：一杯美式咖啡（无糖无奶）**</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>**思考引导**:</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**可口可乐**：价格适中，含糖量高，咖啡因含量中等。</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**无糖可乐**：价格与可口可乐相近，含糖量极低，咖啡因含量与可口可乐相近。</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**美式咖啡**：价格可能略高于可乐，含糖量为零，咖啡因含量高。</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>A和B的距离主要体现在哪个维度上？</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>B和C的距离与A和C的距离相比，哪个可能更近？为什么？这个“距离”在商业上可能意味着什么？（例如，替代品关系？）</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**价格 (Price)**：从低到高</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**含糖量 (Sugar Content)**：从低到高</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**咖啡因含量 (Caffeine Content)**：从低到高</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>现在，请你在这个三维空间中，大致描述以下三种饮品作为“数据点”的**可能位置**，并思考它们之间的**相对几何距离**，哪两个点可能靠得更近？</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**数据点A：一杯可口可乐**</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**数据点B：一杯无糖可乐（零度）**</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**数据点C：一杯美式咖啡（无糖无奶）**</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>**思考引导**:</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**可口可乐**：价格适中，含糖量高，咖啡因含量中等。</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**无糖可乐**：价格与可口可乐相近，含糖量极低，咖啡因含量与可口可乐相近。</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**美式咖啡**：价格可能略高于可乐，含糖量为零，咖啡因含量高。</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>A和B的距离主要体现在哪个维度上？</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>B和C的距离与A和C的距离相比，哪个可能更近？为什么？这个“距离”在商业上可能意味着什么？（例如，替代品关系？）</span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. 概率思维练习</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>**问题**:</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>你有一位朋友，他是一位非常敬业的创业者。根据过去的经验，他在工作日（周一至周五）的白天，有 **90%** 的概率会在**5分钟内**回复你的即时消息。</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>今天（一个周三的上午），你给他发了一条消息，但已经过去了**30分钟**，他还没有回复。</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. 概率思维练习</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>**问题**:</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>你有一位朋友，他是一位非常敬业的创业者。根据过去的经验，他在工作日（周一至周五）的白天，有 **90%** 的概率会在**5分钟内**回复你的即时消息。</span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>请运用**条件概率**和**贝叶斯定理**的直觉（无需计算精确值），定性地分析：在得到“30分钟未回复”这个新证据后，你对他**“此刻正在一个非常重要的会议中”**这个假设的**信念强度（后验概率）**，相比于你发消息前的**信念（先验概率）**，是**大幅上升、略微上升、保持不变、还是下降了**？请阐述你的推理过程。</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>今天（一个周三的上午），你给他发了一条消息，但已经过去了**30分钟**，他还没有回复。</span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>**思考引导**:</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**先验概率 `P(开重要会议)`**: 在没有任何信息时，一个创业者在周三上午开重要会议的概率本身是高还是低？</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**证据 `E`: "30分钟未回复"**</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**条件概率1 `P(E | 开重要会议)`**: 如果他真的在开重要会议，那么他30分钟不回消息的概率是高还是低？（应该是很高的）</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**条件概率2 `P(E | 没开重要会议)`**: 如果他没在开会，根据他“90%概率5分钟内回复”的习惯，他30分钟不回消息的概率是高还是低？（应该是很低的）</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>对比这两个条件概率，这个证据对于“开重要会议”这个假设的支持强度如何？</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. Vibe Coding 可视化挑战</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>**问题**:</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>在本章的Vibe Coding实践中，我们构思了如何让AI创建一个解释“梯度下降”的动画。现在，请你挑战一个更复杂的概念。</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>请你设计一个**提示词 (Prompt)**，用来指导 AI（如 Copilot Chat, ChatGPT, Claude 等）为你生成一个**可视化“贝叶斯定理”如何更新信念**的动画或交互式图表。</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>**任务要求**:</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>写出你给 AI 的具体**提示词**。</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>阐述你希望这个可视化工具包含哪些**核心元素**（例如，先验概率条、后验概率条、证据输入区等）。</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>思考你会从哪些方面对 AI 的“初稿”进行**人类优化**，才能让这个工具对初学者更友好、更直观？（例如，加入具体的场景故事？允许用户调整证据的“强度”？）。</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>这个练习不要求你真的去编写代码，而是考察你作为“系统设计师”，如何将一个抽象的教学目标，分解成一个清晰、可执行的、可以指导 AI 工作的人机协作计划。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>请运用**条件概率**和**贝叶斯定理**的直觉（无需计算精确值），定性地分析：在得到“30分钟未回复”这个新证据后，你对他**“此刻正在一个非常重要的会议中”**这个假设的**信念强度（后验概率）**，相比于你发消息前的**信念（先验概率）**，是**大幅上升、略微上升、保持不变、还是下降了**？请阐述你的推理过程。</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>**思考引导**:</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**先验概率 `P(开重要会议)`**: 在没有任何信息时，一个创业者在周三上午开重要会议的概率本身是高还是低？</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**证据 `E`: "30分钟未回复"**</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**条件概率1 `P(E | 开重要会议)`**: 如果他真的在开重要会议，那么他30分钟不回消息的概率是高还是低？（应该是很高的）</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**条件概率2 `P(E | 没开重要会议)`**: 如果他没在开会，根据他“90%概率5分钟内回复”的习惯，他30分钟不回消息的概率是高还是低？（应该是很低的）</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>对比这两个条件概率，这个证据对于“开重要会议”这个假设的支持强度如何？</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. Vibe Coding 可视化挑战</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>**问题**:</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>在本章的Vibe Coding实践中，我们构思了如何让AI创建一个解释“梯度下降”的动画。现在，请你挑战一个更复杂的概念。</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>请你设计一个**提示词 (Prompt)**，用来指导 AI（如 Copilot Chat, ChatGPT, Claude 等）为你生成一个**可视化“贝叶斯定理”如何更新信念**的动画或交互式图表。</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>**任务要求**:</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>写出你给 AI 的具体**提示词**。</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>阐述你希望这个可视化工具包含哪些**核心元素**（例如，先验概率条、后验概率条、证据输入区等）。</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>思考你会从哪些方面对 AI 的“初稿”进行**人类优化**，才能让这个工具对初学者更友好、更直观？（例如，加入具体的场景故事？允许用户调整证据的“强度”？）。</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>这个练习不要求你真的去编写代码，而是考察你作为“系统设计师”，如何将一个抽象的教学目标，分解成一个清晰、可执行的、可以指导 AI 工作的人机协作计划。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<script src="assets/font-size-selector.js"></script>
-<script>
-// 初始化字体大小选择器的额外配置
-document.addEventListener('fontSizeChanged', function(e) {
-  console.log('字体大小已更改为:', e.detail.label, '(' + e.detail.size + ')');
-  
-  // 可选：向用户显示更改提示
-  if (window.innerWidth <= 768) {
-    const toast = document.createElement('div');
-    toast.textContent = `字体大小已设置为${e.detail.label}`;
-    toast.style.cssText = `
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--chatgpt-accent);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      z-index: 10000;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    `;
-    document.body.appendChild(toast);
-    
-    // 显示提示
-    setTimeout(() => toast.style.opacity = '1', 100);
-    
-    // 3秒后移除提示
-    setTimeout(() => {
-      toast.style.opacity = '0';
-      setTimeout(() => document.body.removeChild(toast), 300);
-    }, 3000);
-  }
-});
-
-// 键盘快捷键提示（开发模式）
-if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-  console.log('🎯 字体大小选择器快捷键:');
-  console.log('  Ctrl/Cmd + +  增大字体');
-  console.log('  Ctrl/Cmd + -  减小字体');
-  console.log('  Ctrl/Cmd + 0  重置字体');
-}
-</script>
 
 
 

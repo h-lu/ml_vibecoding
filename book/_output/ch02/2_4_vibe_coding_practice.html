@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7ec80faf2f76fb0b865d1103a6b470c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4748502d1f1e86460223ec0d74b9caae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-e4f0b921bea972c06d94a524d5d8c001.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -1008,7 +1008,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>提示 (Prompt):</strong></p>
 <p>“你好，请扮演一名资深的机器学习顾问。我是一家在线教育平台的产品经理，我们当前的核心业务目标是‘提升课程完成率’。</p>
-<p>请从机器学习的角度，帮我进行一次头脑风暴： 1. 要解决这个问题，我们可以把它拆解成哪些具体的、可以用机器学习处理的子问题？ 2. 对于每个子问题，它分别属于哪种 ML 问题类型（如分类、回归、聚类等）？ 3. 要解决这些问题，我们可能需要收集和分析哪些维度的数据？</p>
+<p>请从机器学习的角度，帮我进行一次头脑风暴：</p>
+<ol type="1">
+<li>要解决这个问题，我们可以把它拆解成哪些具体的、可以用机器学习处理的子问题？</li>
+<li>对于每个子问题，它分别属于哪种 ML 问题类型（如分类、回归、聚类等）？</li>
+<li>要解决这些问题，我们可能需要收集和分析哪些维度的数据？</li>
+</ol>
 <p>请尽可能多地提供一些有创意的、不同的思考方向。”</p>
 </blockquote>
 <p><strong>学生观察与分析</strong>: 仔细阅读 AI 生成的回答。它可能会给你一个类似下面这样的建议列表（具体内容可能不同）：</p>
@@ -1045,16 +1050,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="第二阶段人类批判性收敛-25分钟">第二阶段：人类批判性收敛 (25分钟)</h3>
 <p>AI 的工作到此为止。它给了我们一张地图，但没有告诉我们哪条路是通往宝藏的。现在，人类设计师必须登场，进行批判性的<strong>收敛</strong>思考和决策。</p>
 <p><strong>引导性讨论与决策</strong>: 请你和你的团队（或者自己独立思考），围绕 AI 提出的这些方向，从以下三个维度进行评估：</p>
-<p><strong>1. 影响力 (Impact): 哪个问题最“痛”？</strong> - 在这五个方向中，你认为哪个方向的成功，对“提升课程完成率”这个最终目标的贡献最大、最直接？ - 例如，是“预测辍学风险”让我们可以精准挽留，还是“个性化推荐”能从根源上提升学习兴趣？这取决于你对业务的理解。</p>
-<p><strong>2. 可行性 (Feasibility): 我们现在能做什么？</strong> - <strong>数据可行性</strong>: 审视 AI 建议的“所需数据”。以我们平台现有的数据采集能力，哪些方向的数据是完整且高质量的？哪些是缺失或完全没有的？（例如，我们可能记录了视频观看时长，但没有记录学生的论坛互动）。 - <strong>技术可行性</strong>: 我们的团队目前的技术储备，更适合从哪个问题入手？（例如，分类和回归问题通常比构建一个复杂的推荐系统更容易启动）。</p>
-<p><strong>3. 优先级 (Priority): 我们的第一步应该是什么？</strong> - 综合考虑影响力和可行性，你会选择哪个方向作为你们团队在下一个季度的首要攻关项目？ - 这是一个<strong>权衡 (Trade-off)</strong> 的过程。也许“个性化推荐”的影响力最大，但数据和技术要求也最高。而“预测辍学风险”可能影响力稍逊，但我们有现成的数据，可以快速启动并产生价值。</p>
+<ol type="1">
+<li>影响力 (Impact): 哪个问题最“痛”？
+<ul>
+<li>在这五个方向中，你认为哪个方向的成功，对“提升课程完成率”这个最终目标的贡献最大、最直接？</li>
+<li>例如，是“预测辍学风险”让我们可以精准挽留，还是“个性化推荐”能从根源上提升学习兴趣？这取决于你对业务的理解。</li>
+</ul></li>
+<li>可行性 (Feasibility): 我们现在能做什么？
+<ul>
+<li><strong>数据可行性</strong>: 审视 AI 建议的“所需数据”。以我们平台现有的数据采集能力，哪些方向的数据是完整且高质量的？哪些是缺失或完全没有的？（例如，我们可能记录了视频观看时长，但没有记录学生的论坛互动）。</li>
+<li><strong>技术可行性</strong>: 我们的团队目前的技术储备，更适合从哪个问题入手？（例如，分类和回归问题通常比构建一个复杂的推荐系统更容易启动）。</li>
+</ul></li>
+<li>优先级 (Priority): 我们的第一步应该是什么？
+<ul>
+<li>综合考虑影响力和可行性，你会选择哪个方向作为你们团队在下一个季度的首要攻关项目？</li>
+<li>这是一个<strong>权衡 (Trade-off)</strong> 的过程。也许“个性化推荐”的影响力最大，但数据和技术要求也最高。而“预测辍学风险”可能影响力稍逊，但我们有现成的数据，可以快速启动并产生价值。</li>
+</ul></li>
+</ol>
 <p><strong>学生决策与输出</strong>: 经过深思熟虑的权衡，你做出了你的架构师决策。</p>
 <blockquote class="blockquote">
 <p><strong>决策示例</strong>: “我们团队决定，将<strong>‘预测高价值课程的早期辍学风险’</strong>作为我们的第一个项目。因为这个问题影响力大（高价值课程是主要收入来源），且数据可行性高（我们有完整的学生行为日志）。相比之下，推荐系统虽然长远看有价值，但短期内实现难度较大。”</p>
 </blockquote>
 <p>最后，请为你选定的方向，使用我们在 2.2 节学习的 <strong>O-A-D-M 框架</strong>，写下一个完整的、清晰的机器学习问题定义。</p>
 <blockquote class="blockquote">
-<p><strong>O (目标)</strong>: 降低购买了价格高于 $100 的高价值课程的学生的辍学率。 <strong>A (行动)</strong>: 对于在课程前两周被模型识别为高辍学风险的学生，由助教进行一次一对一的电话或邮件沟通，了解其学习困难并提供帮助。 <strong>D (数据)</strong>: 学生在课程前两周的登录次数、视频观看总时长、首次作业提交情况、以及学生的基础信息。 <strong>M (模型)</strong>: <strong>二元分类问题</strong>。模型需要预测一个学生是否会在课程结束前停止所有学习活动。</p>
+<ul>
+<li><strong>O (目标)</strong>: 降低购买了价格高于 $100 的高价值课程的学生的辍学率。</li>
+<li><strong>A (行动)</strong>: 对于在课程前两周被模型识别为高辍学风险的学生，由助教进行一次一对一的电话或邮件沟通，了解其学习困难并提供帮助。</li>
+<li><strong>D (数据)</strong>: 学生在课程前两周的登录次数、视频观看总时长、首次作业提交情况、以及学生的基础信息。</li>
+<li><strong>M (模型)</strong>: <strong>二元分类问题</strong>。模型需要预测一个学生是否会在课程结束前停止所有学习活动。</li>
+</ul>
 </blockquote>
 <p>通过这个实践，你完整地体验了作为一名系统设计师，如何引领与 AI 的协作：<strong>让 AI 负责广度，让人类负责深度</strong>。你利用 AI 快速探索可能性，然后运用你的商业智慧和批判性思维，做出最关键的决策，并最终定义出那个真正值得被解决的问题。</p>
 
@@ -1551,116 +1575,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; “你好，请扮演一名资深的机器学习顾问。我是一家在线教育平台的产品经理，我们当前的核心业务目标是‘提升课程完成率’。</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 请从机器学习的角度，帮我进行一次头脑风暴：</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 1.  要解决这个问题，我们可以把它拆解成哪些具体的、可以用机器学习处理的子问题？</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 2.  对于每个子问题，它分别属于哪种 ML 问题类型（如分类、回归、聚类等）？</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 3.  要解决这些问题，我们可能需要收集和分析哪些维度的数据？</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 请尽可能多地提供一些有创意的、不同的思考方向。”</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>**学生观察与分析**:</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>仔细阅读 AI 生成的回答。它可能会给你一个类似下面这样的建议列表（具体内容可能不同）：</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**方向1：预测辍学风险**</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**ML 问题**: **二元分类**。对于每个正在学习的学生，预测他/她是否会在未来两周内停止学习。</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**所需数据**: 学生的登录频率、视频观看时长、作业提交率、论坛互动次数、课程难度等。</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**方向2：个性化学习路径推荐**</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**ML 问题**: **推荐系统**。根据学生的学习历史和兴趣，为他们推荐最适合的后续课程或学习模块，避免因内容不匹配而失去兴趣。</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**所需数据**: 学生的课程选择历史、课程评分、在不同类型内容上的停留时间。</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**方向3：发现不同学生群体的学习模式**</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**ML 问题**: **聚类**。将所有学生根据他们的学习行为，自动划分为不同的群体（例如：“勤奋型”、“拖延型”、“视频爱好者”、“文档阅读者”）。</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**所需数据**: 学生的综合学习行为数据。</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**方向4：预测学生的最终成绩**</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**ML 问题**: **回归**。在课程早期，就预测学生可能取得的最终分数，对于预测分数较低的学生进行提前干预。</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**所需数据**: 学生的早期测验成绩、作业完成情况、学习时长。</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**方向5: 智能助教与问答**</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>**ML 问题**: **自然语言处理 (NLP) / 问答系统 (Q&amp;A)**。构建一个能自动回答学生常见问题的聊天机器人，减少学生因问题得不到及时解答而产生的挫败感。</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>**所需数据**: 历史的师生问答记录、课程讲义、知识库。</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>AI 在短短几秒钟内，就为我们勾勒出了一幅解决问题的“可能性地图”。这就是 AI 在发散思维阶段的巨大价值。</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="fu">### 第二阶段：人类批判性收敛 (25分钟)</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>AI 的工作到此为止。它给了我们一张地图，但没有告诉我们哪条路是通往宝藏的。现在，人类设计师必须登场，进行批判性的**收敛**思考和决策。</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>**引导性讨论与决策**:</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>请你和你的团队（或者自己独立思考），围绕 AI 提出的这些方向，从以下三个维度进行评估：</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>**1. 影响力 (Impact): 哪个问题最“痛”？**</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>在这五个方向中，你认为哪个方向的成功，对“提升课程完成率”这个最终目标的贡献最大、最直接？</span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>例如，是“预测辍学风险”让我们可以精准挽留，还是“个性化推荐”能从根源上提升学习兴趣？这取决于你对业务的理解。</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>**2. 可行性 (Feasibility): 我们现在能做什么？**</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>**数据可行性**: 审视 AI 建议的“所需数据”。以我们平台现有的数据采集能力，哪些方向的数据是完整且高质量的？哪些是缺失或完全没有的？（例如，我们可能记录了视频观看时长，但没有记录学生的论坛互动）。</span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>**技术可行性**: 我们的团队目前的技术储备，更适合从哪个问题入手？（例如，分类和回归问题通常比构建一个复杂的推荐系统更容易启动）。</span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>**3. 优先级 (Priority): 我们的第一步应该是什么？**</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>综合考虑影响力和可行性，你会选择哪个方向作为你们团队在下一个季度的首要攻关项目？</span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>这是一个**权衡 (Trade-off)** 的过程。也许“个性化推荐”的影响力最大，但数据和技术要求也最高。而“预测辍学风险”可能影响力稍逊，但我们有现成的数据，可以快速启动并产生价值。</span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>**学生决策与输出**:</span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>经过深思熟虑的权衡，你做出了你的架构师决策。</span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **决策示例**: “我们团队决定，将**‘预测高价值课程的早期辍学风险’**作为我们的第一个项目。因为这个问题影响力大（高价值课程是主要收入来源），且数据可行性高（我们有完整的学生行为日志）。相比之下，推荐系统虽然长远看有价值，但短期内实现难度较大。”</span></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>最后，请为你选定的方向，使用我们在 2.2 节学习的 **O-A-D-M 框架**，写下一个完整的、清晰的机器学习问题定义。</span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **O (目标)**: 降低购买了价格高于 $100 的高价值课程的学生的辍学率。</span></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **A (行动)**: 对于在课程前两周被模型识别为高辍学风险的学生，由助教进行一次一对一的电话或邮件沟通，了解其学习困难并提供帮助。</span></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **D (数据)**: 学生在课程前两周的登录次数、视频观看总时长、首次作业提交情况、以及学生的基础信息。</span></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **M (模型)**: **二元分类问题**。模型需要预测一个学生是否会在课程结束前停止所有学习活动。</span></span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>通过这个实践，你完整地体验了作为一名系统设计师，如何引领与 AI 的协作：**让 AI 负责广度，让人类负责深度**。你利用 AI 快速探索可能性，然后运用你的商业智慧和批判性思维，做出最关键的决策，并最终定义出那个真正值得被解决的问题。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 1.  要解决这个问题，我们可以把它拆解成哪些具体的、可以用机器学习处理的子问题？</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 2.  对于每个子问题，它分别属于哪种 ML 问题类型（如分类、回归、聚类等）？</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 3.  要解决这些问题，我们可能需要收集和分析哪些维度的数据？</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 请尽可能多地提供一些有创意的、不同的思考方向。”</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>**学生观察与分析**:</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>仔细阅读 AI 生成的回答。它可能会给你一个类似下面这样的建议列表（具体内容可能不同）：</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**方向1：预测辍学风险**</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**ML 问题**: **二元分类**。对于每个正在学习的学生，预测他/她是否会在未来两周内停止学习。</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**所需数据**: 学生的登录频率、视频观看时长、作业提交率、论坛互动次数、课程难度等。</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**方向2：个性化学习路径推荐**</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**ML 问题**: **推荐系统**。根据学生的学习历史和兴趣，为他们推荐最适合的后续课程或学习模块，避免因内容不匹配而失去兴趣。</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**所需数据**: 学生的课程选择历史、课程评分、在不同类型内容上的停留时间。</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**方向3：发现不同学生群体的学习模式**</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**ML 问题**: **聚类**。将所有学生根据他们的学习行为，自动划分为不同的群体（例如：“勤奋型”、“拖延型”、“视频爱好者”、“文档阅读者”）。</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**所需数据**: 学生的综合学习行为数据。</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**方向4：预测学生的最终成绩**</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**ML 问题**: **回归**。在课程早期，就预测学生可能取得的最终分数，对于预测分数较低的学生进行提前干预。</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**所需数据**: 学生的早期测验成绩、作业完成情况、学习时长。</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**方向5: 智能助教与问答**</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>**ML 问题**: **自然语言处理 (NLP) / 问答系统 (Q&amp;A)**。构建一个能自动回答学生常见问题的聊天机器人，减少学生因问题得不到及时解答而产生的挫败感。</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>**所需数据**: 历史的师生问答记录、课程讲义、知识库。</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>AI 在短短几秒钟内，就为我们勾勒出了一幅解决问题的“可能性地图”。这就是 AI 在发散思维阶段的巨大价值。</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="fu">### 第二阶段：人类批判性收敛 (25分钟)</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>AI 的工作到此为止。它给了我们一张地图，但没有告诉我们哪条路是通往宝藏的。现在，人类设计师必须登场，进行批判性的**收敛**思考和决策。</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>**引导性讨论与决策**:</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>请你和你的团队（或者自己独立思考），围绕 AI 提出的这些方向，从以下三个维度进行评估：</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>影响力 (Impact): 哪个问题最“痛”？</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>在这五个方向中，你认为哪个方向的成功，对“提升课程完成率”这个最终目标的贡献最大、最直接？</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>例如，是“预测辍学风险”让我们可以精准挽留，还是“个性化推荐”能从根源上提升学习兴趣？这取决于你对业务的理解。</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>可行性 (Feasibility): 我们现在能做什么？</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>**数据可行性**: 审视 AI 建议的“所需数据”。以我们平台现有的数据采集能力，哪些方向的数据是完整且高质量的？哪些是缺失或完全没有的？（例如，我们可能记录了视频观看时长，但没有记录学生的论坛互动）。</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>**技术可行性**: 我们的团队目前的技术储备，更适合从哪个问题入手？（例如，分类和回归问题通常比构建一个复杂的推荐系统更容易启动）。</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>优先级 (Priority): 我们的第一步应该是什么？</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>综合考虑影响力和可行性，你会选择哪个方向作为你们团队在下一个季度的首要攻关项目？</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="ss">   -   </span>这是一个**权衡 (Trade-off)** 的过程。也许“个性化推荐”的影响力最大，但数据和技术要求也最高。而“预测辍学风险”可能影响力稍逊，但我们有现成的数据，可以快速启动并产生价值。</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>**学生决策与输出**:</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>经过深思熟虑的权衡，你做出了你的架构师决策。</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **决策示例**: “我们团队决定，将**‘预测高价值课程的早期辍学风险’**作为我们的第一个项目。因为这个问题影响力大（高价值课程是主要收入来源），且数据可行性高（我们有完整的学生行为日志）。相比之下，推荐系统虽然长远看有价值，但短期内实现难度较大。”</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>最后，请为你选定的方向，使用我们在 2.2 节学习的 **O-A-D-M 框架**，写下一个完整的、清晰的机器学习问题定义。</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - **O (目标)**: 降低购买了价格高于 $100 的高价值课程的学生的辍学率。</span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - **A (行动)**: 对于在课程前两周被模型识别为高辍学风险的学生，由助教进行一次一对一的电话或邮件沟通，了解其学习困难并提供帮助。</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - **D (数据)**: 学生在课程前两周的登录次数、视频观看总时长、首次作业提交情况、以及学生的基础信息。</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - **M (模型)**: **二元分类问题**。模型需要预测一个学生是否会在课程结束前停止所有学习活动。</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>通过这个实践，你完整地体验了作为一名系统设计师，如何引领与 AI 的协作：**让 AI 负责广度，让人类负责深度**。你利用 AI 快速探索可能性，然后运用你的商业智慧和批判性思维，做出最关键的决策，并最终定义出那个真正值得被解决的问题。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<script src="assets/font-size-selector.js"></script>
-<script>
-// 初始化字体大小选择器的额外配置
-document.addEventListener('fontSizeChanged', function(e) {
-  console.log('字体大小已更改为:', e.detail.label, '(' + e.detail.size + ')');
-  
-  // 可选：向用户显示更改提示
-  if (window.innerWidth <= 768) {
-    const toast = document.createElement('div');
-    toast.textContent = `字体大小已设置为${e.detail.label}`;
-    toast.style.cssText = `
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--chatgpt-accent);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      z-index: 10000;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    `;
-    document.body.appendChild(toast);
-    
-    // 显示提示
-    setTimeout(() => toast.style.opacity = '1', 100);
-    
-    // 3秒后移除提示
-    setTimeout(() => {
-      toast.style.opacity = '0';
-      setTimeout(() => document.body.removeChild(toast), 300);
-    }, 3000);
-  }
-});
-
-// 键盘快捷键提示（开发模式）
-if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-  console.log('🎯 字体大小选择器快捷键:');
-  console.log('  Ctrl/Cmd + +  增大字体');
-  console.log('  Ctrl/Cmd + -  减小字体');
-  console.log('  Ctrl/Cmd + 0  重置字体');
-}
-</script>
 
 
 

@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7ec80faf2f76fb0b865d1103a6b470c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4748502d1f1e86460223ec0d74b9caae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-e4f0b921bea972c06d94a524d5d8c001.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -1047,7 +1047,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="其他问题类型简介" class="level3">
 <h3 class="anchored" data-anchor-id="其他问题类型简介">其他问题类型简介</h3>
-<p>除了这三大核心类型，机器学习的世界还有许多其他有趣且强大的问题类型，我们将在后续的课程中深入探索： - <strong>推荐系统 (Recommendation System)</strong>: 预测用户可能对哪些物品（商品、电影、音乐）感兴趣。 - <strong>异常检测 (Anomaly Detection)</strong>: 专门用于识别数据中的罕见事件或离群点。 - <strong>强化学习 (Reinforcement Learning)</strong>: 训练一个智能体 (Agent) 在特定环境中通过与环境交互来学习如何做出最优决策以获得最大奖励（例如：自动驾驶、游戏AI）。 - <strong>生成模型 (Generative Models)</strong>: 不是预测，而是创造全新的、与训练数据相似的数据（例如：生成人脸图片、撰写文章）。</p>
+<p>除了这三大核心类型，机器学习的世界还有许多其他有趣且强大的问题类型，我们将在后续的课程中深入探索：</p>
+<ul>
+<li><strong>推荐系统 (Recommendation System)</strong>: 预测用户可能对哪些物品（商品、电影、音乐）感兴趣。</li>
+<li><strong>异常检测 (Anomaly Detection)</strong>: 专门用于识别数据中的罕见事件或离群点。</li>
+<li><strong>强化学习 (Reinforcement Learning)</strong>: 训练一个智能体 (Agent) 在特定环境中通过与环境交互来学习如何做出最优决策以获得最大奖励（例如：自动驾驶、游戏AI）。</li>
+<li><strong>生成模型 (Generative Models)</strong>: 不是预测，而是创造全新的、与训练数据相似的数据（例如：生成人脸图片、撰写文章）。</li>
+</ul>
 </section>
 <section id="总结" class="level3">
 <h3 class="anchored" data-anchor-id="总结">总结</h3>
@@ -1624,71 +1630,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="fu">### 其他问题类型简介</span></span>
 <span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>除了这三大核心类型，机器学习的世界还有许多其他有趣且强大的问题类型，我们将在后续的课程中深入探索：</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**推荐系统 (Recommendation System)**: 预测用户可能对哪些物品（商品、电影、音乐）感兴趣。</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**异常检测 (Anomaly Detection)**: 专门用于识别数据中的罕见事件或离群点。</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**强化学习 (Reinforcement Learning)**: 训练一个智能体 (Agent) 在特定环境中通过与环境交互来学习如何做出最优决策以获得最大奖励（例如：自动驾驶、游戏AI）。</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**生成模型 (Generative Models)**: 不是预测，而是创造全新的、与训练数据相似的数据（例如：生成人脸图片、撰写文章）。</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="fu">### 总结</span></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>下表总结了这三大核心问题类型的关键区别：</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 特征         <span class="pp">|</span> 回归 (Regression)      <span class="pp">|</span> 分类 (Classification)   <span class="pp">|</span> 聚类 (Clustering)      <span class="pp">|</span></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------------|------------------------|-------------------------|------------------------|</span></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **目标**     <span class="pp">|</span> 预测连续数值           <span class="pp">|</span> 预测离散类别            <span class="pp">|</span> 发现隐藏群组           <span class="pp">|</span></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **数据标签** <span class="pp">|</span> 需要 (监督学习)        <span class="pp">|</span> 需要 (监督学习)         <span class="pp">|</span> 不需要 (无监督学习)    <span class="pp">|</span></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **核心问题** <span class="pp">|</span> “多少？”               <span class="pp">|</span> “哪一种？”              <span class="pp">|</span> “如何分组？”           <span class="pp">|</span></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **典型例子** <span class="pp">|</span> 预测房价               <span class="pp">|</span> 识别垃圾邮件            <span class="pp">|</span> 客户市场细分           <span class="pp">|</span></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**推荐系统 (Recommendation System)**: 预测用户可能对哪些物品（商品、电影、音乐）感兴趣。</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**异常检测 (Anomaly Detection)**: 专门用于识别数据中的罕见事件或离群点。</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**强化学习 (Reinforcement Learning)**: 训练一个智能体 (Agent) 在特定环境中通过与环境交互来学习如何做出最优决策以获得最大奖励（例如：自动驾驶、游戏AI）。</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**生成模型 (Generative Models)**: 不是预测，而是创造全新的、与训练数据相似的数据（例如：生成人脸图片、撰写文章）。</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="fu">### 总结</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>下表总结了这三大核心问题类型的关键区别：</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 特征         <span class="pp">|</span> 回归 (Regression)      <span class="pp">|</span> 分类 (Classification)   <span class="pp">|</span> 聚类 (Clustering)      <span class="pp">|</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------------|------------------------|-------------------------|------------------------|</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **目标**     <span class="pp">|</span> 预测连续数值           <span class="pp">|</span> 预测离散类别            <span class="pp">|</span> 发现隐藏群组           <span class="pp">|</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **数据标签** <span class="pp">|</span> 需要 (监督学习)        <span class="pp">|</span> 需要 (监督学习)         <span class="pp">|</span> 不需要 (无监督学习)    <span class="pp">|</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **核心问题** <span class="pp">|</span> “多少？”               <span class="pp">|</span> “哪一种？”              <span class="pp">|</span> “如何分组？”           <span class="pp">|</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> **典型例子** <span class="pp">|</span> 预测房价               <span class="pp">|</span> 识别垃圾邮件            <span class="pp">|</span> 客户市场细分           <span class="pp">|</span></span>
 <span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>掌握了这些基本的“地图图例”，你就拥有了初步导航复杂商业世界的能力。当你再面对一个新的商业挑战时，你就可以尝试从这个分类体系出发，为它寻找最合适的“坐标”，从而高质量地完成O-A-D-M问题定义框架的最后一步。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>掌握了这些基本的“地图图例”，你就拥有了初步导航复杂商业世界的能力。当你再面对一个新的商业挑战时，你就可以尝试从这个分类体系出发，为它寻找最合适的“坐标”，从而高质量地完成O-A-D-M问题定义框架的最后一步。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<script src="assets/font-size-selector.js"></script>
-<script>
-// 初始化字体大小选择器的额外配置
-document.addEventListener('fontSizeChanged', function(e) {
-  console.log('字体大小已更改为:', e.detail.label, '(' + e.detail.size + ')');
-  
-  // 可选：向用户显示更改提示
-  if (window.innerWidth <= 768) {
-    const toast = document.createElement('div');
-    toast.textContent = `字体大小已设置为${e.detail.label}`;
-    toast.style.cssText = `
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--chatgpt-accent);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      z-index: 10000;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    `;
-    document.body.appendChild(toast);
-    
-    // 显示提示
-    setTimeout(() => toast.style.opacity = '1', 100);
-    
-    // 3秒后移除提示
-    setTimeout(() => {
-      toast.style.opacity = '0';
-      setTimeout(() => document.body.removeChild(toast), 300);
-    }, 3000);
-  }
-});
-
-// 键盘快捷键提示（开发模式）
-if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-  console.log('🎯 字体大小选择器快捷键:');
-  console.log('  Ctrl/Cmd + +  增大字体');
-  console.log('  Ctrl/Cmd + -  减小字体');
-  console.log('  Ctrl/Cmd + 0  重置字体');
-}
-</script>
 
 
 

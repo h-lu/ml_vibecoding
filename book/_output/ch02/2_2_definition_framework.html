@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7ec80faf2f76fb0b865d1103a6b470c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4748502d1f1e86460223ec0d74b9caae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-e4f0b921bea972c06d94a524d5d8c001.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -105,6 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<meta name="mermaid-theme" content="neutral">
 <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
@@ -1035,7 +1036,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="第三步d---思考所需数据-data"><strong>第三步：D - 思考所需数据 (Data)</strong></h4>
 <p>现在我们知道，系统需要做一个“预测”。要做出这个关于“未来”的预测，我们需要什么样的“过去”的数据？</p>
 <p>我们需要思考：一个用户是否会流失，可能和哪些因素有关？这又是一次需要领域专家（比如客户关系经理）参与的头脑风暴。</p>
-<p>可能的数据来源包括： - <strong>用户基本信息</strong>: 年龄、性别、注册时长 (Tenure)。 - <strong>用户行为数据</strong>: 近期登录频率、页面浏览时长、购物车添加次数。 - <strong>用户交易数据</strong>: 近三个月的购买总额、购买频率、平均客单价。 - <strong>客户服务互动数据</strong>: 近期是否有过投诉、咨询次数。</p>
+<p>可能的数据来源包括：</p>
+<ul>
+<li><strong>用户基本信息</strong>: 年龄、性别、注册时长 (Tenure)。</li>
+<li><strong>用户行为数据</strong>: 近期登录频率、页面浏览时长、购物车添加次数。</li>
+<li><strong>用户交易数据</strong>: 近三个月的购买总额、购买频率、平均客单价。</li>
+<li><strong>客户服务互动数据</strong>: 近期是否有过投诉、咨询次数。</li>
+</ul>
 <p><strong>输出</strong>: <code>需要整合用户的基本信息、行为、交易和客服互动数据，作为预测的依据。</code></p>
 <hr>
 </section>
@@ -1054,7 +1061,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
+<pre class="mermaid mermaid-js">graph TD
     subgraph 商业世界
         A["O: 商业目标&lt;br/&gt;降低高价值用户流失率"] --&gt; B["A: 业务行动&lt;br/&gt;向高危用户发优惠券"]
     end
@@ -1602,101 +1609,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>我们需要思考：一个用户是否会流失，可能和哪些因素有关？这又是一次需要领域专家（比如客户关系经理）参与的头脑风暴。</span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>可能的数据来源包括：</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**用户基本信息**: 年龄、性别、注册时长 (Tenure)。</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**用户行为数据**: 近期登录频率、页面浏览时长、购物车添加次数。</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**用户交易数据**: 近三个月的购买总额、购买频率、平均客单价。</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**客户服务互动数据**: 近期是否有过投诉、咨询次数。</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>**输出**: <span class="in">`需要整合用户的基本信息、行为、交易和客服互动数据，作为预测的依据。`</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **第四步：M - 定义模型类型 (Model)**</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>有了行动和数据，我们终于可以精确地定义机器学习问题了。</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>我们要预测的对象是“一个高价值用户下个月是否会流失”。</span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>这个预测结果只有两种可能：“是”或“否”。</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>在机器学习的词典里，预测一个对象属于两个或多个离散类别中的哪一个，这类问题被称为**分类 (Classification)** 问题。因为这里只有“是”和“否”两个类别，所以它是一个**二元分类 (Binary Classification)** 问题。</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>**输出**: <span class="in">`这是一个二元分类问题。模型需要对每一个高价值用户，输出其在下个月流失的概率`</span></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="fu">### 框架可视化</span></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>我们可以用一张图来清晰地展示这个从商业到技术的完整翻译路径：</span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{mermaid}</span></span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>graph LR</span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>    subgraph 商业世界</span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>        A[<span class="ot">"</span><span class="st">O: 商业目标&lt;br/&gt;降低高价值用户流失率</span><span class="ot">"</span>] --&gt; B[<span class="ot">"</span><span class="st">A: 业务行动&lt;br/&gt;向高危用户发优惠券</span><span class="ot">"</span>]</span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>    end</span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>    subgraph 技术世界</span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>        C[<span class="ot">"</span><span class="st">D: 所需数据&lt;br/&gt;用户行为、交易、互动记录</span><span class="ot">"</span>] --&gt; D[<span class="ot">"</span><span class="st">M: ML模型&lt;br/&gt;二元分类模型&lt;br/&gt;预测每个用户下个月的流失概率</span><span class="ot">"</span>]</span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>    end</span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    A -- <span class="ot">"</span><span class="st">如何实现？</span><span class="ot">"</span> --&gt; B</span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>    B -- <span class="ot">"</span><span class="st">如何赋能？</span><span class="ot">"</span> --&gt; C</span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>    C -- <span class="ot">"</span><span class="st">如何建模？</span><span class="ot">"</span> --&gt; D</span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>    linkStyle <span class="dv">0</span> stroke-width:<span class="dv">2</span>px,fill:none,stroke:blue</span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>    linkStyle <span class="dv">1</span> stroke-width:<span class="dv">2</span>px,fill:none,stroke:red</span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>    linkStyle <span class="dv">2</span> stroke-width:<span class="dv">2</span>px,fill:none,stroke:green</span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>通过这个 O-A-D-M 框架，我们系统性地将一个宏大的商业愿景，翻译成了一个任何数据科学家都能理解和执行的技术任务说明书：</span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **“我们需要利用用户的历史数据（包括行为、交易和互动记录），构建一个二元分类模型，来预测每一位高价值用户在下个月流失的概率，从而支持营销团队进行精准的挽留干预。”**</span></span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>这个定义是清晰、可行且与商业目标紧密对齐的。它为后续所有的数据准备、模型训练和系统评估工作，都提供了坚实的基础。在下一节，我们将概览机器学习中常见的问题类型，让你在未来面对更多样的商业挑战时，能够从容地为它们选择正确的“模型”标签。</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**用户基本信息**: 年龄、性别、注册时长 (Tenure)。</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**用户行为数据**: 近期登录频率、页面浏览时长、购物车添加次数。</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**用户交易数据**: 近三个月的购买总额、购买频率、平均客单价。</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**客户服务互动数据**: 近期是否有过投诉、咨询次数。</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>**输出**: <span class="in">`需要整合用户的基本信息、行为、交易和客服互动数据，作为预测的依据。`</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="fu">#### **第四步：M - 定义模型类型 (Model)**</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>有了行动和数据，我们终于可以精确地定义机器学习问题了。</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>我们要预测的对象是“一个高价值用户下个月是否会流失”。</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>这个预测结果只有两种可能：“是”或“否”。</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>在机器学习的词典里，预测一个对象属于两个或多个离散类别中的哪一个，这类问题被称为**分类 (Classification)** 问题。因为这里只有“是”和“否”两个类别，所以它是一个**二元分类 (Binary Classification)** 问题。</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>**输出**: <span class="in">`这是一个二元分类问题。模型需要对每一个高价值用户，输出其在下个月流失的概率`</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="fu">### 框架可视化</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>我们可以用一张图来清晰地展示这个从商业到技术的完整翻译路径：</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{mermaid}</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>graph TD</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>    subgraph 商业世界</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>        A[<span class="ot">"</span><span class="st">O: 商业目标&lt;br/&gt;降低高价值用户流失率</span><span class="ot">"</span>] --&gt; B[<span class="ot">"</span><span class="st">A: 业务行动&lt;br/&gt;向高危用户发优惠券</span><span class="ot">"</span>]</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>    end</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>    subgraph 技术世界</span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>        C[<span class="ot">"</span><span class="st">D: 所需数据&lt;br/&gt;用户行为、交易、互动记录</span><span class="ot">"</span>] --&gt; D[<span class="ot">"</span><span class="st">M: ML模型&lt;br/&gt;二元分类模型&lt;br/&gt;预测每个用户下个月的流失概率</span><span class="ot">"</span>]</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    end</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>    A -- <span class="ot">"</span><span class="st">如何实现？</span><span class="ot">"</span> --&gt; B</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>    B -- <span class="ot">"</span><span class="st">如何赋能？</span><span class="ot">"</span> --&gt; C</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>    C -- <span class="ot">"</span><span class="st">如何建模？</span><span class="ot">"</span> --&gt; D</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>    linkStyle <span class="dv">0</span> stroke-width:<span class="dv">2</span>px,fill:none,stroke:blue</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>    linkStyle <span class="dv">1</span> stroke-width:<span class="dv">2</span>px,fill:none,stroke:red</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>    linkStyle <span class="dv">2</span> stroke-width:<span class="dv">2</span>px,fill:none,stroke:green</span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>通过这个 O-A-D-M 框架，我们系统性地将一个宏大的商业愿景，翻译成了一个任何数据科学家都能理解和执行的技术任务说明书：</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **“我们需要利用用户的历史数据（包括行为、交易和互动记录），构建一个二元分类模型，来预测每一位高价值用户在下个月流失的概率，从而支持营销团队进行精准的挽留干预。”**</span></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>这个定义是清晰、可行且与商业目标紧密对齐的。它为后续所有的数据准备、模型训练和系统评估工作，都提供了坚实的基础。在下一节，我们将概览机器学习中常见的问题类型，让你在未来面对更多样的商业挑战时，能够从容地为它们选择正确的“模型”标签。</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<script src="assets/font-size-selector.js"></script>
-<script>
-// 初始化字体大小选择器的额外配置
-document.addEventListener('fontSizeChanged', function(e) {
-  console.log('字体大小已更改为:', e.detail.label, '(' + e.detail.size + ')');
-  
-  // 可选：向用户显示更改提示
-  if (window.innerWidth <= 768) {
-    const toast = document.createElement('div');
-    toast.textContent = `字体大小已设置为${e.detail.label}`;
-    toast.style.cssText = `
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--chatgpt-accent);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      z-index: 10000;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    `;
-    document.body.appendChild(toast);
-    
-    // 显示提示
-    setTimeout(() => toast.style.opacity = '1', 100);
-    
-    // 3秒后移除提示
-    setTimeout(() => {
-      toast.style.opacity = '0';
-      setTimeout(() => document.body.removeChild(toast), 300);
-    }, 3000);
-  }
-});
-
-// 键盘快捷键提示（开发模式）
-if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-  console.log('🎯 字体大小选择器快捷键:');
-  console.log('  Ctrl/Cmd + +  增大字体');
-  console.log('  Ctrl/Cmd + -  减小字体');
-  console.log('  Ctrl/Cmd + 0  重置字体');
-}
-</script>
 
 
 

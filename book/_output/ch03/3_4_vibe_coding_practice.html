@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7ec80faf2f76fb0b865d1103a6b470c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4748502d1f1e86460223ec0d74b9caae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-e4f0b921bea972c06d94a524d5d8c001.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -1007,7 +1007,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>提示 (Prompt):</strong></p>
 <p>“你好，请用 Python 的 Matplotlib 库，帮我创建一个动态的可视化过程，用来解释梯度下降算法。</p>
-<p>具体要求如下： 1. 目标函数是一个简单的二次函数，例如 <code>y = x^2</code>。 2. 在图上画出这个函数的曲线。 3. 选择一个初始点，例如 <code>x = -4</code>。 4. 模拟梯度下降的过程，在每一次迭代中： - 计算当前点的梯度。 - 根据梯度和设定的学习率（例如 0.1），更新点的位置。 - 在图上用一个红点标出当前位置，并用虚线画出它的移动轨迹。 5. 请将整个过程制作成一个动画，并确保图表有清晰的标题和坐标轴标签。</p>
+<p>具体要求如下：</p>
+<ol type="1">
+<li>目标函数是一个简单的二次函数，例如 <code>y = x^2</code>。</li>
+<li>在图上画出这个函数的曲线。</li>
+<li>选择一个初始点，例如 <code>x = -4</code>。</li>
+<li>模拟梯度下降的过程，在每一次迭代中：
+<ul>
+<li>计算当前点的梯度。</li>
+<li>根据梯度和设定的学习率（例如 0.1），更新点的位置。</li>
+<li>在图上用一个红点标出当前位置，并用虚线画出它的移动轨迹。</li>
+</ul></li>
+<li>请将整个过程制作成一个动画，并确保图表有清晰的标题和坐标轴标签。</li>
+</ol>
 <p>请给出完整、可以直接运行的代码。”</p>
 </blockquote>
 <p><strong>学生观察</strong>: AI 会迅速地为你生成一段 Python 代码。当你运行这段代码时，你应该能看到一个窗口弹出来，显示一个点沿着抛物线滚向底部的动画。这个动画就是我们的“初稿”，它已经具备了核心的功能，但可能在清晰度、表达力和教学效果上还有很大的提升空间。</p>
@@ -1033,7 +1045,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>我们能否在图表的标题或注释中，动态地显示当前的迭代次数、x 的值和损失函数的值，让观众对“迭代优化”这个概念有更具体的感受？</li>
 </ul></li>
 </ol>
-<p><strong>学生动手</strong>: 根据你的思考，选择一两个最重要的优化点，动手修改 AI 生成的代码。例如： - <strong>优化标签</strong>: 修改 <code>plt.title</code>, <code>plt.xlabel</code>, <code>plt.ylabel</code> 的内容，使其更具解释性。 - <strong>增加注释</strong>: 在代码的关键部分（如梯度计算、参数更新）添加更详细的注释，解释这行代码的“物理意义”。 - <strong>（进阶）增加交互性</strong>: 尝试将 AI 生成的 Matplotlib 代码，改写为使用 <code>Plotly</code> 和 <code>ipywidgets</code> 的交互式版本（可以再次向 AI 求助，提出更具体的新需求：“请将之前的 Matplotlib 动画，改写成一个使用 Plotly 和滑块来控制学习率的交互式图表”）。</p>
+<p><strong>学生动手</strong>: 根据你的思考，选择一两个最重要的优化点，动手修改 AI 生成的代码。例如：</p>
+<ul>
+<li><strong>优化标签</strong>: 修改 <code>plt.title</code>, <code>plt.xlabel</code>, <code>plt.ylabel</code> 的内容，使其更具解释性。</li>
+<li><strong>增加注释</strong>: 在代码的关键部分（如梯度计算、参数更新）添加更详细的注释，解释这行代码的“物理意义”。</li>
+<li><strong>（进阶）增加交互性</strong>: 尝试将 AI 生成的 Matplotlib 代码，改写为使用 <code>Plotly</code> 和 <code>ipywidgets</code> 的交互式版本（可以再次向 AI 求助，提出更具体的新需求：“请将之前的 Matplotlib 动画，改写成一个使用 Plotly 和滑块来控制学习率的交互式图表”）。</li>
+</ul>
 <p>通过这次实践，你将体验到 Vibe Coding 在一个全新领域的应用。在这里，AI 不仅帮你写代码，更是在你的指导下，帮你思考如何更好地传递知识和直觉。你，作为人类设计师，注入的价值是<strong>同理心</strong>（站在学习者的角度思考）、<strong>教学设计能力</strong>和<strong>对核心概念的深刻理解</strong>。这种人机协作，能让我们创造出比任何一方单独工作都更强大、更有效的沟通工具。</p>
 
 
@@ -1526,92 +1543,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; "你好，请用 Python 的 Matplotlib 库，帮我创建一个动态的可视化过程，用来解释梯度下降算法。</span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 具体要求如下：</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 1.  目标函数是一个简单的二次函数，例如 </span><span class="in">`y = x^2`</span><span class="at">。</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 2.  在图上画出这个函数的曲线。</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 3.  选择一个初始点，例如 </span><span class="in">`x = -4`</span><span class="at">。</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 4.  模拟梯度下降的过程，在每一次迭代中：</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;     -   计算当前点的梯度。</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;     -   根据梯度和设定的学习率（例如 0.1），更新点的位置。</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;     -   在图上用一个红点标出当前位置，并用虚线画出它的移动轨迹。</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 5.  请将整个过程制作成一个动画，并确保图表有清晰的标题和坐标轴标签。</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 请给出完整、可以直接运行的代码。"</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>**学生观察**:</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>AI 会迅速地为你生成一段 Python 代码。当你运行这段代码时，你应该能看到一个窗口弹出来，显示一个点沿着抛物线滚向底部的动画。这个动画就是我们的“初稿”，它已经具备了核心的功能，但可能在清晰度、表达力和教学效果上还有很大的提升空间。</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="fu">### 第二阶段：人类优化 (20分钟)</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>现在，系统设计师（或者说，“教学设计师”）登场。我们的工作不是满足于 AI 给出的初稿，而是要对其进行审视和优化，让它从一个“能运行的程序”变成一个“能讲好故事的工具”。</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>**请带着以下引导性问题，审视 AI 生成的动画和代码：**</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**清晰度 (Clarity)**:</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>AI 生成的图表，其标题、坐标轴标签、图例是否足够清晰易懂？一个非技术人员能看懂 <span class="in">`y`</span> 轴代表“损失 (Loss)”或“成本 (Cost)”，<span class="in">`x`</span> 轴代表“模型参数 (Parameter)”吗？</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>动画中的点移动得太快还是太慢？我们能否调整动画的帧率，让观众有足够的时间来观察和理解？</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**交互性 (Interactivity)**:</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>这个动画是固定的。我们能否让它变得**可交互**？例如，我们能否添加几个滑块，让用户可以自己拖动来改变**初始位置**和**学习率**，从而亲手体验这些参数对优化过程的影响？（这通常需要从 <span class="in">`Matplotlib`</span> 转向 <span class="in">`Plotly`</span> 或其他支持交互的库）。</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**类比性 (Analogy)**:</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>动画本身是纯数学的。我们能否在视觉上强化“盲人下山”这个类比，以增强直觉？</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>例如，我们能否在动画的每一帧，不仅显示红点，还用一个小箭头明确地指出当前计算出的“梯度方向”？</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>我们能否在图表的标题或注释中，动态地显示当前的迭代次数、x 的值和损失函数的值，让观众对“迭代优化”这个概念有更具体的感受？</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>**学生动手**:</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>根据你的思考，选择一两个最重要的优化点，动手修改 AI 生成的代码。例如：</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**优化标签**: 修改 <span class="in">`plt.title`</span>, <span class="in">`plt.xlabel`</span>, <span class="in">`plt.ylabel`</span> 的内容，使其更具解释性。</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**增加注释**: 在代码的关键部分（如梯度计算、参数更新）添加更详细的注释，解释这行代码的“物理意义”。</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**（进阶）增加交互性**: 尝试将 AI 生成的 Matplotlib 代码，改写为使用 <span class="in">`Plotly`</span> 和 <span class="in">`ipywidgets`</span> 的交互式版本（可以再次向 AI 求助，提出更具体的新需求：“请将之前的 Matplotlib 动画，改写成一个使用 Plotly 和滑块来控制学习率的交互式图表”）。</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>通过这次实践，你将体验到 Vibe Coding 在一个全新领域的应用。在这里，AI 不仅帮你写代码，更是在你的指导下，帮你思考如何更好地传递知识和直觉。你，作为人类设计师，注入的价值是**同理心**（站在学习者的角度思考）、**教学设计能力**和**对核心概念的深刻理解**。这种人机协作，能让我们创造出比任何一方单独工作都更强大、更有效的沟通工具。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 1.  目标函数是一个简单的二次函数，例如 </span><span class="in">`y = x^2`</span><span class="at">。</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 2.  在图上画出这个函数的曲线。</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 3.  选择一个初始点，例如 </span><span class="in">`x = -4`</span><span class="at">。</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 4.  模拟梯度下降的过程，在每一次迭代中：</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;     -   计算当前点的梯度。</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;     -   根据梯度和设定的学习率（例如 0.1），更新点的位置。</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;     -   在图上用一个红点标出当前位置，并用虚线画出它的移动轨迹。</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 5.  请将整个过程制作成一个动画，并确保图表有清晰的标题和坐标轴标签。</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 请给出完整、可以直接运行的代码。"</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>**学生观察**:</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>AI 会迅速地为你生成一段 Python 代码。当你运行这段代码时，你应该能看到一个窗口弹出来，显示一个点沿着抛物线滚向底部的动画。这个动画就是我们的“初稿”，它已经具备了核心的功能，但可能在清晰度、表达力和教学效果上还有很大的提升空间。</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">### 第二阶段：人类优化 (20分钟)</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>现在，系统设计师（或者说，“教学设计师”）登场。我们的工作不是满足于 AI 给出的初稿，而是要对其进行审视和优化，让它从一个“能运行的程序”变成一个“能讲好故事的工具”。</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>**请带着以下引导性问题，审视 AI 生成的动画和代码：**</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**清晰度 (Clarity)**:</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>AI 生成的图表，其标题、坐标轴标签、图例是否足够清晰易懂？一个非技术人员能看懂 <span class="in">`y`</span> 轴代表“损失 (Loss)”或“成本 (Cost)”，<span class="in">`x`</span> 轴代表“模型参数 (Parameter)”吗？</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>动画中的点移动得太快还是太慢？我们能否调整动画的帧率，让观众有足够的时间来观察和理解？</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**交互性 (Interactivity)**:</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>这个动画是固定的。我们能否让它变得**可交互**？例如，我们能否添加几个滑块，让用户可以自己拖动来改变**初始位置**和**学习率**，从而亲手体验这些参数对优化过程的影响？（这通常需要从 <span class="in">`Matplotlib`</span> 转向 <span class="in">`Plotly`</span> 或其他支持交互的库）。</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**类比性 (Analogy)**:</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>动画本身是纯数学的。我们能否在视觉上强化“盲人下山”这个类比，以增强直觉？</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>例如，我们能否在动画的每一帧，不仅显示红点，还用一个小箭头明确地指出当前计算出的“梯度方向”？</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>我们能否在图表的标题或注释中，动态地显示当前的迭代次数、x 的值和损失函数的值，让观众对“迭代优化”这个概念有更具体的感受？</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>**学生动手**:</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>根据你的思考，选择一两个最重要的优化点，动手修改 AI 生成的代码。例如：</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**优化标签**: 修改 <span class="in">`plt.title`</span>, <span class="in">`plt.xlabel`</span>, <span class="in">`plt.ylabel`</span> 的内容，使其更具解释性。</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**增加注释**: 在代码的关键部分（如梯度计算、参数更新）添加更详细的注释，解释这行代码的“物理意义”。</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**（进阶）增加交互性**: 尝试将 AI 生成的 Matplotlib 代码，改写为使用 <span class="in">`Plotly`</span> 和 <span class="in">`ipywidgets`</span> 的交互式版本（可以再次向 AI 求助，提出更具体的新需求：“请将之前的 Matplotlib 动画，改写成一个使用 Plotly 和滑块来控制学习率的交互式图表”）。</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>通过这次实践，你将体验到 Vibe Coding 在一个全新领域的应用。在这里，AI 不仅帮你写代码，更是在你的指导下，帮你思考如何更好地传递知识和直觉。你，作为人类设计师，注入的价值是**同理心**（站在学习者的角度思考）、**教学设计能力**和**对核心概念的深刻理解**。这种人机协作，能让我们创造出比任何一方单独工作都更强大、更有效的沟通工具。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<script src="assets/font-size-selector.js"></script>
-<script>
-// 初始化字体大小选择器的额外配置
-document.addEventListener('fontSizeChanged', function(e) {
-  console.log('字体大小已更改为:', e.detail.label, '(' + e.detail.size + ')');
-  
-  // 可选：向用户显示更改提示
-  if (window.innerWidth <= 768) {
-    const toast = document.createElement('div');
-    toast.textContent = `字体大小已设置为${e.detail.label}`;
-    toast.style.cssText = `
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--chatgpt-accent);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      z-index: 10000;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    `;
-    document.body.appendChild(toast);
-    
-    // 显示提示
-    setTimeout(() => toast.style.opacity = '1', 100);
-    
-    // 3秒后移除提示
-    setTimeout(() => {
-      toast.style.opacity = '0';
-      setTimeout(() => document.body.removeChild(toast), 300);
-    }, 3000);
-  }
-});
-
-// 键盘快捷键提示（开发模式）
-if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-  console.log('🎯 字体大小选择器快捷键:');
-  console.log('  Ctrl/Cmd + +  增大字体');
-  console.log('  Ctrl/Cmd + -  减小字体');
-  console.log('  Ctrl/Cmd + 0  重置字体');
-}
-</script>
 
 
 

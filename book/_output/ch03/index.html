@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7ec80faf2f76fb0b865d1103a6b470c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4748502d1f1e86460223ec0d74b9caae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-e4f0b921bea972c06d94a524d5d8c001.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -1000,7 +1000,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 <p>在前面的章节中，我们明确了系统设计师的身份和核心任务——正确地定义问题。但要真正驾驭机器学习，尤其是在与 AI 协作时能够洞察其“幻觉”，我们还需要一个更底层的思维工具箱。这个工具箱里装的不是复杂的编程技巧，而是几个源自数学和物理学的<strong>第一性原理直觉</strong>。</p>
 <p>为什么强调“直觉”而非“推导”？因为对于经管背景的你而言，目标不是成为一名数学家，而是在与 AI 协作时，能够凭借直觉判断其建议的合理性。当你看到一个算法时，你应该能“感觉”到它在做什么，而不是仅仅把它当作一个黑箱。这能帮你避免在 AI 时代最危险的“知识悖论”——知道<strong>如何</strong>调用一个工具，却不理解它<strong>为何</strong>有效，从而无法判断其输出的真伪。</p>
-<p>本章将聚焦于三个核心的、看似抽象但实则非常直观的概念： 1. <strong>向量空间</strong>：我们将学习把所有数据（无论是用户画像、产品图片还是销售报表）都看作是空间中的点，而数据之间的关系，就是它们在空间中的<strong>几何</strong>关系。 2. <strong>概率论</strong>：我们将学会用数学的语言来拥抱和量化<strong>不确定性</strong>，理解学习的本质就是根据新证据来更新我们对世界看法的过程。 3. <strong>优化理论</strong>：我们会发现，所有机器学习的“训练”过程，都惊人地相似于一个物理现象——一个球滚到山谷的最低点。这是一种寻找最小<strong>能量</strong>状态的本能。</p>
+<p>本章将聚焦于三个核心的、看似抽象但实则非常直观的概念：</p>
+<ol type="1">
+<li><strong>向量空间</strong>：我们将学习把所有数据（无论是用户画像、产品图片还是销售报表）都看作是空间中的点，而数据之间的关系，就是它们在空间中的<strong>几何</strong>关系。</li>
+<li><strong>概率论</strong>：我们将学会用数学的语言来拥抱和量化<strong>不确定性</strong>，理解学习的本质就是根据新证据来更新我们对世界看法的过程。</li>
+<li><strong>优化理论</strong>：我们会发现，所有机器学习的“训练”过程，都惊人地相似于一个物理现象——一个球滚到山谷的最低点。这是一种寻找最小<strong>能量</strong>状态的本能。</li>
+</ol>
 <p>我们将通过大量的互动可视化和物理类比，绕开复杂的公式推导，让你直接“看到”这些概念的本质。掌握了这些直觉，你就有了一个坚实的思维地基，足以支撑后续所有关于具体机器学习模型的学习。</p>
 <section id="学习目标" class="level2">
 <h2 class="anchored" data-anchor-id="学习目标">学习目标</h2>
@@ -1491,67 +1496,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>为什么强调“直觉”而非“推导”？因为对于经管背景的你而言，目标不是成为一名数学家，而是在与 AI 协作时，能够凭借直觉判断其建议的合理性。当你看到一个算法时，你应该能“感觉”到它在做什么，而不是仅仅把它当作一个黑箱。这能帮你避免在 AI 时代最危险的“知识悖论”——知道**如何**调用一个工具，却不理解它**为何**有效，从而无法判断其输出的真伪。</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>本章将聚焦于三个核心的、看似抽象但实则非常直观的概念：</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**向量空间**：我们将学习把所有数据（无论是用户画像、产品图片还是销售报表）都看作是空间中的点，而数据之间的关系，就是它们在空间中的**几何**关系。</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**概率论**：我们将学会用数学的语言来拥抱和量化**不确定性**，理解学习的本质就是根据新证据来更新我们对世界看法的过程。</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**优化理论**：我们会发现，所有机器学习的“训练”过程，都惊人地相似于一个物理现象——一个球滚到山谷的最低点。这是一种寻找最小**能量**状态的本能。</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>我们将通过大量的互动可视化和物理类比，绕开复杂的公式推导，让你直接“看到”这些概念的本质。掌握了这些直觉，你就有了一个坚实的思维地基，足以支撑后续所有关于具体机器学习模型的学习。</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## 学习目标</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>在本章结束后，你将能够：</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**建立核心直觉**：不追求复杂的数学推导，而是为后续学习建立关于向量空间、概率和优化的直觉性、物理性理解。</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**掌握“零数学入门”路径**：学会利用互动可视化工具，将抽象的数学概念转化为可感知、可操作的几何图像。</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**连接跨学科知识**：理解机器学习的核心概念如何与物理学（能量）、信息论（不确定性）和行为经济学（有限理性）等领域产生共鸣。</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**实践 Vibe Coding 可视化**：学会指导 AI 生成用于解释复杂概念的可视化代码，并由人类优化其表达力和清晰度。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**向量空间**：我们将学习把所有数据（无论是用户画像、产品图片还是销售报表）都看作是空间中的点，而数据之间的关系，就是它们在空间中的**几何**关系。</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**概率论**：我们将学会用数学的语言来拥抱和量化**不确定性**，理解学习的本质就是根据新证据来更新我们对世界看法的过程。</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**优化理论**：我们会发现，所有机器学习的“训练”过程，都惊人地相似于一个物理现象——一个球滚到山谷的最低点。这是一种寻找最小**能量**状态的本能。</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>我们将通过大量的互动可视化和物理类比，绕开复杂的公式推导，让你直接“看到”这些概念的本质。掌握了这些直觉，你就有了一个坚实的思维地基，足以支撑后续所有关于具体机器学习模型的学习。</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## 学习目标</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>在本章结束后，你将能够：</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**建立核心直觉**：不追求复杂的数学推导，而是为后续学习建立关于向量空间、概率和优化的直觉性、物理性理解。</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**掌握“零数学入门”路径**：学会利用互动可视化工具，将抽象的数学概念转化为可感知、可操作的几何图像。</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**连接跨学科知识**：理解机器学习的核心概念如何与物理学（能量）、信息论（不确定性）和行为经济学（有限理性）等领域产生共鸣。</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**实践 Vibe Coding 可视化**：学会指导 AI 生成用于解释复杂概念的可视化代码，并由人类优化其表达力和清晰度。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<script src="assets/font-size-selector.js"></script>
-<script>
-// 初始化字体大小选择器的额外配置
-document.addEventListener('fontSizeChanged', function(e) {
-  console.log('字体大小已更改为:', e.detail.label, '(' + e.detail.size + ')');
-  
-  // 可选：向用户显示更改提示
-  if (window.innerWidth <= 768) {
-    const toast = document.createElement('div');
-    toast.textContent = `字体大小已设置为${e.detail.label}`;
-    toast.style.cssText = `
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--chatgpt-accent);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      z-index: 10000;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    `;
-    document.body.appendChild(toast);
-    
-    // 显示提示
-    setTimeout(() => toast.style.opacity = '1', 100);
-    
-    // 3秒后移除提示
-    setTimeout(() => {
-      toast.style.opacity = '0';
-      setTimeout(() => document.body.removeChild(toast), 300);
-    }, 3000);
-  }
-});
-
-// 键盘快捷键提示（开发模式）
-if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-  console.log('🎯 字体大小选择器快捷键:');
-  console.log('  Ctrl/Cmd + +  增大字体');
-  console.log('  Ctrl/Cmd + -  减小字体');
-  console.log('  Ctrl/Cmd + 0  重置字体');
-}
-</script>
 
 
 
