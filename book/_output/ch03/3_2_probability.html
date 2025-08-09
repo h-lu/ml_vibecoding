@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -105,26 +105,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-<script type="text/javascript">
-window.PlotlyConfig = {MathJaxConfig: 'local'};
-if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
-if (typeof require !== 'undefined') {
-require.undef("plotly");
-requirejs.config({
-    paths: {
-        'plotly': ['https://cdn.plot.ly/plotly-2.27.0.min']
-    }
-});
-require(['plotly'], function(Plotly) {
-    window._Plotly = Plotly;
-});
-}
-</script>
-
-<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -1037,41 +1017,8 @@ require(['plotly'], function(Plotly) {
 <section id="动画1抽球实验与概率分布" class="level4">
 <h4 class="anchored" data-anchor-id="动画1抽球实验与概率分布">动画1：抽球实验与概率分布</h4>
 <p>想象一个罐子，里面装着不同颜色的球。每次从中随机抽取一个，记录其颜色。这个简单的实验可以让我们直观地感受到概率和概率分布。</p>
-<div class="cell" data-execution_count="1">
-<div id="fig-probability-1" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="1">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-probability-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="fig-probability-1-1" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-probability-1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"a1cca1c142a54b149c57d0b17971d691","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-probability-1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) 调整罐中红球和蓝球的数量，观察抽到红球的概率如何变化。
-</figcaption>
-</figure>
-</div>
-<div id="fig-probability-1-2" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="1">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-probability-1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"9139f08237ba4ff7803f0f60a647a767","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-probability-1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b)
-</figcaption>
-</figure>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-probability-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.1
-</figcaption>
-</figure>
-</div>
-</div>
+<iframe src="../assets/ch03/probability_1.html" width="100%" height="600" frameborder="0">
+</iframe>
 <p><em>请拖动滑块，改变罐中红球和蓝球的数量。注意观察图表中代表的“概率分布”是如何随之变化的。</em></p>
 </section>
 <section id="动画2天气预测与条件概率" class="level4">
@@ -1079,42 +1026,8 @@ Figure&nbsp;13.1
 <p>让我们来看一个简单的天气预测场景。假设根据历史数据，某地6月份下雨的<strong>先验概率</strong>是30%。现在，你早上醒来，拉开窗帘，看到了一个新证据：<strong>天空乌云密布</strong>。这个证据会如何更新你对“今天会下雨”的信念？</p>
 <p>我们还需要一个数据：在所有下雨天中，有90%的日子是乌云密布的 <code>(P(乌云|下雨) = 0.9)</code>。同时，在所有不下雨的日子里，也有20%是乌云密布的 <code>(P(乌云|不下雨) = 0.2)</code>。</p>
 <p>根据贝叶斯定理，我们可以计算出<strong>后验概率</strong> <code>P(下雨|乌云)</code>。</p>
-<div id="cell-fig-bayes-weather" class="cell" data-execution_count="2">
-<div id="fig-bayes-weather" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-bayes-weather-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div>                            <div id="dc3a3aa4-d767-46c0-861d-3c64da2f5fff" class="plotly-graph-div" style="height:400px; width:600px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("dc3a3aa4-d767-46c0-861d-3c64da2f5fff")) {                    Plotly.newPlot(                        "dc3a3aa4-d767-46c0-861d-3c64da2f5fff",                        [{"marker":{"color":"lightblue"},"name":"先验概率","text":"30%","textposition":"auto","x":["下雨"],"y":[0.3],"type":"bar"},{"marker":{"color":"royalblue"},"name":"后验概率 (得知乌云后)","text":"66%","textposition":"auto","x":["下雨"],"y":[0.6585365853658537],"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"title":{"text":"信念更新：从先验到后验"},"yaxis":{"title":{"text":"概率"},"range":[0,1]},"legend":{"title":{"text":"概率类型"}},"barmode":"group","width":600,"height":400},                        {"responsive": true}                    ).then(function(){
-                            
-var gd = document.getElementById('dc3a3aa4-d767-46c0-861d-3c64da2f5fff');
-var x = new MutationObserver(function (mutations, observer) {{
-        var display = window.getComputedStyle(gd).display;
-        if (!display || display === 'none') {{
-            console.log([gd, 'removed!']);
-            Plotly.purge(gd);
-            observer.disconnect();
-        }}
-}});
-
-// Listen for the removal of the full notebook cells
-var notebookContainer = gd.closest('#notebook-container');
-if (notebookContainer) {{
-    x.observe(notebookContainer, {childList: true});
-}}
-
-// Listen for the clearing of the current output cell
-var outputEl = gd.closest('.output');
-if (outputEl) {{
-    x.observe(outputEl, {childList: true});
-}}
-
-                        })                };                });            </script>        </div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bayes-weather-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.2: 贝叶斯定理如何根据“天空乌云密布”这个证据，更新对“下雨”的信念。
-</figcaption>
-</figure>
-</div>
-</div>
+<iframe src="../assets/ch03/probability_2.html" width="100%" height="600" frameborder="0">
+</iframe>
 <p>从图中可以看到，在得知“天空乌云密布”这个强有力的证据后，我们对“今天会下雨”的信念（概率）从原来的30%大幅跃升至约69%。这就是学习的本质——<strong>根据新证据，不断调整和更新我们对世界不确定性的认知</strong>。</p>
 </section>
 </section>
@@ -1123,6 +1036,19 @@ Figure&nbsp;13.2: 贝叶斯定理如何根据“天空乌云密布”这个证�
 <p>概率论，特别是贝叶斯定理，为我们理解人类的决策过程提供了一个强大的理论框架。行为经济学的先驱丹尼尔·卡尼曼（Daniel Kahneman）和阿摩司·特沃斯基（Amos Tversky）的研究表明，人类在做决策时，并非完全理性的“经济人”，而是<strong>有限理性 (Bounded Rationality)</strong> 的。我们的大脑似乎在无意识地运用一种简化的、直觉式的贝叶斯推理。</p>
 <p>我们根据过去的经验形成对事物的<strong>先验信念</strong>，然后在接收到新的信息（<strong>证据</strong>）时，我们会更新自己的看法。然而，由于认知偏差（例如“可得性启发”、“锚定效应”），我们的更新过程往往不够精确，不如贝叶斯公式计算出来的那么理性。</p>
 <p>理解这一点对于系统设计师至关重要。你需要认识到，你自己和你的用户，在解读模型输出的概率时，都会受到认知偏差的影响。一个模型输出的“90%的概率”，在不同的人看来可能有完全不同的分量。因此，设计一个好的机器学习系统，不仅要关注模型本身的准确性，还要关注如何将模型输出的不确定性，以一种能够减少认知偏差的方式呈现给最终的决策者。</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>实务提示
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>在工程语境中，还需区分“概率（经过校准的 predict_proba）”与“分数（decision_function 或未校准分数）”，明确 <code>pos_label</code> 与平均方式（micro/macro/weighted），并在需要与业务代价对齐时进行阈值选择（如 sklearn≥1.5 的 TunedThresholdClassifierCV 或验证集阈值扫描）；对于概率质量，可结合 Brier 分数与校准曲线（CalibrationDisplay）进行检查。</p>
+</div>
+</div>
 
 
 <!-- -->
@@ -1130,9 +1056,6 @@ Figure&nbsp;13.2: 贝叶斯定理如何根据“天空乌云密布”这个证�
 </section>
 
 </main> <!-- /main -->
-<script type="application/vnd.jupyter.widget-state+json">
-{"state":{"0b3840cf141a4b98be8fd0484e44cc1f":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"20d767a7f4424d929737d68e7c3a96d8":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"241fb2207e694c778e671bece7cf941f":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"3d80cb106d9f43ca90af978099982127":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"5b2cd9fde4564c1199d489b37f050c38":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"SliderStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"SliderStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"StyleView","description_width":"","handle_color":null}},"9139f08237ba4ff7803f0f60a647a767":{"model_module":"jupyterlab-plotly","model_module_version":"^5.18.0","model_name":"FigureModel","state":{"_config":{"plotlyServerURL":"https://plot.ly"},"_data":[],"_dom_classes":[],"_js2py_layoutDelta":{},"_js2py_pointsCallback":{},"_js2py_relayout":{},"_js2py_restyle":{},"_js2py_traceDeltas":{},"_js2py_update":{},"_last_layout_edit_id":2,"_last_trace_edit_id":2,"_layout":{},"_model_module":"jupyterlab-plotly","_model_module_version":"^5.18.0","_model_name":"FigureModel","_py2js_addTraces":null,"_py2js_animate":{},"_py2js_deleteTraces":{},"_py2js_moveTraces":{},"_py2js_relayout":null,"_py2js_removeLayoutProps":{},"_py2js_removeTraceProps":{},"_py2js_restyle":{},"_py2js_update":null,"_view_count":0,"_view_module":"jupyterlab-plotly","_view_module_version":"^5.18.0","_view_name":"FigureView","tabbable":null,"tooltip":null}},"a1cca1c142a54b149c57d0b17971d691":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"VBoxModel","state":{"_dom_classes":["widget-interact"],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"VBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"VBoxView","box_style":"","children":["IPY_MODEL_f002699808994195a1b24acf9422ac14","IPY_MODEL_dbec4683c8974b4bba12a857cd9d743a","IPY_MODEL_d8f40a7011b84e70b2c3f534b200a641"],"layout":"IPY_MODEL_20d767a7f4424d929737d68e7c3a96d8","tabbable":null,"tooltip":null}},"d8f40a7011b84e70b2c3f534b200a641":{"model_module":"@jupyter-widgets/output","model_module_version":"1.0.0","model_name":"OutputModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/output","_model_module_version":"1.0.0","_model_name":"OutputModel","_view_count":null,"_view_module":"@jupyter-widgets/output","_view_module_version":"1.0.0","_view_name":"OutputView","layout":"IPY_MODEL_241fb2207e694c778e671bece7cf941f","msg_id":"","outputs":[],"tabbable":null,"tooltip":null}},"dbec4683c8974b4bba12a857cd9d743a":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"IntSliderModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"IntSliderModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"IntSliderView","behavior":"drag-tap","continuous_update":true,"description":"蓝球数量","description_allow_html":false,"disabled":false,"layout":"IPY_MODEL_3d80cb106d9f43ca90af978099982127","max":100,"min":1,"orientation":"horizontal","readout":true,"readout_format":"d","step":1,"style":"IPY_MODEL_5b2cd9fde4564c1199d489b37f050c38","tabbable":null,"tooltip":null,"value":50}},"def8c32ea8e74d4fb8724d2881a08d80":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"SliderStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"SliderStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"StyleView","description_width":"","handle_color":null}},"f002699808994195a1b24acf9422ac14":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"IntSliderModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"IntSliderModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"IntSliderView","behavior":"drag-tap","continuous_update":true,"description":"红球数量","description_allow_html":false,"disabled":false,"layout":"IPY_MODEL_0b3840cf141a4b98be8fd0484e44cc1f","max":100,"min":1,"orientation":"horizontal","readout":true,"readout_format":"d","step":1,"style":"IPY_MODEL_def8c32ea8e74d4fb8724d2881a08d80","tabbable":null,"tooltip":null,"value":50}}},"version_major":2,"version_minor":0}
-</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1627,96 +1550,36 @@ Figure&nbsp;13.2: 贝叶斯定理如何根据“天空乌云密布”这个证�
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>想象一个罐子，里面装着不同颜色的球。每次从中随机抽取一个，记录其颜色。这个简单的实验可以让我们直观地感受到概率和概率分布。</span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-probability-1</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "调整罐中红球和蓝球的数量，观察抽到红球的概率如何变化。"</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ipywidgets <span class="im">import</span> interact, IntSlider</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建一个FigureWidget</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.FigureWidget()</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> src</span><span class="op">=</span><span class="st">"../assets/ch03/probability_1.html"</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ot">        width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"600"</span><span class="ot"> frameborder</span><span class="op">=</span><span class="st">"0"</span><span class="dt">&gt;&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>*请拖动滑块，改变罐中红球和蓝球的数量。注意观察图表中代表的“概率分布”是如何随之变化的。*</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 动画2：天气预测与条件概率</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>让我们来看一个简单的天气预测场景。假设根据历史数据，某地6月份下雨的**先验概率**是30%。现在，你早上醒来，拉开窗帘，看到了一个新证据：**天空乌云密布**。这个证据会如何更新你对“今天会下雨”的信念？</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>我们还需要一个数据：在所有下雨天中，有90%的日子是乌云密布的 <span class="in">`(P(乌云|下雨) = 0.9)`</span>。同时，在所有不下雨的日子里，也有20%是乌云密布的 <span class="in">`(P(乌云|不下雨) = 0.2)`</span>。</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>根据贝叶斯定理，我们可以计算出**后验概率** <span class="in">`P(下雨|乌云)`</span>。</span>
 <span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="co"># 添加一个条形图</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Bar(x<span class="op">=</span>[<span class="st">'红球'</span>, <span class="st">'蓝球'</span>], y<span class="op">=</span>[<span class="fl">0.5</span>, <span class="fl">0.5</span>], marker_color<span class="op">=</span>[<span class="st">'crimson'</span>, <span class="st">'royalblue'</span>]))</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    title_text<span class="op">=</span><span class="st">"抽球实验的概率分布"</span>,</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    yaxis_title<span class="op">=</span><span class="st">"概率"</span>,</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    yaxis<span class="op">=</span><span class="bu">dict</span>(<span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>])</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="at">@interact</span>(red_balls<span class="op">=</span>IntSlider(<span class="bu">min</span><span class="op">=</span><span class="dv">1</span>, <span class="bu">max</span><span class="op">=</span><span class="dv">100</span>, step<span class="op">=</span><span class="dv">1</span>, value<span class="op">=</span><span class="dv">50</span>, description<span class="op">=</span><span class="st">'红球数量'</span>),</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>          blue_balls<span class="op">=</span>IntSlider(<span class="bu">min</span><span class="op">=</span><span class="dv">1</span>, <span class="bu">max</span><span class="op">=</span><span class="dv">100</span>, step<span class="op">=</span><span class="dv">1</span>, value<span class="op">=</span><span class="dv">50</span>, description<span class="op">=</span><span class="st">'蓝球数量'</span>))</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_prob(red_balls, blue_balls):</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    total_balls <span class="op">=</span> red_balls <span class="op">+</span> blue_balls</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    prob_red <span class="op">=</span> red_balls <span class="op">/</span> total_balls</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    prob_blue <span class="op">=</span> blue_balls <span class="op">/</span> total_balls</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> fig.batch_update():</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>        fig.data[<span class="dv">0</span>].y <span class="op">=</span> [prob_red, prob_blue]</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>fig</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>*请拖动滑块，改变罐中红球和蓝球的数量。注意观察图表中代表的“概率分布”是如何随之变化的。*</span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="fu">#### 动画2：天气预测与条件概率</span></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>让我们来看一个简单的天气预测场景。假设根据历史数据，某地6月份下雨的**先验概率**是30%。现在，你早上醒来，拉开窗帘，看到了一个新证据：**天空乌云密布**。这个证据会如何更新你对“今天会下雨”的信念？</span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>我们还需要一个数据：在所有下雨天中，有90%的日子是乌云密布的 <span class="in">`(P(乌云|下雨) = 0.9)`</span>。同时，在所有不下雨的日子里，也有20%是乌云密布的 <span class="in">`(P(乌云|不下雨) = 0.2)`</span>。</span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>根据贝叶斯定理，我们可以计算出**后验概率** <span class="in">`P(下雨|乌云)`</span>。</span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-bayes-weather</span></span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "贝叶斯定理如何根据“天空乌云密布”这个证据，更新对“下雨”的信念。"</span></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="co"># 先验概率</span></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>p_rain <span class="op">=</span> <span class="fl">0.3</span></span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>p_no_rain <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> p_rain</span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="co"># 证据的可信度（似然）</span></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>p_cloud_given_rain <span class="op">=</span> <span class="fl">0.9</span></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>p_cloud_given_no_rain <span class="op">=</span> <span class="fl">0.2</span></span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算证据的总概率 P(乌云)</span></span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="co"># P(乌云) = P(乌云|下雨)P(下雨) + P(乌云|不下雨)P(不下雨)</span></span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>p_cloud <span class="op">=</span> p_cloud_given_rain <span class="op">*</span> p_rain <span class="op">+</span> p_cloud_given_no_rain <span class="op">*</span> p_no_rain</span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算后验概率 P(下雨|乌云)</span></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="co"># P(下雨|乌云) = P(乌云|下雨)P(下雨) / P(乌云)</span></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>p_rain_given_cloud <span class="op">=</span> (p_cloud_given_rain <span class="op">*</span> p_rain) <span class="op">/</span> p_cloud</span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure(data<span class="op">=</span>[</span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>    go.Bar(name<span class="op">=</span><span class="st">'先验概率'</span>, x<span class="op">=</span>[<span class="st">'下雨'</span>], y<span class="op">=</span>[p_rain], marker_color<span class="op">=</span><span class="st">'lightblue'</span>, text<span class="op">=</span><span class="ss">f'</span><span class="sc">{</span>p_rain<span class="sc">:.0%}</span><span class="ss">'</span>, textposition<span class="op">=</span><span class="st">'auto'</span>),</span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>    go.Bar(name<span class="op">=</span><span class="st">'后验概率 (得知乌云后)'</span>, x<span class="op">=</span>[<span class="st">'下雨'</span>], y<span class="op">=</span>[p_rain_given_cloud], marker_color<span class="op">=</span><span class="st">'royalblue'</span>, text<span class="op">=</span><span class="ss">f'</span><span class="sc">{</span>p_rain_given_cloud<span class="sc">:.0%}</span><span class="ss">'</span>, textposition<span class="op">=</span><span class="st">'auto'</span>)</span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>    barmode<span class="op">=</span><span class="st">'group'</span>,</span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>    title_text<span class="op">=</span><span class="st">'信念更新：从先验到后验'</span>,</span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>    yaxis_title<span class="op">=</span><span class="st">'概率'</span>,</span>
-<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>    yaxis<span class="op">=</span><span class="bu">dict</span>(<span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>]),</span>
-<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>    legend_title_text<span class="op">=</span><span class="st">'概率类型'</span>,</span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">600</span>,</span>
-<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">400</span></span>
-<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
-<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>从图中可以看到，在得知“天空乌云密布”这个强有力的证据后，我们对“今天会下雨”的信念（概率）从原来的30%大幅跃升至约69%。这就是学习的本质——**根据新证据，不断调整和更新我们对世界不确定性的认知**。</span>
-<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a><span class="fu">### 行为经济学联系：有限理性</span></span>
-<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>概率论，特别是贝叶斯定理，为我们理解人类的决策过程提供了一个强大的理论框架。行为经济学的先驱丹尼尔·卡尼曼（Daniel Kahneman）和阿摩司·特沃斯基（Amos Tversky）的研究表明，人类在做决策时，并非完全理性的“经济人”，而是**有限理性 (Bounded Rationality)** 的。我们的大脑似乎在无意识地运用一种简化的、直觉式的贝叶斯推理。</span>
-<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a>我们根据过去的经验形成对事物的**先验信念**，然后在接收到新的信息（**证据**）时，我们会更新自己的看法。然而，由于认知偏差（例如“可得性启发”、“锚定效应”），我们的更新过程往往不够精确，不如贝叶斯公式计算出来的那么理性。</span>
-<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a>理解这一点对于系统设计师至关重要。你需要认识到，你自己和你的用户，在解读模型输出的概率时，都会受到认知偏差的影响。一个模型输出的“90%的概率”，在不同的人看来可能有完全不同的分量。因此，设计一个好的机器学习系统，不仅要关注模型本身的准确性，还要关注如何将模型输出的不确定性，以一种能够减少认知偏差的方式呈现给最终的决策者。</span>
-</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> src</span><span class="op">=</span><span class="st">"../assets/ch03/probability_2.html"</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ot">        width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"600"</span><span class="ot"> frameborder</span><span class="op">=</span><span class="st">"0"</span><span class="dt">&gt;&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>从图中可以看到，在得知“天空乌云密布”这个强有力的证据后，我们对“今天会下雨”的信念（概率）从原来的30%大幅跃升至约69%。这就是学习的本质——**根据新证据，不断调整和更新我们对世界不确定性的认知**。</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="fu">### 行为经济学联系：有限理性</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>概率论，特别是贝叶斯定理，为我们理解人类的决策过程提供了一个强大的理论框架。行为经济学的先驱丹尼尔·卡尼曼（Daniel Kahneman）和阿摩司·特沃斯基（Amos Tversky）的研究表明，人类在做决策时，并非完全理性的“经济人”，而是**有限理性 (Bounded Rationality)** 的。我们的大脑似乎在无意识地运用一种简化的、直觉式的贝叶斯推理。</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>我们根据过去的经验形成对事物的**先验信念**，然后在接收到新的信息（**证据**）时，我们会更新自己的看法。然而，由于认知偏差（例如“可得性启发”、“锚定效应”），我们的更新过程往往不够精确，不如贝叶斯公式计算出来的那么理性。</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>理解这一点对于系统设计师至关重要。你需要认识到，你自己和你的用户，在解读模型输出的概率时，都会受到认知偏差的影响。一个模型输出的“90%的概率”，在不同的人看来可能有完全不同的分量。因此，设计一个好的机器学习系统，不仅要关注模型本身的准确性，还要关注如何将模型输出的不确定性，以一种能够减少认知偏差的方式呈现给最终的决策者。</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="fu">### 实务提示</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>在工程语境中，还需区分“概率（经过校准的 predict_proba）”与“分数（decision_function 或未校准分数）”，明确 <span class="in">`pos_label`</span> 与平均方式（micro/macro/weighted），并在需要与业务代价对齐时进行阈值选择（如 sklearn≥1.5 的 TunedThresholdClassifierCV 或验证集阈值扫描）；对于概率质量，可结合 Brier 分数与校准曲线（CalibrationDisplay）进行检查。</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

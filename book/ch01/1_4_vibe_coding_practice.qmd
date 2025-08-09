@@ -60,7 +60,7 @@ title: "1.4 首次 Vibe Coding 实践：优化一个真实的ML原型"
 2. 数据与工程层面的审视：我们信任 AI 的处理方式吗？
     -   **提问**: AI 是如何处理数据中的缺失值的？它选择的填充策略在所有情况下都合理吗？
     -   **提问**: 查看 `Churn` 列的分布图。流失和未流失客户数量是否平衡？如果不平衡，会对模型产生什么影响？
-    -   **行动指引 (最佳实践)**: 在真实的机器学习项目中，为了避免“数据泄露”（Data Leakage），一个关键的最佳实践是使用 `sklearn.pipeline.Pipeline`。它能将数据预处理步骤和模型训练步骤“打包”在一起，确保只在训练数据上“学习”预处理规则，然后应用到测试数据上。
+    -   **行动指引 (最佳实践)**: 在真实的机器学习项目中，为了避免“数据泄露”（Data Leakage），一个关键的最佳实践是使用 `sklearn.pipeline.Pipeline`（配合 `ColumnTransformer` 对数值/类别列分别处理）。它能将数据预处理步骤和模型训练步骤“打包”在一起，确保只在训练数据上“学习”预处理规则，然后应用到测试数据上。
 
         > **与AI协作**: 你可以向你的AI助手提问：“请帮我重构之前的代码，使用 scikit-learn 的 Pipeline 将预处理步骤和模型封装起来。”
 
@@ -77,6 +77,7 @@ title: "1.4 首次 Vibe Coding 实践：优化一个真实的ML原型"
 -   使用 `Pipeline` 重构代码。
 -   在模型中加入 `class_weight='balanced'` 来应对类别不平衡。
 -   尝试使用 AI 推荐的 `HistGradientBoostingClassifier` 替换 `LogisticRegression`。
+ -   当你的优化目标与业务代价相关时，考虑在验证集上调节分类阈值（例如使用 sklearn 1.5+ 的 `TunedThresholdClassifierCV` 或基于 `precision_recall_curve` 的扫描）。
 
 ### 第三阶段：系统验证与反思 (10分钟)
 

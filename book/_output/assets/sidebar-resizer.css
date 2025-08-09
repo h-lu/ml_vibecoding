@@ -1,0 +1,48 @@
+/* Resizable sidebar for Quarto Book */
+:root {
+  --sidebar-width: 300px;
+  --sidebar-width-min: 180px;
+  --sidebar-width-max-vw: 60vw;
+  --sidebar-resizer-width: 6px;
+}
+
+/* Desktop only */
+@media (min-width: 992px) {
+  body.nav-sidebar #quarto-sidebar {
+    width: var(--sidebar-width) !important;
+    min-width: var(--sidebar-width-min);
+    max-width: var(--sidebar-width-max-vw);
+    box-sizing: border-box;
+  }
+
+  /* Keep content from hiding under the sidebar when width changes */
+  body.nav-sidebar .page-layout-article #quarto-content,
+  body.nav-sidebar .page-columns #quarto-content {
+    padding-left: calc(var(--sidebar-width) + var(--sidebar-resizer-width));
+  }
+
+  /* Draggable resizer handle */
+  #sidebar-resizer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--sidebar-width));
+    width: var(--sidebar-resizer-width);
+    cursor: col-resize;
+    z-index: 1040; /* above sidebar */
+    background: transparent;
+    transition: background 0.15s ease;
+  }
+
+  #sidebar-resizer:hover,
+  #sidebar-resizer.active {
+    background: var(--chatgpt-border, rgba(0, 0, 0, 0.08));
+  }
+}
+
+/* Hide resizer on small screens */
+@media (max-width: 991.98px) {
+  #sidebar-resizer { display: none; }
+}
+
+

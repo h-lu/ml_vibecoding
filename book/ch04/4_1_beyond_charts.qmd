@@ -38,42 +38,10 @@ title: "4.1 超越图表：可视化作为一种“对话”"
 你能从这几行数据中发现什么规律吗？很难。
 
 **看可视化图表（散点图）**：
-```{python}
-#| label: fig-scatter-intro
-#| fig-cap: "用户年龄与消费额关系的散点图"
-#| echo: false
-#| eval: true
 
-import numpy as np
-import plotly.express as px
-import plotly.io as pio
-pio.renderers.default = "notebook"
+<iframe src="../assets/ch04/beyond_charts_scatter.html" width="100%" height="520" frameborder="0"></iframe>
 
-# 生成模拟数据
-np.random.seed(42)
-num_users = 500
-age = np.random.randint(18, 65, num_users)
-# 创建一个基础消费额，并让它与年龄有轻微的正相关
-base_spending = age * 5 + np.random.normal(0, 50, num_users)
-# 确保消费额不为负
-spending = np.maximum(50, base_spending + 100)
-
-# 创建数据框
-import pandas as pd
-df = pd.DataFrame({'年龄': age, '上季度消费额': spending})
-
-# 绘制散点图
-fig = px.scatter(df, x='年龄', y='上季度消费额', 
-                 title='用户年龄 vs. 上季度消费额',
-                 labels={'年龄': '用户年龄', '上季度消费额': '消费额 ($)'},
-                 trendline='ols', # 添加一条趋势线
-                 trendline_color_override='red'
-                )
-
-fig.update_layout(width=700, height=400)
-fig.show()
-
-```
+*可拖动滑块改变样本量、相关强度与噪声，开启/关闭红色趋势线与离群点标注，直观观察整体趋势、分布结构与异常点。*
 
 现在，规律变得一目了然。我们甚至不需要精确的数字，就能立即“看”出几个关键信息：
 1.  **整体趋势**：随着年龄的增长，用户的消费额似乎有上升的趋势（红色趋势线）。

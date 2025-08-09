@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>天气预测与条件概率（贝叶斯）</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif; margin: 0; }
+    .wrap { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
+    h1 { font-size: 20px; margin: 0 0 8px; }
+    .sub { color:#555; margin-bottom: 14px; font-size: 14px; }
+    .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: center; }
+    .ctrl { background: #f7f7f9; border: 1px solid #e3e3e7; border-radius: 10px; padding: 10px 12px; }
+    .ctrl label { display: block; font-size: 13px; color: #333; margin-bottom: 6px; }
+    .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    input[type=range] { width: 240px; }
+    select { padding: 6px 8px; border-radius: 6px; border: 1px solid #ccc; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; background: #eef; border: 1px solid #ccf; font-size: 12px; }
+    .stats { font-size: 13px; color: #333; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    #sankey, #bar { width: 100%; height: 520px; }
+    @media (max-width: 900px) { .row2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>天气预测与条件概率（贝叶斯）</h1>
+    <div class="sub">调整先验和似然，选择证据（乌云/非乌云），观察后验 <b>P(下雨|证据)</b> 与总概率 <b>P(证据)</b> 的变化。</div>
+
+    <div class="controls">
+      <div class="ctrl">
+        <label>先验：P(下雨) <span id="priorBadge" class="badge"></span></label>
+        <div class="row"><input id="prior" type="range" min="0" max="1" step="0.01"></div>
+      </div>
+      <div class="ctrl">
+        <label>似然：P(乌云|下雨) <span id="cloudGivenRainBadge" class="badge"></span></label>
+        <div class="row"><input id="cloudGivenRain" type="range" min="0" max="1" step="0.01"></div>
+      </div>
+      <div class="ctrl">
+        <label>似然：P(乌云|不下雨) <span id="cloudGivenNoRainBadge" class="badge"></span></label>
+        <div class="row"><input id="cloudGivenNoRain" type="range" min="0" max="1" step="0.01"></div>
+      </div>
+      <div class="ctrl">
+        <label>观测证据</label>
+        <div class="row">
+          <select id="evidence">
+            <option value="cloud">乌云密布</option>
+            <option value="nocloud">非乌云</option>
+          </select>
+          <div id="stats" class="stats"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row2">
+      <div id="sankey"></div>
+      <div id="bar"></div>
+    </div>
+  </div>
+
+  <script>
+    const UI = {
+      prior: document.getElementById('prior'),
+      cloudGivenRain: document.getElementById('cloudGivenRain'),
+      cloudGivenNoRain: document.getElementById('cloudGivenNoRain'),
+      evidence: document.getElementById('evidence'),
+      priorBadge: document.getElementById('priorBadge'),
+      cloudGivenRainBadge: document.getElementById('cloudGivenRainBadge'),
+      cloudGivenNoRainBadge: document.getElementById('cloudGivenNoRainBadge'),
+      stats: document.getElementById('stats')
+    };
+
+    const state = {
+      prior: 0.30,           // P(R)
+      pC_given_R: 0.90,      // P(C|R)
+      pC_given_notR: 0.20,   // P(C|¬R)
+      evidence: 'cloud'
+    };
+
+    function fmtPct(x) {
+      if (!isFinite(x)) return '—';
+      return (x*100).toFixed(1) + '%';
+    }
+
+    function clamp01(x) { return Math.max(0, Math.min(1, x)); }
+
+    function compute() {
+      const pR = clamp01(state.prior);
+      const pC_R = clamp01(state.pC_given_R);
+      const pC_nR = clamp01(state.pC_given_notR);
+      const pNotR = 1 - pR;
+      const pC = pR * pC_R + pNotR * pC_nR;              // 全概率：P(C)
+      const pNotC = 1 - pC;
+      const pR_C = pC > 0 ? (pR * pC_R) / pC : NaN;       // 贝叶斯：P(R|C)
+      const pR_notC = pNotC > 0 ? (pR * (1 - pC_R)) / pNotC : NaN; // P(R|¬C)
+      return { pR, pC_R, pC_nR, pNotR, pC, pNotC, pR_C, pR_notC };
+    }
+
+    function updateBadges() {
+      UI.priorBadge.textContent = fmtPct(state.prior);
+      UI.cloudGivenRainBadge.textContent = fmtPct(state.pC_given_R);
+      UI.cloudGivenNoRainBadge.textContent = fmtPct(state.pC_given_notR);
+    }
+
+    function drawSankey() {
+      const { pR, pC_R, pC_nR } = compute();
+      const pNotR = 1 - pR;
+      const flows = [
+        pR * pC_R,          // R -> C
+        pR * (1 - pC_R),    // R -> ¬C
+        pNotR * pC_nR,      // ¬R -> C
+        pNotR * (1 - pC_nR) // ¬R -> ¬C
+      ];
+      const scale = 1000; // 仅用于可视化宽度
+      const values = flows.map(v => v * scale);
+
+      const data = [{
+        type: 'sankey',
+        arrangement: 'fixed',
+        node: {
+          pad: 15, thickness: 18,
+          line: { color: '#ddd', width: 1 },
+          label: ['下雨', '不下雨', '乌云', '非乌云'],
+          color: ['#1f77b4', '#ff7f0e', '#7f7f7f', '#a6cee3']
+        },
+        link: {
+          source: [0, 0, 1, 1],
+          target: [2, 3, 2, 3],
+          value: values,
+          color: [
+            'rgba(31,119,180,0.5)',
+            'rgba(31,119,180,0.25)',
+            'rgba(255,127,14,0.5)',
+            'rgba(255,127,14,0.25)'
+          ]
+        }
+      }];
+
+      const layout = {
+        title: '生成模型：先验与似然（流向证据）',
+        margin: { l: 20, r: 20, t: 40, b: 20 }
+      };
+      Plotly.react('sankey', data, layout, {displayModeBar:false});
+    }
+
+    function drawBar() {
+      const { pR, pR_C, pR_notC } = compute();
+      const posterior = state.evidence === 'cloud' ? pR_C : pR_notC;
+      const x = state.evidence === 'cloud'
+        ? ['先验 P(下雨)', '后验 P(下雨|乌云)']
+        : ['先验 P(下雨)', '后验 P(下雨|非乌云)'];
+
+      const data = [{
+        x, y: [pR, posterior], type: 'bar', marker: { color: ['#1f77b4', '#2ca02c'] }
+      }];
+      const layout = {
+        title: '先验 vs 后验（选择的证据）',
+        yaxis: { range: [0, 1], tickformat: '.0%', zeroline: false },
+        margin: { l: 60, r: 20, t: 40, b: 40 },
+        annotations: [
+          { x: x[0], y: pR, text: fmtPct(pR), showarrow: false, yanchor: 'bottom' },
+          { x: x[1], y: posterior, text: fmtPct(posterior), showarrow: false, yanchor: 'bottom' }
+        ]
+      };
+      Plotly.react('bar', data, layout, {displayModeBar:false});
+    }
+
+    function updateStats() {
+      const { pC, pR_C, pR_notC } = compute();
+      if (state.evidence === 'cloud') {
+        UI.stats.textContent = `P(乌云) = ${fmtPct(pC)} ｜ 后验 P(下雨|乌云) = ${fmtPct(pR_C)}`;
+      } else {
+        UI.stats.textContent = `P(非乌云) = ${fmtPct(1 - pC)} ｜ 后验 P(下雨|非乌云) = ${fmtPct(pR_notC)}`;
+      }
+    }
+
+    function updateAll() {
+      updateBadges();
+      drawSankey();
+      drawBar();
+      updateStats();
+    }
+
+    function init() {
+      UI.prior.value = state.prior;
+      UI.cloudGivenRain.value = state.pC_given_R;
+      UI.cloudGivenNoRain.value = state.pC_given_notR;
+      UI.evidence.value = state.evidence;
+      updateAll();
+
+      UI.prior.addEventListener('input', () => { state.prior = parseFloat(UI.prior.value) || 0; updateAll(); });
+      UI.cloudGivenRain.addEventListener('input', () => { state.pC_given_R = parseFloat(UI.cloudGivenRain.value) || 0; updateAll(); });
+      UI.cloudGivenNoRain.addEventListener('input', () => { state.pC_given_notR = parseFloat(UI.cloudGivenNoRain.value) || 0; updateAll(); });
+      UI.evidence.addEventListener('change', () => { state.evidence = UI.evidence.value; updateAll(); });
+      window.addEventListener('resize', () => { Plotly.Plots.resize('sankey'); Plotly.Plots.resize('bar'); });
+    }
+
+    init();
+  </script>
+</body>
+</html>
+
+

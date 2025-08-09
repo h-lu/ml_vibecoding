@@ -1014,18 +1014,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>距离 (Distance)</strong>: 它是衡量两个数据点“<strong>相似性</strong>”的最核心、最直观的标尺。在几何空间中，两个点离得越近，就意味着它们代表的数据越相似。最常用的距离是<strong>欧几里得距离</strong>，也就是我们中学就学过的计算两点间直线距离的公式。</p></li>
 </ol>
 </section>
-<section id="零数学入门" class="level3">
-<h3 class="anchored" data-anchor-id="零数学入门">零数学入门</h3>
+<section id="零数学入门互动动画" class="level3">
+<h3 class="anchored" data-anchor-id="零数学入门互动动画">零数学入门：互动动画</h3>
 <p>文字的描述是苍白的。我们来构建一个具有商业意义的互动场景，看看“向量距离”这个看似抽象的概念，是如何直接解决一个具体的商业问题的。</p>
 <p><strong>场景：寻找最相似的客户</strong></p>
 <p>假设我们运营一个在线学习平台，我们刚刚获得了一个非常有价值的“理想客户”画像，该画像的特征是“每月访问次数”和“平均学习时长”。现在，我们希望从现有的几位客户中，找到与这位理想客户最相似的一位，以便对他进行精准营销。</p>
 <p><strong>“相似”这个模糊的商业词汇，在这里被精确地翻译为：向量空间中的“几何距离最近”。</strong></p>
 <iframe src="../assets/ch03/vector_space_similarity.html" width="100%" height="560" frameborder="0">
 </iframe>
-<p><em>请尝试选择任意一个客户。</em></p>
-<p>你会发现，每次选择后： 1. 图表会动态绘制一条连接线，直观地展示你所选客户与“理想客户”之间的“距离”。 2. 标题会实时更新，精确地告诉你这个距离的数值。 3. 最重要的是，它会告诉你，在所有客户中，谁才是真正的“最相似客户”。</p>
+<p><em>请尝试选择任意一个客户；你也可以拖动“理想客户”（星形标记）的位置，或切换距离度量（欧氏/余弦）进行对比。</em></p>
+<p>你会发现，每次交互后： 1. 图表会动态绘制一条连接线，直观地展示你所选客户与“理想客户”之间的“距离”。 2. 标题会实时更新，精确地显示该距离。 3. 系统会自动标注“当前最相似客户”（基于所选度量）。 4. 拖动理想客户或切换到“余弦距离”后，最近邻可能发生变化，反映不同度量的侧重点差异（尺度 vs 方向）。</p>
 <p>这个小小的互动案例，生动地诠释了本节的核心思想：<strong>在机器学习中，我们能将模糊的、定性的商业问题（“谁更相似？”），转化为精确的、可计算的几何问题（“谁的距离更短？”）。</strong></p>
 <p>这个思想是推荐系统、聚类分析、异常检测等众多算法的基石。一切，都始于将数据看作是空间中的点。</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>实务提示
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>尺度/量纲不一致会显著影响欧氏距离，通常需先做标准化；在稀疏高维（如 TF‑IDF）下常用余弦相似；高维存在“距离集中”现象，应结合特征类型选择度量（数值/类别/混合特征可考虑编码方式或专用距离）。</p>
+</div>
+</div>
 </section>
 <section id="行为经济学联系感知的相似度" class="level3">
 <h3 class="anchored" data-anchor-id="行为经济学联系感知的相似度">行为经济学联系：感知的相似度</h3>
@@ -1524,7 +1537,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**距离 (Distance)**: 它是衡量两个数据点“**相似性**”的最核心、最直观的标尺。在几何空间中，两个点离得越近，就意味着它们代表的数据越相似。最常用的距离是**欧几里得距离**，也就是我们中学就学过的计算两点间直线距离的公式。</span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">### 零数学入门</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">### 零数学入门：互动动画</span></span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>文字的描述是苍白的。我们来构建一个具有商业意义的互动场景，看看“向量距离”这个看似抽象的概念，是如何直接解决一个具体的商业问题的。</span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
@@ -1539,22 +1552,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ot">        width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"560"</span><span class="ot"> frameborder</span><span class="op">=</span><span class="st">"0"</span><span class="dt">&gt;&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>*请尝试选择任意一个客户。*</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>*请尝试选择任意一个客户；你也可以拖动“理想客户”（星形标记）的位置，或切换距离度量（欧氏/余弦）进行对比。*</span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>你会发现，每次选择后：</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>你会发现，每次交互后：</span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>图表会动态绘制一条连接线，直观地展示你所选客户与“理想客户”之间的“距离”。</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>标题会实时更新，精确地告诉你这个距离的数值。</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>最重要的是，它会告诉你，在所有客户中，谁才是真正的“最相似客户”。</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>这个小小的互动案例，生动地诠释了本节的核心思想：**在机器学习中，我们能将模糊的、定性的商业问题（“谁更相似？”），转化为精确的、可计算的几何问题（“谁的距离更短？”）。**</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>这个思想是推荐系统、聚类分析、异常检测等众多算法的基石。一切，都始于将数据看作是空间中的点。</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="fu">### 行为经济学联系：感知的相似度</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>有趣的是，这种用几何距离来定义相似性的思想，与人类的认知模式不谋而合。行为经济学和认知心理学的研究发现，人类在判断两个事物（例如两种商品、两个人、两种观点）的相似度时，大脑中似乎也在进行一种类似的“空间距离”计算。我们在潜意识中将事物的不同特征作为“维度”，将事物“定位”在一个抽象的认知空间中，然后通过感知它们之间的“远近”来判断其相似性。</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>因此，将数据几何化的思想，不仅是机器学习的技术需要，它也深深植根于我们的认知本能之中。这为我们理解更复杂的算法提供了一个非常坚实和直观的立足点。当我们后续谈到“分类”时，你可以想象是在空间中画一条线来分割不同的人群；谈到“聚类”时，可以想象是找到空间中人群自然聚集的中心。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>标题会实时更新，精确地显示该距离。</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>系统会自动标注“当前最相似客户”（基于所选度量）。</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>拖动理想客户或切换到“余弦距离”后，最近邻可能发生变化，反映不同度量的侧重点差异（尺度 vs 方向）。</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>这个小小的互动案例，生动地诠释了本节的核心思想：**在机器学习中，我们能将模糊的、定性的商业问题（“谁更相似？”），转化为精确的、可计算的几何问题（“谁的距离更短？”）。**</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>这个思想是推荐系统、聚类分析、异常检测等众多算法的基石。一切，都始于将数据看作是空间中的点。</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="fu">### 实务提示</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>尺度/量纲不一致会显著影响欧氏距离，通常需先做标准化；在稀疏高维（如 TF‑IDF）下常用余弦相似；高维存在“距离集中”现象，应结合特征类型选择度量（数值/类别/混合特征可考虑编码方式或专用距离）。</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="fu">### 行为经济学联系：感知的相似度</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>有趣的是，这种用几何距离来定义相似性的思想，与人类的认知模式不谋而合。行为经济学和认知心理学的研究发现，人类在判断两个事物（例如两种商品、两个人、两种观点）的相似度时，大脑中似乎也在进行一种类似的“空间距离”计算。我们在潜意识中将事物的不同特征作为“维度”，将事物“定位”在一个抽象的认知空间中，然后通过感知它们之间的“远近”来判断其相似性。</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>因此，将数据几何化的思想，不仅是机器学习的技术需要，它也深深植根于我们的认知本能之中。这为我们理解更复杂的算法提供了一个非常坚实和直观的立足点。当我们后续谈到“分类”时，你可以想象是在空间中画一条线来分割不同的人群；谈到“聚类”时，可以想象是找到空间中人群自然聚集的中心。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

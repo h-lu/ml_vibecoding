@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>箱形图：分布概况与离群点</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif; margin: 0; }
+    .wrap { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
+    h1 { font-size: 20px; margin: 0 0 8px; }
+    .sub { color:#555; margin-bottom: 14px; font-size: 14px; }
+    .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: center; }
+    .ctrl { background: #f7f7f9; border: 1px solid #e3e3e7; border-radius: 10px; padding: 10px 12px; }
+    .ctrl label { display: block; font-size: 13px; color: #333; margin-bottom: 6px; }
+    .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    input[type=range] { width: 220px; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; background: #eef; border: 1px solid #ccf; font-size: 12px; }
+    #plot { width: 100%; height: 520px; }
+    .stats { font-size: 13px; color: #333; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>箱形图：分布概况与离群点</h1>
+    <div class="sub">模拟“餐厅消费额”在不同天与“吸烟/不吸烟”两组中的分布差异。可调每组样本量、周末效应与吸烟效应，并控制是否显示离群点/原始点。</div>
+
+    <div class="controls">
+      <div class="ctrl">
+        <label>每组样本量 n：<span id="nBadge" class="badge"></span></label>
+        <div class="row"><input id="n" type="range" min="20" max="400" step="10"></div>
+      </div>
+      <div class="ctrl">
+        <label>周末效应（Sat/Sun 增幅 %）：<span id="weekendBadge" class="badge"></span></label>
+        <div class="row"><input id="weekend" type="range" min="-30" max="50" step="5"></div>
+      </div>
+      <div class="ctrl">
+        <label>吸烟效应（均值增幅 %）：<span id="smokerBadge" class="badge"></span></label>
+        <div class="row"><input id="smoker" type="range" min="-30" max="30" step="5"></div>
+      </div>
+      <div class="ctrl">
+        <label>显示选项</label>
+        <div class="row">
+          <label><input id="showOutliers" type="checkbox" checked> 显示离群点</label>
+          <label><input id="showPoints" type="checkbox"> 叠加原始点</label>
+        </div>
+      </div>
+      <div class="ctrl">
+        <label>当前统计</label>
+        <div class="row"><div id="stats" class="stats"></div></div>
+      </div>
+    </div>
+
+    <div id="plot"></div>
+  </div>
+
+  <script>
+    function applyScaleFromQuery() {
+      const s = parseFloat(new URLSearchParams(location.search).get('scale'));
+      if (Number.isFinite(s) && s > 0 && s !== 1) {
+        const b = document.body;
+        b.style.transform = `scale(${s})`;
+        b.style.transformOrigin = 'top left';
+        b.style.width = `${100 / s}%`;
+        b.style.minWidth = `${100 / s}%`;
+      }
+    }
+    const UI = {
+      n: document.getElementById('n'), nBadge: document.getElementById('nBadge'),
+      weekend: document.getElementById('weekend'), weekendBadge: document.getElementById('weekendBadge'),
+      smoker: document.getElementById('smoker'), smokerBadge: document.getElementById('smokerBadge'),
+      showOutliers: document.getElementById('showOutliers'),
+      showPoints: document.getElementById('showPoints'),
+      stats: document.getElementById('stats')
+    };
+
+    const state = { n: 120, weekendPct: 20, smokerPct: 10, showOutliers: true, showPoints: false };
+
+    const days = ['Thur','Fri','Sat','Sun'];
+    const smokerGroups = ['不吸烟','吸烟'];
+
+    function randn() { let u=0, v=0; while(u===0) u=Math.random(); while(v===0) v=Math.random(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); }
+    function randnTrunc(mu, sigma, min=0) { let x; do { x = mu + sigma*randn(); } while (x < min); return x; }
+
+    function generateData() {
+      const data = [];
+      for (const day of days) {
+        for (const sg of smokerGroups) {
+          const isWeekend = (day==='Sat' || day==='Sun');
+          const baseMean = 200; // 示例单位
+          const weekendMul = 1 + (isWeekend ? state.weekendPct/100 : 0);
+          const smokerMul = 1 + (sg==='吸烟' ? state.smokerPct/100 : 0);
+          const mean = baseMean * weekendMul * smokerMul;
+          const sigma = 50 * (sg==='吸烟' ? 1.2 : 1.0);
+          const arr = new Array(state.n);
+          for (let i=0;i<state.n;i++) arr[i] = randnTrunc(mean, sigma, 10);
+          data.push({ day, sg, values: arr });
+        }
+      }
+      return data;
+    }
+
+    function median(a){ const b=[...a].sort((x,y)=>x-y); const n=b.length; return n%2?b[(n-1)/2]:(b[n/2-1]+b[n/2])/2; }
+
+    function draw(){
+      UI.nBadge.textContent = state.n;
+      UI.weekendBadge.textContent = `${state.weekendPct}%`;
+      UI.smokerBadge.textContent = `${state.smokerPct}%`;
+
+      const data = generateData();
+      const traces = [];
+      const colors = { '不吸烟':'rgba(55,126,184,0.85)', '吸烟':'rgba(228,26,28,0.85)' };
+
+      for (const sg of smokerGroups) {
+        for (const day of days) {
+          const rec = data.find(d => d.day===day && d.sg===sg);
+          traces.push({
+            type:'box', name: sg, x: rec.values.map(()=>day), y: rec.values,
+            marker:{ color: colors[sg] },
+            boxpoints: state.showOutliers ? 'outliers' : false,
+            jitter: 0,
+            pointpos: 0,
+          });
+          if (state.showPoints) {
+            const jitter = rec.values.map(()=> (Math.random()-0.5)*0.6);
+            traces.push({ type:'scatter', mode:'markers', name:`${sg}·点`, showlegend:false,
+              x: rec.values.map(()=>day), y: rec.values,
+              marker:{ size:5, color: 'rgba(0,0,0,0.35)' },
+              xaxis:'x', yaxis:'y'
+            });
+          }
+        }
+      }
+
+      const layout = {
+        title: '不同天 × 吸烟与否：消费额分布（示例）',
+        boxmode: 'group',
+        xaxis: { title: '星期' },
+        yaxis: { title: '消费金额（示例单位）', rangemode:'tozero' },
+        margin: { l: 60, r: 20, t: 40, b: 40 }
+      };
+      Plotly.react('plot', traces, layout, {displayModeBar:false});
+
+      // 统计：周末与工作日中位数差异（不吸烟组）
+      const wkdays = ['Thur','Fri']; const wkends=['Sat','Sun'];
+      const val = (ds,day,sg)=> data.find(d=>d.day===day && d.sg===sg).values;
+      const medWkday = median(wkdays.flatMap(d=>val(data,d,'不吸烟')));
+      const medWkend = median(wkends.flatMap(d=>val(data,d,'不吸烟')));
+      UI.stats.textContent = `每组 n=${state.n} ｜ 周末中位数≈${medWkend.toFixed(1)} ｜ 工作日中位数≈${medWkday.toFixed(1)} ｜ 差值≈${(medWkend-medWkday).toFixed(1)}`;
+    }
+
+    function init(){
+      applyScaleFromQuery();
+      UI.n.value = state.n; UI.weekend.value = state.weekendPct; UI.smoker.value = state.smokerPct;
+      UI.showOutliers.checked = state.showOutliers; UI.showPoints.checked = state.showPoints;
+      UI.n.addEventListener('input', ()=>{ state.n = parseInt(UI.n.value,10)||50; draw(); });
+      UI.weekend.addEventListener('input', ()=>{ state.weekendPct = parseInt(UI.weekend.value,10)||0; draw(); });
+      UI.smoker.addEventListener('input', ()=>{ state.smokerPct = parseInt(UI.smoker.value,10)||0; draw(); });
+      UI.showOutliers.addEventListener('change', ()=>{ state.showOutliers = UI.showOutliers.checked; draw(); });
+      UI.showPoints.addEventListener('change', ()=>{ state.showPoints = UI.showPoints.checked; draw(); });
+      draw();
+      window.addEventListener('resize', ()=>{ Plotly.Plots.resize('plot'); });
+    }
+
+    init();
+  </script>
+</body>
+</html>
+
+

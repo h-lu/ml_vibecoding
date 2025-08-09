@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7ec80faf2f76fb0b865d1103a6b470c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4748502d1f1e86460223ec0d74b9caae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-e4f0b921bea972c06d94a524d5d8c001.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -1012,7 +1012,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>如果有，它就是一个<strong>核心点</strong>，一个新的簇就此诞生。然后，算法会像“滚雪球”一样，将这个核心点邻域内的所有点（包括其他核心点和非核心的边缘点）都拉入这个簇。这个过程会不断地扩展，直到这个高密度区域的边界被找到。</li>
 <li>如果一个点不是核心点，且不属于任何一个簇的边界，那么它就被标记为<strong>噪声 (Noise)</strong>。</li>
 </ol>
-<iframe src="../assets/ch08/dbscan_live.html" width="700&quot;" height="800" frameborder="0">
+<iframe src="../assets/ch08/dbscan_live.html" width="700" height="800" frameborder="0">
 </iframe>
 <p><strong>优势</strong>：</p>
 <ul>
@@ -1552,7 +1552,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>如果有，它就是一个**核心点**，一个新的簇就此诞生。然后，算法会像“滚雪球”一样，将这个核心点邻域内的所有点（包括其他核心点和非核心的边缘点）都拉入这个簇。这个过程会不断地扩展，直到这个高密度区域的边界被找到。</span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>如果一个点不是核心点，且不属于任何一个簇的边界，那么它就被标记为**噪声 (Noise)**。</span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> src</span><span class="op">=</span><span class="st">"../assets/ch08/dbscan_live.html"</span><span class="ot"> width</span><span class="op">=</span><span class="st">700</span><span class="er">"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"800"</span><span class="ot"> frameborder</span><span class="op">=</span><span class="st">"0"</span><span class="dt">&gt;&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> src</span><span class="op">=</span><span class="st">"../assets/ch08/dbscan_live.html"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"700"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"800"</span><span class="ot"> frameborder</span><span class="op">=</span><span class="st">"0"</span><span class="dt">&gt;&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>**优势**：</span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
@@ -1602,51 +1602,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**基于概率，理论完备**：GMM 是一个生成模型，它有坚实的概率论基础，并能通过信息准则（如 AIC, BIC）来辅助判断最佳的簇数量 K。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<script src="assets/font-size-selector.js"></script>
-<script>
-// 初始化字体大小选择器的额外配置
-document.addEventListener('fontSizeChanged', function(e) {
-  console.log('字体大小已更改为:', e.detail.label, '(' + e.detail.size + ')');
-  
-  // 可选：向用户显示更改提示
-  if (window.innerWidth <= 768) {
-    const toast = document.createElement('div');
-    toast.textContent = `字体大小已设置为${e.detail.label}`;
-    toast.style.cssText = `
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--chatgpt-accent);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      z-index: 10000;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    `;
-    document.body.appendChild(toast);
-    
-    // 显示提示
-    setTimeout(() => toast.style.opacity = '1', 100);
-    
-    // 3秒后移除提示
-    setTimeout(() => {
-      toast.style.opacity = '0';
-      setTimeout(() => document.body.removeChild(toast), 300);
-    }, 3000);
-  }
-});
-
-// 键盘快捷键提示（开发模式）
-if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-  console.log('🎯 字体大小选择器快捷键:');
-  console.log('  Ctrl/Cmd + +  增大字体');
-  console.log('  Ctrl/Cmd + -  减小字体');
-  console.log('  Ctrl/Cmd + 0  重置字体');
-}
-</script>
 
 
 

@@ -30,36 +30,9 @@ title: "3.2 概率：拥抱与量化“不确定性”"
 
 想象一个罐子，里面装着不同颜色的球。每次从中随机抽取一个，记录其颜色。这个简单的实验可以让我们直观地感受到概率和概率分布。
 
-```{python}
-#| label: fig-probability-1
-#| fig-cap: "调整罐中红球和蓝球的数量，观察抽到红球的概率如何变化。"
-#| echo: false
-#| eval: true
-import plotly.graph_objects as go
-from ipywidgets import interact, IntSlider
+<iframe src="../assets/ch03/probability_1.html"
+        width="100%" height="600" frameborder="0"></iframe>
 
-# 创建一个FigureWidget
-fig = go.FigureWidget()
-
-# 添加一个条形图
-fig.add_trace(go.Bar(x=['红球', '蓝球'], y=[0.5, 0.5], marker_color=['crimson', 'royalblue']))
-fig.update_layout(
-    title_text="抽球实验的概率分布",
-    yaxis_title="概率",
-    yaxis=dict(range=[0, 1])
-)
-
-@interact(red_balls=IntSlider(min=1, max=100, step=1, value=50, description='红球数量'),
-          blue_balls=IntSlider(min=1, max=100, step=1, value=50, description='蓝球数量'))
-def update_prob(red_balls, blue_balls):
-    total_balls = red_balls + blue_balls
-    prob_red = red_balls / total_balls
-    prob_blue = blue_balls / total_balls
-    with fig.batch_update():
-        fig.data[0].y = [prob_red, prob_blue]
-
-fig
-```
 *请拖动滑块，改变罐中红球和蓝球的数量。注意观察图表中代表的“概率分布”是如何随之变化的。*
 
 #### 动画2：天气预测与条件概率
@@ -70,46 +43,9 @@ fig
 
 根据贝叶斯定理，我们可以计算出**后验概率** `P(下雨|乌云)`。
 
-```{python}
-#| label: fig-bayes-weather
-#| fig-cap: "贝叶斯定理如何根据“天空乌云密布”这个证据，更新对“下雨”的信念。"
-#| echo: false
-#| eval: true
+<iframe src="../assets/ch03/probability_2.html"
+        width="100%" height="600" frameborder="0"></iframe>
 
-import plotly.graph_objects as go
-
-# 先验概率
-p_rain = 0.3
-p_no_rain = 1 - p_rain
-
-# 证据的可信度（似然）
-p_cloud_given_rain = 0.9
-p_cloud_given_no_rain = 0.2
-
-# 计算证据的总概率 P(乌云)
-# P(乌云) = P(乌云|下雨)P(下雨) + P(乌云|不下雨)P(不下雨)
-p_cloud = p_cloud_given_rain * p_rain + p_cloud_given_no_rain * p_no_rain
-
-# 计算后验概率 P(下雨|乌云)
-# P(下雨|乌云) = P(乌云|下雨)P(下雨) / P(乌云)
-p_rain_given_cloud = (p_cloud_given_rain * p_rain) / p_cloud
-
-fig = go.Figure(data=[
-    go.Bar(name='先验概率', x=['下雨'], y=[p_rain], marker_color='lightblue', text=f'{p_rain:.0%}', textposition='auto'),
-    go.Bar(name='后验概率 (得知乌云后)', x=['下雨'], y=[p_rain_given_cloud], marker_color='royalblue', text=f'{p_rain_given_cloud:.0%}', textposition='auto')
-])
-
-fig.update_layout(
-    barmode='group',
-    title_text='信念更新：从先验到后验',
-    yaxis_title='概率',
-    yaxis=dict(range=[0, 1]),
-    legend_title_text='概率类型',
-    width=600,
-    height=400
-)
-fig.show()
-```
 从图中可以看到，在得知“天空乌云密布”这个强有力的证据后，我们对“今天会下雨”的信念（概率）从原来的30%大幅跃升至约69%。这就是学习的本质——**根据新证据，不断调整和更新我们对世界不确定性的认知**。
 
 ### 行为经济学联系：有限理性
@@ -119,3 +55,8 @@ fig.show()
 我们根据过去的经验形成对事物的**先验信念**，然后在接收到新的信息（**证据**）时，我们会更新自己的看法。然而，由于认知偏差（例如“可得性启发”、“锚定效应”），我们的更新过程往往不够精确，不如贝叶斯公式计算出来的那么理性。
 
 理解这一点对于系统设计师至关重要。你需要认识到，你自己和你的用户，在解读模型输出的概率时，都会受到认知偏差的影响。一个模型输出的“90%的概率”，在不同的人看来可能有完全不同的分量。因此，设计一个好的机器学习系统，不仅要关注模型本身的准确性，还要关注如何将模型输出的不确定性，以一种能够减少认知偏差的方式呈现给最终的决策者。
+
+::: callout-tip
+### 实务提示
+在工程语境中，还需区分“概率（经过校准的 predict_proba）”与“分数（decision_function 或未校准分数）”，明确 `pos_label` 与平均方式（micro/macro/weighted），并在需要与业务代价对齐时进行阈值选择（如 sklearn≥1.5 的 TunedThresholdClassifierCV 或验证集阈值扫描）；对于概率质量，可结合 Brier 分数与校准曲线（CalibrationDisplay）进行检查。
+:::

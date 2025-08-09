@@ -23,7 +23,7 @@ K-means 算法简洁而高效，但它的两大局限——需要预设 K 值和
 2.  如果有，它就是一个**核心点**，一个新的簇就此诞生。然后，算法会像“滚雪球”一样，将这个核心点邻域内的所有点（包括其他核心点和非核心的边缘点）都拉入这个簇。这个过程会不断地扩展，直到这个高密度区域的边界被找到。
 3.  如果一个点不是核心点，且不属于任何一个簇的边界，那么它就被标记为**噪声 (Noise)**。
 
-<iframe src="../assets/ch08/dbscan_live.html" width=700" height="800" frameborder="0"></iframe>
+<iframe src="../assets/ch08/dbscan_live.html" width="700" height="800" frameborder="0"></iframe>
 
 **优势**：
 

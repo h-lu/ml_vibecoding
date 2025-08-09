@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7ec80faf2f76fb0b865d1103a6b470c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4748502d1f1e86460223ec0d74b9caae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-e4f0b921bea972c06d94a524d5d8c001.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -1019,7 +1019,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>业务逻辑的缺失</strong>：AI 的模型优化目标是“预测准确率”，但它没有被告知一个关键的商业事实：生产草-莓芒果汁的原料成本是牛油果菠菜汁的三倍。即使预测准确，错误的决策也会导致更大的亏损。它将“假阳性”（错误地预测一款产品会火）和“假阴性”（未能预测一款产品会火）的代价视为同等。</li>
 <li><strong>现实压力的脆弱性</strong>：当另一家竞争对手发起促销活动时，整个市场的需求模式发生了改变。AI 的模型是在一个静态的历史数据集上训练的，它完全没有能力适应这种动态变化。</li>
 </ol>
-<p>这就是我们所说的 <strong>“纸牌屋代码”的崩溃</strong>。它外表光鲜，但地基不稳，一阵微风就能将其吹倒。这个案例生动地揭示了 AI 时代的<strong>危机</strong>：AI 提供了惊人的速度来构建系统的“骨架”（那 70% 的代码），但它往往会忽略、甚至错误处理那些决定系统成败的、微妙而关键的“关节”和“内脏”（那 30% 的深层逻辑）。</p>
+<p>这就是我们所说的 <strong>“纸牌屋代码”的崩溃</strong>。它外表光鲜，但地基不稳，一阵微风就能将其吹倒。这个案例生动地揭示了 AI 时代的<strong>危机</strong>：AI 提供了惊人的速度来构建系统的“骨架”（那 70% 的代码），但它往往会忽略、甚至错误处理那些决定系统成败的、微妙而关键的“关节”和“内脏”（那 30% 的深层逻辑）。在实践层面，化解这类脆弱性的底座，是端到端的 Pipeline 防泄漏、与业务代价一致的阈值选择，以及上线后的漂移监控与回归。</p>
 <p>这个 <strong>“70%难题”</strong> 正是我们学习的起点。当任何人都能轻易获得这 70% 的代码时，我们的价值不再是生产这些代码，而在于：</p>
 <ul>
 <li><strong>预见</strong>那些 AI 看不到的陷阱。</li>
@@ -1528,7 +1528,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**业务逻辑的缺失**：AI 的模型优化目标是“预测准确率”，但它没有被告知一个关键的商业事实：生产草-莓芒果汁的原料成本是牛油果菠菜汁的三倍。即使预测准确，错误的决策也会导致更大的亏损。它将“假阳性”（错误地预测一款产品会火）和“假阴性”（未能预测一款产品会火）的代价视为同等。</span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**现实压力的脆弱性**：当另一家竞争对手发起促销活动时，整个市场的需求模式发生了改变。AI 的模型是在一个静态的历史数据集上训练的，它完全没有能力适应这种动态变化。</span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>这就是我们所说的 **“纸牌屋代码”的崩溃**。它外表光鲜，但地基不稳，一阵微风就能将其吹倒。这个案例生动地揭示了 AI 时代的**危机**：AI 提供了惊人的速度来构建系统的“骨架”（那 70% 的代码），但它往往会忽略、甚至错误处理那些决定系统成败的、微妙而关键的“关节”和“内脏”（那 30% 的深层逻辑）。</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>这就是我们所说的 **“纸牌屋代码”的崩溃**。它外表光鲜，但地基不稳，一阵微风就能将其吹倒。这个案例生动地揭示了 AI 时代的**危机**：AI 提供了惊人的速度来构建系统的“骨架”（那 70% 的代码），但它往往会忽略、甚至错误处理那些决定系统成败的、微妙而关键的“关节”和“内脏”（那 30% 的深层逻辑）。在实践层面，化解这类脆弱性的底座，是端到端的 Pipeline 防泄漏、与业务代价一致的阈值选择，以及上线后的漂移监控与回归。</span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>这个 **“70%难题”** 正是我们学习的起点。当任何人都能轻易获得这 70% 的代码时，我们的价值不再是生产这些代码，而在于：</span>
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
@@ -1539,51 +1539,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>这引出了本章的核心问题：**在 AI 时代，我们的价值究竟在哪里？** 答案是：从追求速度的“代码玩家”，转变为追求智慧和稳健的“系统设计师”。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<script src="assets/font-size-selector.js"></script>
-<script>
-// 初始化字体大小选择器的额外配置
-document.addEventListener('fontSizeChanged', function(e) {
-  console.log('字体大小已更改为:', e.detail.label, '(' + e.detail.size + ')');
-  
-  // 可选：向用户显示更改提示
-  if (window.innerWidth <= 768) {
-    const toast = document.createElement('div');
-    toast.textContent = `字体大小已设置为${e.detail.label}`;
-    toast.style.cssText = `
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--chatgpt-accent);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      z-index: 10000;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    `;
-    document.body.appendChild(toast);
-    
-    // 显示提示
-    setTimeout(() => toast.style.opacity = '1', 100);
-    
-    // 3秒后移除提示
-    setTimeout(() => {
-      toast.style.opacity = '0';
-      setTimeout(() => document.body.removeChild(toast), 300);
-    }, 3000);
-  }
-});
-
-// 键盘快捷键提示（开发模式）
-if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-  console.log('🎯 字体大小选择器快捷键:');
-  console.log('  Ctrl/Cmd + +  增大字体');
-  console.log('  Ctrl/Cmd + -  减小字体');
-  console.log('  Ctrl/Cmd + 0  重置字体');
-}
-</script>
 
 
 

@@ -1048,7 +1048,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p><strong>提问</strong>: AI 是如何处理数据中的缺失值的？它选择的填充策略在所有情况下都合理吗？</p></li>
 <li><p><strong>提问</strong>: 查看 <code>Churn</code> 列的分布图。流失和未流失客户数量是否平衡？如果不平衡，会对模型产生什么影响？</p></li>
-<li><p><strong>行动指引 (最佳实践)</strong>: 在真实的机器学习项目中，为了避免“数据泄露”（Data Leakage），一个关键的最佳实践是使用 <code>sklearn.pipeline.Pipeline</code>。它能将数据预处理步骤和模型训练步骤“打包”在一起，确保只在训练数据上“学习”预处理规则，然后应用到测试数据上。</p>
+<li><p><strong>行动指引 (最佳实践)</strong>: 在真实的机器学习项目中，为了避免“数据泄露”（Data Leakage），一个关键的最佳实践是使用 <code>sklearn.pipeline.Pipeline</code>（配合 <code>ColumnTransformer</code> 对数值/类别列分别处理）。它能将数据预处理步骤和模型训练步骤“打包”在一起，确保只在训练数据上“学习”预处理规则，然后应用到测试数据上。</p>
 <blockquote class="blockquote">
 <p><strong>与AI协作</strong>: 你可以向你的AI助手提问：“请帮我重构之前的代码，使用 scikit-learn 的 Pipeline 将预处理步骤和模型封装起来。”</p>
 </blockquote></li>
@@ -1068,6 +1068,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>使用 <code>Pipeline</code> 重构代码。</li>
 <li>在模型中加入 <code>class_weight='balanced'</code> 来应对类别不平衡。</li>
 <li>尝试使用 AI 推荐的 <code>HistGradientBoostingClassifier</code> 替换 <code>LogisticRegression</code>。</li>
+<li>当你的优化目标与业务代价相关时，考虑在验证集上调节分类阈值（例如使用 sklearn 1.5+ 的 <code>TunedThresholdClassifierCV</code> 或基于 <code>precision_recall_curve</code> 的扫描）。</li>
 </ul>
 </section>
 <section id="第三阶段系统验证与反思-10分钟" class="level3">
@@ -1616,7 +1617,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>数据与工程层面的审视：我们信任 AI 的处理方式吗？</span>
 <span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**提问**: AI 是如何处理数据中的缺失值的？它选择的填充策略在所有情况下都合理吗？</span>
 <span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**提问**: 查看 <span class="in">`Churn`</span> 列的分布图。流失和未流失客户数量是否平衡？如果不平衡，会对模型产生什么影响？</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**行动指引 (最佳实践)**: 在真实的机器学习项目中，为了避免“数据泄露”（Data Leakage），一个关键的最佳实践是使用 <span class="in">`sklearn.pipeline.Pipeline`</span>。它能将数据预处理步骤和模型训练步骤“打包”在一起，确保只在训练数据上“学习”预处理规则，然后应用到测试数据上。</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>**行动指引 (最佳实践)**: 在真实的机器学习项目中，为了避免“数据泄露”（Data Leakage），一个关键的最佳实践是使用 <span class="in">`sklearn.pipeline.Pipeline`</span>（配合 <span class="in">`ColumnTransformer`</span> 对数值/类别列分别处理）。它能将数据预处理步骤和模型训练步骤“打包”在一起，确保只在训练数据上“学习”预处理规则，然后应用到测试数据上。</span>
 <span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="at">        &gt; **与AI协作**: 你可以向你的AI助手提问：“请帮我重构之前的代码，使用 scikit-learn 的 Pipeline 将预处理步骤和模型封装起来。”</span></span>
 <span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
@@ -1633,21 +1634,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>使用 <span class="in">`Pipeline`</span> 重构代码。</span>
 <span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>在模型中加入 <span class="in">`class_weight='balanced'`</span> 来应对类别不平衡。</span>
 <span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>尝试使用 AI 推荐的 <span class="in">`HistGradientBoostingClassifier`</span> 替换 <span class="in">`LogisticRegression`</span>。</span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="fu">### 第三阶段：系统验证与反思 (10分钟)</span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>重新运行你优化后的代码，并将新的结果与第一阶段的进行对比。</span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>**请回答并记录你的发现**:</span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>优化后，你最关心的那个**核心业务指标**（比如召回率 Recall）发生了什么变化？是提升了还是下降了？整体准确率呢？你如何解释这种变化？</span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>对比两个模型的结果，你认为哪个模型更能帮助公司实现其商业目标？为什么？</span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**反思讨论**:</span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>在这个 Vibe Coding 循环中，AI 的价值体现在哪里？</span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>你，作为人类设计师，最关键的贡献是什么？是写了更复杂的代码，还是提出了更深刻的问题并引导AI去解决？</span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>我们是如何发现并弥补 AI 的“盲点”的？这个过程给你未来与 AI 协作带来什么启发？</span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>恭喜你！你刚刚完成了一次更接近真实的 Vibe Coding 实践。你没有盲从 AI 的指令，而是引导它、审视它、并最终改进了它的工作成果，将一个平庸的原型，变成了一个真正对业务有价值的系统雏形。这，就是系统设计师的价值所在。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="ss"> -   </span>当你的优化目标与业务代价相关时，考虑在验证集上调节分类阈值（例如使用 sklearn 1.5+ 的 <span class="in">`TunedThresholdClassifierCV`</span> 或基于 <span class="in">`precision_recall_curve`</span> 的扫描）。</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="fu">### 第三阶段：系统验证与反思 (10分钟)</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>重新运行你优化后的代码，并将新的结果与第一阶段的进行对比。</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>**请回答并记录你的发现**:</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>优化后，你最关心的那个**核心业务指标**（比如召回率 Recall）发生了什么变化？是提升了还是下降了？整体准确率呢？你如何解释这种变化？</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>对比两个模型的结果，你认为哪个模型更能帮助公司实现其商业目标？为什么？</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**反思讨论**:</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>在这个 Vibe Coding 循环中，AI 的价值体现在哪里？</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>你，作为人类设计师，最关键的贡献是什么？是写了更复杂的代码，还是提出了更深刻的问题并引导AI去解决？</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>我们是如何发现并弥补 AI 的“盲点”的？这个过程给你未来与 AI 协作带来什么启发？</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>恭喜你！你刚刚完成了一次更接近真实的 Vibe Coding 实践。你没有盲从 AI 的指令，而是引导它、审视它、并最终改进了它的工作成果，将一个平庸的原型，变成了一个真正对业务有价值的系统雏形。这，就是系统设计师的价值所在。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

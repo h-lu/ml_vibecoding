@@ -1032,6 +1032,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>初始位置的影响</strong>：在不同的<strong>初始x</strong>开始，红点最终都能到达谷底吗？（对于这个简单的“碗状”函数，是的。但对于更复杂的、有多个山谷的函数，从哪里出发就至关重要了，这也就是所谓的“局部最优”问题）。</li>
 </ul>
 <p>通过这个简单的互动，你应该能直观地理解，机器学习的“训练”并不是一个神秘的过程，它只是一个遵循简单物理直觉的、寻找最低点的“下山”旅程。我们后续学习的所有复杂模型，从线性回归到深度神经网络，其训练的核心思想，万变不离其宗，都是在某个高维度的、崎岖不平的“损失函数山脉”中，运用梯度下降及其各种变体，努力地寻找一个尽可能深的山谷。</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>实务提示
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>优化并非总是“碗状”凸问题；学习率调度（如余弦退火/重启）、优化器选择（如 AdamW）与数值稳定性技巧（log-sum-exp、梯度裁剪、混合精度的损失缩放）常用于提升收敛与稳健性。</p>
+</div>
+</div>
 
 
 <!-- -->
@@ -1543,7 +1556,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>如果将**学习率**调得**很大**（比如 0.95），会发生什么？为什么红点会在谷底两侧来回“震荡”，甚至可能“飞出”山谷（损失值变得更大）？这在现实训练中意味着什么？</span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**初始位置的影响**：在不同的**初始x**开始，红点最终都能到达谷底吗？（对于这个简单的“碗状”函数，是的。但对于更复杂的、有多个山谷的函数，从哪里出发就至关重要了，这也就是所谓的“局部最优”问题）。</span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>通过这个简单的互动，你应该能直观地理解，机器学习的“训练”并不是一个神秘的过程，它只是一个遵循简单物理直觉的、寻找最低点的“下山”旅程。我们后续学习的所有复杂模型，从线性回归到深度神经网络，其训练的核心思想，万变不离其宗，都是在某个高维度的、崎岖不平的“损失函数山脉”中，运用梯度下降及其各种变体，努力地寻找一个尽可能深的山谷。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>通过这个简单的互动，你应该能直观地理解，机器学习的“训练”并不是一个神秘的过程，它只是一个遵循简单物理直觉的、寻找最低点的“下山”旅程。我们后续学习的所有复杂模型，从线性回归到深度神经网络，其训练的核心思想，万变不离其宗，都是在某个高维度的、崎岖不平的“损失函数山脉”中，运用梯度下降及其各种变体，努力地寻找一个尽可能深的山谷。</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="fu">### 实务提示</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>优化并非总是“碗状”凸问题；学习率调度（如余弦退火/重启）、优化器选择（如 AdamW）与数值稳定性技巧（log-sum-exp、梯度裁剪、混合精度的损失缩放）常用于提升收敛与稳健性。</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

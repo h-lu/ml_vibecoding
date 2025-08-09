@@ -38,48 +38,7 @@ title: "4.3 从“是什么”到“为什么”：洞察提炼框架"
 
 让我们回到本章开篇的商业挑战：**电商公司的平均客单价 (AOV) 下降了**。作为数据侦探，你通过 Vibe Coding 让 AI 快速生成了一系列图表。其中一张图表引起了你的注意：
 
-```{python}
-#| label: fig-aov-boxplot
-#| fig-cap: "不同商品类别的平均客单价 (AOV) 分布箱形图"
-#| echo: false
-#| eval: true
-
-import pandas as pd
-import numpy as np
-import plotly.express as px
-import plotly.io as pio
-pio.renderers.default = "notebook"
-
-# 生成模拟数据
-np.random.seed(123)
-categories = ['电子产品', '家居用品', '服装配饰', '食品饮料']
-data = {
-    'Category': np.random.choice(categories, 500, p=[0.2, 0.3, 0.3, 0.2]),
-    'AOV': []
-}
-for cat in data['Category']:
-    if cat == '电子产品':
-        data['AOV'].append(np.random.normal(250, 50))
-    elif cat == '家居用品':
-        data['AOV'].append(np.random.normal(80, 20))
-    elif cat == '服装配饰':
-        data['AOV'].append(np.random.normal(50, 15))
-    else: # 食品饮料
-        data['AOV'].append(np.random.normal(25, 8))
-
-df = pd.DataFrame(data)
-df['AOV'] = df['AOV'].round(2)
-df = df[df['AOV'] > 0]
-
-
-fig = px.box(df, x='Category', y='AOV',
-             title='不同商品类别的平均客单价 (AOV) 分布',
-             labels={'Category': '商品类别', 'AOV': '平均客单价 ($)'},
-             points="all"
-            )
-fig.update_layout(width=700, height=450)
-fig.show()
-```
+<iframe src="../assets/ch04/beyond_charts_aov.html?scale=0.75" width="100%" height="750" frameborder="0"></iframe>
 
 现在，让我们应用“三步洞察法”来分析这张图：
 

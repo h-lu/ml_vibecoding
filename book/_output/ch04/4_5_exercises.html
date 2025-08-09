@@ -117,10 +117,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --chatgpt-surface: #f7f7f8;
   --chatgpt-border: #e5e5e5;
   --chatgpt-accent: #10a37f;
+  /* Sidebar resizer defaults */
+  --sidebar-width: 300px;         /* default width */
+  --sidebar-width-min: 180px;     /* minimum width */
+  --sidebar-width-max-vw: 60vw;   /* maximum width as viewport fraction */
+  --sidebar-resizer-width: 6px;   /* handle width */
 }
 </style>
 
 
+<link rel="stylesheet" href="../assets/sidebar-resizer.css">
 </head>
 
 <body class="nav-sidebar floating fullcontent quarto-light">
@@ -1549,6 +1555,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>相比于一张静态的、无法悬停查看详情的散点图，你认为这个小小的交互功能，在多大程度上提升了你作为“数据侦探”的探索效率和发现潜在故事的能力？请举例说明。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
+<script src="assets/sidebar-resizer.js"></script>
 
 
 

@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>抽球实验：概率分布与大数定律</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif; margin: 0; }
+    .wrap { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
+    h1 { font-size: 20px; margin: 0 0 8px; }
+    .sub { color:#555; margin-bottom: 14px; font-size: 14px; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    #urn { width: 100%; height: 520px; background: #fdfdfd; border: 1px solid #eee; border-radius: 10px; display:flex; align-items:center; justify-content:center; }
+    #urn svg { width: 100%; height: 100%; }
+    #bar, #line { width: 100%; height: 250px; }
+    .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: center; }
+    .ctrl { background: #f7f7f9; border: 1px solid #e3e3e7; border-radius: 10px; padding: 10px 12px; }
+    .ctrl label { display: block; font-size: 13px; color: #333; margin-bottom: 6px; }
+    .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    input[type=range] { width: 240px; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; background: #eef; border: 1px solid #ccf; font-size: 12px; }
+    .btn { padding: 8px 12px; border-radius: 8px; border: 1px solid #e3e3e7; background: white; cursor: pointer; }
+    .btn.primary { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+    .btn:disabled { opacity: .6; cursor: not-allowed; }
+    .stats { font-size: 13px; color: #333; }
+    @media (max-width: 900px) {
+      .row2 { grid-template-columns: 1fr; }
+      #bar, #line { height: 240px; }
+    }
+  </style>
+  <!-- 为了在 Quarto iframe 内更好自适应，避免外层滚动条 -->
+</head>
+<body>
+  <div class="wrap">
+    <h1>抽球实验：概率分布与大数定律</h1>
+    <div class="sub">拖动红蓝球数量，查看理论分布；点击开始进行“有放回”抽取，观察相对频率向理论概率收敛。</div>
+
+    <div class="controls">
+      <div class="ctrl">
+        <label>红球数量：<span id="redBadge" class="badge"></span></label>
+        <div class="row">
+          <input id="red" type="range" min="0" max="200" step="1">
+        </div>
+      </div>
+      <div class="ctrl">
+        <label>蓝球数量：<span id="blueBadge" class="badge"></span></label>
+        <div class="row">
+          <input id="blue" type="range" min="0" max="200" step="1">
+        </div>
+      </div>
+      <div class="ctrl">
+        <label>抽取速度（次/秒）：<span id="speedBadge" class="badge"></span></label>
+        <div class="row">
+          <input id="speed" type="range" min="0" max="200" step="5">
+          <button id="toggle" class="btn primary">开始模拟</button>
+          <button id="reset" class="btn">重置</button>
+        </div>
+      </div>
+      <div class="ctrl">
+        <label>当前统计</label>
+        <div class="row">
+          <div id="stats" class="stats"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row2">
+      <div id="urn"><svg id="urnSvg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"></svg></div>
+      <div class="grid">
+        <div id="bar"></div>
+        <div id="line"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const UI = {
+      red: document.getElementById("red"),
+      blue: document.getElementById("blue"),
+      speed: document.getElementById("speed"),
+      redBadge: document.getElementById("redBadge"),
+      blueBadge: document.getElementById("blueBadge"),
+      speedBadge: document.getElementById("speedBadge"),
+      toggle: document.getElementById("toggle"),
+      reset: document.getElementById("reset"),
+      stats: document.getElementById("stats"),
+      urnSvg: document.getElementById("urnSvg")
+    };
+
+    let state = {
+      red: 50,
+      blue: 50,
+      draws: 0,
+      redHits: 0,
+      timer: null,
+      tickMs: 50,
+      speed: 40,
+      carry: 0
+    };
+
+    function probRed() {
+      const total = state.red + state.blue;
+      return total > 0 ? state.red / total : 0.5;
+    }
+
+    function fmtPct(x) {
+      return (x*100).toFixed(1) + "%";
+    }
+
+    function updateBadges() {
+      UI.redBadge.textContent = state.red;
+      UI.blueBadge.textContent = state.blue;
+      UI.speedBadge.textContent = state.speed;
+    }
+
+    function updateStats() {
+      const p = probRed();
+      const n = state.draws;
+      const phat = n > 0 ? state.redHits / n : NaN;
+      const diff = isFinite(phat) ? Math.abs(phat - p) : NaN;
+      UI.stats.textContent =
+        `N = ${n} ｜ 理论 P(红) = ${fmtPct(p)} ｜ 观测 P(红) = ${isFinite(phat)?fmtPct(phat):"—"} ｜ 差值 = ${isFinite(diff)?diff.toFixed(3):"—"}`;
+    }
+
+    function drawUrn() {
+      const svg = UI.urnSvg;
+      const total = state.red + state.blue;
+
+      // 清空
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+      // 尺寸
+      const viewW = svg.clientWidth || svg.parentElement.clientWidth || 800;
+      const viewH = svg.clientHeight || svg.parentElement.clientHeight || 520;
+      const pad = 14;
+      const gap = 6;
+
+      // 估算列数与半径
+      const targetCols = Math.max(6, Math.floor((viewW - pad*2) / 22));
+      const cols = Math.max(5, targetCols);
+      const rows = Math.max(1, Math.ceil(total / cols));
+      const cellW = (viewW - pad*2 - gap*(cols-1)) / cols;
+      const cellH = (viewH - pad*2 - gap*(rows-1)) / rows;
+      const r = Math.max(4, Math.min(cellW, cellH) / 2.2);
+
+      // 根据几何设置 viewBox
+      const vbW = pad*2 + cols*(2*r) + (cols-1)*gap;
+      const vbH = pad*2 + rows*(2*r) + (rows-1)*gap;
+      svg.setAttribute("viewBox", `0 0 ${vbW} ${vbH}`);
+
+      // 简单的罐子轮廓
+      const jar = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      jar.setAttribute("x", 6);
+      jar.setAttribute("y", 6);
+      jar.setAttribute("rx", 12);
+      jar.setAttribute("ry", 12);
+      jar.setAttribute("width", vbW-12);
+      jar.setAttribute("height", vbH-12);
+      jar.setAttribute("fill", "#fff");
+      jar.setAttribute("stroke", "#e5e5ea");
+      svg.appendChild(jar);
+
+      // 颜色数组
+      const colors = [];
+      for (let i=0; i<state.red; i++) colors.push("#e74c3c");
+      for (let i=0; i<state.blue; i++) colors.push("#3498db");
+      // 轻微洗牌，让分布更自然
+      for (let i=colors.length-1; i>0; i--) {
+        const j = Math.floor(Math.random()*(i+1));
+        const t = colors[i]; colors[i]=colors[j]; colors[j]=t;
+      }
+
+      for (let i=0; i<colors.length; i++) {
+        const col = i % cols;
+        const row = Math.floor(i / cols);
+        const cx = pad + r + col*(2*r + gap);
+        const cy = pad + r + row*(2*r + gap);
+
+        const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        c.setAttribute("cx", cx);
+        c.setAttribute("cy", cy);
+        c.setAttribute("r", r);
+        c.setAttribute("fill", colors[i]);
+        c.setAttribute("stroke", "#333");
+        c.setAttribute("stroke-width", r > 6 ? 0.6 : 0.5);
+        c.setAttribute("opacity", 0.92);
+        svg.appendChild(c);
+      }
+    }
+
+    function drawBar() {
+      const p = probRed();
+      const theo = [p, 1-p];
+      const obs = state.draws > 0 ? [state.redHits/state.draws, 1 - state.redHits/state.draws] : [NaN, NaN];
+      const data = [
+        { x: ["红", "蓝"], y: theo, type: "bar", name: "理论概率", marker: {color: ["#e74c3c","#3498db"]} },
+        { x: ["红", "蓝"], y: obs,  type: "bar", name: "观测频率", marker: {color: ["#f5b7b1","#a9cce3"]} }
+      ];
+      const layout = {
+        title: "概率分布（理论 vs 观测）",
+        barmode: "group",
+        yaxis: { range: [0, 1], tickformat: ".0%", zeroline: false },
+        margin: { l: 60, r: 20, t: 40, b: 40 },
+        legend: { orientation: "h", y: -0.2 }
+      };
+      Plotly.react("bar", data, layout, {displayModeBar:false});
+    }
+
+    function updateBarObserved() {
+      const n = state.draws;
+      const y = n > 0 ? [state.redHits/n, 1 - state.redHits/n] : [NaN, NaN];
+      Plotly.restyle("bar", { y: [null, y] }); // 只更新第二个 trace
+      // 红蓝数量改变时，同时更新理论值
+      const p = probRed();
+      Plotly.restyle("bar", { y: [[p, 1-p]] }, [0]); // 第 0 个 trace
+    }
+
+    let lineInitialized = false;
+    function drawLine(reset=false) {
+      const p = probRed();
+      if (!lineInitialized || reset) {
+        const data = [
+          { x: [], y: [], mode: "lines", type: "scatter", name: "P̂(红)", line: {width: 2, color: "#e74c3c"} }
+        ];
+        const layout = {
+          title: "相对频率收敛（大数定律）",
+          xaxis: { title: "抽取次数 N", rangemode:"tozero" },
+          yaxis: { title: "P̂(红)", range: [0,1], zeroline: false },
+          margin: { l: 60, r: 20, t: 40, b: 40 },
+          shapes: [{
+            type: "line", x0: 0, x1: 1, xref: "paper",
+            y0: p, y1: p, yref: "y",
+            line: { color: "rgba(0,0,0,0.4)", width: 1.5, dash: "dash" }
+          }],
+          annotations: [{
+            x: 1.01, xref: "paper", y: p, yref: "y", xanchor: "left",
+            text: `理论 P(红) = ${fmtPct(p)}`, showarrow: false, font: {size: 12, color: "#333"}
+          }]
+        };
+        Plotly.react("line", data, layout, {displayModeBar:false});
+        lineInitialized = true;
+      } else {
+        // 仅移动理论水平线
+        Plotly.relayout("line", {
+          "shapes[0].y0": p, "shapes[0].y1": p,
+          "annotations[0].y": p,
+          "annotations[0].text": `理论 P(红) = ${fmtPct(p)}`
+        });
+      }
+    }
+
+    function extendLinePoint() {
+      const n = state.draws;
+      if (n === 0) return;
+      const phat = state.redHits / n;
+      Plotly.extendTraces("line", { x: [[n]], y: [[phat]] }, [0], 1000);
+    }
+
+    function stepOnce() {
+      const p = probRed();
+      const u = Math.random();
+      if (u < p) state.redHits += 1;
+      state.draws += 1;
+    }
+
+    function tick() {
+      // 将速度（次/秒）转为每个 tick 的步数
+      const stepsExact = state.speed * state.tickMs / 1000 + state.carry;
+      let steps = Math.floor(stepsExact);
+      state.carry = stepsExact - steps;
+
+      if (steps <= 0) return;
+
+      for (let i=0; i<steps; i++) stepOnce();
+
+      extendLinePoint();
+      updateBarObserved();
+      updateStats();
+    }
+
+    function start() {
+      if (state.timer) return;
+      state.timer = setInterval(tick, state.tickMs);
+      UI.toggle.textContent = "暂停";
+    }
+
+    function stop() {
+      if (!state.timer) return;
+      clearInterval(state.timer);
+      state.timer = null;
+      UI.toggle.textContent = "开始模拟";
+    }
+
+    function reset() {
+      stop();
+      state.draws = 0;
+      state.redHits = 0;
+      state.carry = 0;
+      drawBar();
+      drawLine(true);
+      updateStats();
+    }
+
+    function onResize() {
+      drawUrn();
+      Plotly.Plots.resize("bar");
+      Plotly.Plots.resize("line");
+    }
+
+    function init() {
+      // 初始化控件
+      UI.red.value = state.red;
+      UI.blue.value = state.blue;
+      UI.speed.value = state.speed;
+      updateBadges();
+      updateStats();
+      drawUrn();
+      drawBar();
+      drawLine(true);
+
+      UI.red.addEventListener("input", () => {
+        state.red = parseInt(UI.red.value, 10) || 0;
+        updateBadges();
+        drawUrn();
+        // 红蓝变化，理论立刻变化
+        updateBarObserved();
+        drawLine(false);
+      });
+      UI.blue.addEventListener("input", () => {
+        state.blue = parseInt(UI.blue.value, 10) || 0;
+        updateBadges();
+        drawUrn();
+        updateBarObserved();
+        drawLine(false);
+      });
+      UI.speed.addEventListener("input", () => {
+        state.speed = parseInt(UI.speed.value, 10) || 0;
+        updateBadges();
+      });
+      UI.toggle.addEventListener("click", () => {
+        if (state.timer) stop(); else start();
+      });
+      UI.reset.addEventListener("click", reset);
+      window.addEventListener("resize", onResize);
+    }
+
+    init();
+  </script>
+</body>
+</html>
+
+

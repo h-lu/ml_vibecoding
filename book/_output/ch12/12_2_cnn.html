@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7ec80faf2f76fb0b865d1103a6b470c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-4748502d1f1e86460223ec0d74b9caae.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-e4f0b921bea972c06d94a524d5d8c001.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -117,10 +117,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   --chatgpt-surface: #f7f7f8;
   --chatgpt-border: #e5e5e5;
   --chatgpt-accent: #10a37f;
+  /* Sidebar resizer defaults */
+  --sidebar-width: 300px;         /* default width */
+  --sidebar-width-min: 180px;     /* minimum width */
+  --sidebar-width-max-vw: 60vw;   /* maximum width as viewport fraction */
+  --sidebar-resizer-width: 6px;   /* handle width */
 }
 </style>
 
 
+<link rel="stylesheet" href="../assets/sidebar-resizer.css">
 </head>
 
 <body class="nav-sidebar floating fullcontent quarto-light">
@@ -1641,51 +1647,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>通过**卷积层 -&gt; 激活函数 (ReLU) -&gt; 池化层**这样一套“组合拳”的反复堆叠，CNN 最终能够从原始像素中，逐层地、高效地提取出越来越抽象、越来越有意义的特征。在网络的最后，这些高度抽象的特征（此时依然是二维的特征图形式）会被“压平”，送入一个或几个我们在第九章学习过的**全连接层**。这个全连接部分，通常被称为“分类头 (Classification Head)”，它的职责就是将 CNN 提取出的高级空间特征，最终映射为我们想要的输出（例如，各个类别的概率），完成最后的分类判决。</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<script src="assets/font-size-selector.js"></script>
-<script>
-// 初始化字体大小选择器的额外配置
-document.addEventListener('fontSizeChanged', function(e) {
-  console.log('字体大小已更改为:', e.detail.label, '(' + e.detail.size + ')');
-  
-  // 可选：向用户显示更改提示
-  if (window.innerWidth <= 768) {
-    const toast = document.createElement('div');
-    toast.textContent = `字体大小已设置为${e.detail.label}`;
-    toast.style.cssText = `
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--chatgpt-accent);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      z-index: 10000;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    `;
-    document.body.appendChild(toast);
-    
-    // 显示提示
-    setTimeout(() => toast.style.opacity = '1', 100);
-    
-    // 3秒后移除提示
-    setTimeout(() => {
-      toast.style.opacity = '0';
-      setTimeout(() => document.body.removeChild(toast), 300);
-    }, 3000);
-  }
-});
-
-// 键盘快捷键提示（开发模式）
-if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-  console.log('🎯 字体大小选择器快捷键:');
-  console.log('  Ctrl/Cmd + +  增大字体');
-  console.log('  Ctrl/Cmd + -  减小字体');
-  console.log('  Ctrl/Cmd + 0  重置字体');
-}
-</script>
+<script src="assets/sidebar-resizer.js"></script>
 
 
 
